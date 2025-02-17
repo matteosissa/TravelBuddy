@@ -13,17 +13,24 @@ import dadm.ndescot.quotationshake.R
 import dadm.ndescot.quotationshake.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var appBarConfiguration: AppBarConfiguration
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-//        setSupportActionBar(binding.toolbar)
+        setSupportActionBar(binding.toolbar)
 
-//        val appBarConfig = AppBarConfiguration()
-//
-//        setupActionBarWithNavController(navController, appBarConfig)
+        appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.newQuotationFragment,
+                R.id.favouritesFragment,
+                R.id.settingsFragment,
+            )
+        )
+
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -34,5 +41,7 @@ class MainActivity : AppCompatActivity() {
         val navController =
             binding.navHostFragment.getFragment<NavHostFragment>().navController
         binding.bottomNavigationView.setupWithNavController(navController)
+
+        setupActionBarWithNavController(navController, appBarConfiguration)
     }
 }
