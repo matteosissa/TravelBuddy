@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/newQuotationFragment">
+
+    <fragment
+        android:id="@+id/newQuotationFragment"
+        android:name="dadm.ndescot.quotationshake.ui.newquotation.NewQuotationFragment"
+        android:label="@string/get_a_new_quotation" >
+        <action
+            android:id="@+id/action_newQuotationFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_newQuotationFragment_to_aboutDialogFragment"
+            app:destination="@id/aboutDialogFragment" />
+        <action
+            android:id="@+id/action_newQuotationFragment_to_favouritesFragment"
+            app:destination="@id/favouritesFragment" />
+        <action
+            android:id="@+id/action_newQuotationFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="dadm.ndescot.quotationshake.ui.settings.SettingsFragment"
+        android:label="@string/settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_newQuotationFragment"
+            app:destination="@id/newQuotationFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_favouritesFragment"
+            app:destination="@id/favouritesFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_aboutDialogFragment"
+            app:destination="@id/aboutDialogFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favouritesFragment"
+        android:name="dadm.ndescot.quotationshake.ui.favourites.FavouritesFragment"
+        android:label="@string/favourite_quotations" >
+        <action
+            android:id="@+id/action_favouritesFragment_to_newQuotationFragment"
+            app:destination="@id/newQuotationFragment" />
+        <action
+            android:id="@+id/action_favouritesFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_favouritesFragment_to_aboutDialogFragment"
+            app:destination="@id/aboutDialogFragment" />
+        <action
+            android:id="@+id/action_favouritesFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/aboutDialogFragment"
+        android:name="dadm.ndescot.quotationshake.ui.about.AboutDialogFragment"
+        android:label="@string/about" >
+        <action
+            android:id="@+id/action_aboutDialogFragment_to_newQuotationFragment"
+            app:destination="@id/newQuotationFragment" />
+        <action
+            android:id="@+id/action_aboutDialogFragment_to_favouritesFragment"
+            app:destination="@id/favouritesFragment" />
+        <action
+            android:id="@+id/action_aboutDialogFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
+    </dialog>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="dadm.ndescot.quotationshake.ui.about.AboutFragment"
+        android:label="@string/about" >
+        <action
+            android:id="@+id/action_aboutFragment_to_aboutDialogFragment"
+            app:destination="@id/aboutDialogFragment" />
+        <action
+            android:id="@+id/action_aboutFragment_to_favouritesFragment"
+            app:destination="@id/favouritesFragment" />
+        <action
+            android:id="@+id/action_aboutFragment_to_newQuotationFragment"
+            app:destination="@id/newQuotationFragment" />
+    </fragment>
+</navigation>
