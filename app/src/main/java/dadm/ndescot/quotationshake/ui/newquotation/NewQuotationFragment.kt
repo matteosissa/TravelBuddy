@@ -33,6 +33,10 @@ class NewQuotationFragment : Fragment(R.layout.fragment_new_quotation), MenuProv
             viewModel.getNewQuotation()
         }
 
+        binding.fabAddToFavorites.setOnClickListener {
+            viewModel.addToFavorites()
+        }
+
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 launch {
@@ -59,6 +63,12 @@ class NewQuotationFragment : Fragment(R.layout.fragment_new_quotation), MenuProv
                             binding.tvQuoteAuthor.text =
                                 if (it.author.isEmpty()) "Anonymous" else it.author
                         }
+                    }
+                }
+
+                launch {
+                    viewModel.isAddFavoriteVisible.collect { isVisible ->
+                        binding.fabAddToFavorites.isVisible = isVisible
                     }
                 }
             }
