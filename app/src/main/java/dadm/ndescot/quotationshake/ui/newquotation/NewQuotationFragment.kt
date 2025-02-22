@@ -1,7 +1,11 @@
 package dadm.ndescot.quotationshake.ui.newquotation
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
+import androidx.core.view.MenuProvider
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -12,13 +16,16 @@ import dadm.ndescot.quotationshake.R
 import dadm.ndescot.quotationshake.databinding.FragmentNewQuotationBinding
 import kotlinx.coroutines.launch
 
-class NewQuotationFragment : Fragment(R.layout.fragment_new_quotation) {
+class NewQuotationFragment : Fragment(R.layout.fragment_new_quotation), MenuProvider {
     private var _binding: FragmentNewQuotationBinding? = null
     private val binding get() = _binding!!
     private val viewModel: NewQuotationViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        requireActivity().addMenuProvider(this,
+            viewLifecycleOwner, Lifecycle.State.RESUMED)
 
         _binding = FragmentNewQuotationBinding.bind(view)
 
@@ -63,7 +70,18 @@ class NewQuotationFragment : Fragment(R.layout.fragment_new_quotation) {
 
         _binding = null
     }
+
+    override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+        menuInflater.inflate(R.menu.menu_new_quotation, menu)
+    }
+
+    override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+        return when (menuItem.itemId) {
+            R.id.refresh_button -> {
+                viewModel.getNewQuotation()
+                true
+            }
+            else -> false
+        }
+    }
 }
-
-
-
