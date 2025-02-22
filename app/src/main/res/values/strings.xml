@@ -6,4 +6,7 @@
     <string name="about">About</string>
     <string name="quotations">Quotations</string>
     <string name="favourites">Favourites</string>
+    <string name="About_information">QuotationShake by \n\nNicolas Descoteaux\n\nnicolas.descoteaux.1@ens.etsmtl.ca\n\nDeveloped for DADM 2025\n</string>
+    <string name="Description_of_portrait">Portrait of creator</string>
+    <string name="button_to_add_quote_to_favorites">Button to add quote to favorites</string>
 </resources>
