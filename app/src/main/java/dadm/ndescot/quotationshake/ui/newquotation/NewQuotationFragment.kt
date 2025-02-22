@@ -3,17 +3,30 @@ package dadm.ndescot.quotationshake.ui.newquotation
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import dadm.ndescot.quotationshake.R
 import dadm.ndescot.quotationshake.databinding.FragmentNewQuotationBinding
+import kotlinx.coroutines.launch
 
 class NewQuotationFragment : Fragment(R.layout.fragment_new_quotation) {
     private var _binding : FragmentNewQuotationBinding? = null
     private val binding get() = _binding!!
+    private val viewModel: NewQuotationViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         _binding = FragmentNewQuotationBinding.bind(view)
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.userName.collect { userName -> binding.tvGreetings.text =
+                    getString(R.string.greetings, userName.ifEmpty{ getString(R.string.anonymous) })}
+            }
+        }
     }
 
     override fun onDestroyView() {
