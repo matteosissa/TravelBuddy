@@ -35,7 +35,7 @@ class NewQuotationViewModel: ViewModel() {
         _quotation.update {
             Quotation(
                 id = "$num",
-                text = "Quotation text #$num",
+                quote = "Quotation text #$num",
                 author = "Author #$num"
             )
         }

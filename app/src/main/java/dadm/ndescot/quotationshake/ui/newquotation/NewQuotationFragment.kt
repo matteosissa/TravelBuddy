@@ -59,7 +59,7 @@ class NewQuotationFragment : Fragment(R.layout.fragment_new_quotation), MenuProv
                         binding.tvGreetings.isVisible = quotation == null
 
                         quotation?.let {
-                            binding.tvQuoteText.text = it.text
+                            binding.tvQuoteText.text = it.quote
                             binding.tvQuoteAuthor.text =
                                 if (it.author.isEmpty()) "Anonymous" else it.author
                         }
