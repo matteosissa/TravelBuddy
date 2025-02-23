@@ -54,6 +54,9 @@
         <action
             android:id="@+id/action_favouritesFragment_to_aboutFragment"
             app:destination="@id/aboutFragment" />
+        <action
+            android:id="@+id/action_favouritesFragment_to_deleteAllDialogFragment"
+            app:destination="@id/deleteAllDialogFragment" />
     </fragment>
     <dialog
         android:id="@+id/aboutDialogFragment"
@@ -83,4 +86,8 @@
             android:id="@+id/action_aboutFragment_to_newQuotationFragment"
             app:destination="@id/newQuotationFragment" />
     </fragment>
+    <dialog
+        android:id="@+id/deleteAllDialogFragment"
+        android:name="dadm.ndescot.quotationshake.ui.favourites.DeleteAllDialogFragment"
+        android:label="DeleteAllDialogFragment" />
 </navigation>
