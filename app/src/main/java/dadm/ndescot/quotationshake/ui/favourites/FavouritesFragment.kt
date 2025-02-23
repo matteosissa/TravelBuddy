@@ -13,6 +13,8 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import dadm.ndescot.quotationshake.R
 import dadm.ndescot.quotationshake.databinding.FragmentFavouritesBinding
 import kotlinx.coroutines.launch
@@ -47,6 +49,31 @@ class FavouritesFragment : Fragment(R.layout.fragment_favourites), MenuProvider 
                 }
             }
         }
+
+        val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.END) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return false
+            }
+
+            override fun isLongPressDragEnabled(): Boolean {
+                return false
+            }
+
+            override fun isItemViewSwipeEnabled(): Boolean {
+                return true
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val position = viewHolder.adapterPosition
+                viewModel.deleteQuotationAtPosition(position)
+            }
+        })
+
+        itemTouchHelper.attachToRecyclerView(binding.recyclerView)
     }
 
     override fun onDestroyView() {

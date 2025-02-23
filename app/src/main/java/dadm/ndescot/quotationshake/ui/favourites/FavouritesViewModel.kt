@@ -38,4 +38,10 @@ class FavouritesViewModel: ViewModel() {
     fun deleteAllQuotations() {
         _favouriteQuotations.update { emptyList() }
     }
+
+    fun deleteQuotationAtPosition(position: Int) {
+        val copy = _favouriteQuotations.value.toMutableList()
+        copy.removeAt(position)
+        _favouriteQuotations.update { copy }
+    }
 }
