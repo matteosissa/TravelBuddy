@@ -1,5 +1,7 @@
 package dadm.ndescot.quotationshake.di
 
+import dadm.ndescot.quotationshake.data.newquotation.NewQuotationDataSource
+import dadm.ndescot.quotationshake.data.newquotation.NewQuotationDataSourceImpl
 import dadm.ndescot.quotationshake.ui.newquotation.NewQuotationRepository
 import dadm.ndescot.quotationshake.ui.newquotation.NewQuotationRepositoryImpl
 import dagger.Binds
@@ -15,4 +17,9 @@ abstract class NewQuotationBinderModule {
     abstract fun bindNewQuotationRepository(
         newQuotationRepositoryImpl: NewQuotationRepositoryImpl
     ): NewQuotationRepository
+
+    @Binds
+    abstract fun bindNewQuotationDataSource(
+        newQuotationDataSourceImpl: NewQuotationDataSourceImpl
+    ): NewQuotationDataSource
 }

@@ -1,20 +1,21 @@
 package dadm.ndescot.quotationshake.ui.newquotation
 
+import dadm.ndescot.quotationshake.data.newquotation.ConnectivityChecker
+import dadm.ndescot.quotationshake.data.newquotation.NewQuotationDataSource
 import dadm.ndescot.quotationshake.domain.model.Quotation
+import dadm.ndescot.quotationshake.utils.NoInternetException
 import javax.inject.Inject
 
-class NewQuotationRepositoryImpl @Inject constructor(): NewQuotationRepository {
-    override suspend fun getNewQuotation(): Result<Quotation> {
-        val num = (0..9).random()
-        if (num != 0){
-            return Result.success((Quotation(
-                id = "$num",
-                quote = "Quotation text #$num",
-                author = "Author #$num"
-            )))
-        } else {
-            return Result.failure(RuntimeException("Failed to retrieve quote"))
-        }
+class NewQuotationRepositoryImpl @Inject constructor(
+    private val newQuotationDataSource: NewQuotationDataSource,
+    private val connectivityChecker: ConnectivityChecker
+): NewQuotationRepository {
 
+    override suspend fun getNewQuotation(): Result<Quotation> {
+        return if (connectivityChecker.isConnectionAvailable()) {
+             newQuotationDataSource.getQuotation()
+        } else {
+             Result.failure(NoInternetException())
+        }
     }
 }
