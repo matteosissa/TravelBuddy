@@ -12,10 +12,15 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.google.android.material.snackbar.Snackbar
 import dadm.ndescot.quotationshake.R
 import dadm.ndescot.quotationshake.databinding.FragmentNewQuotationBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import java.net.UnknownHostException
+import java.util.concurrent.TimeoutException
 
+@AndroidEntryPoint
 class NewQuotationFragment : Fragment(R.layout.fragment_new_quotation), MenuProvider {
     private var _binding: FragmentNewQuotationBinding? = null
     private val binding get() = _binding!!
@@ -69,6 +74,27 @@ class NewQuotationFragment : Fragment(R.layout.fragment_new_quotation), MenuProv
                 launch {
                     viewModel.isAddFavoriteVisible.collect { isVisible ->
                         binding.fabAddToFavorites.isVisible = isVisible
+                    }
+                }
+
+                launch {
+                    viewModel.error.collect { throwable ->
+                        throwable?.let { error ->
+                            val errorMessage = when (error) {
+                                is UnknownHostException -> getString(R.string.error_network_connection)
+                                is TimeoutException -> getString(R.string.error_timeout)
+                                is RuntimeException -> getString(R.string.error_failed_retrieval)
+                                else -> getString(R.string.error_unexpected, error.message ?: "Unknown error")
+                            }
+
+                            Snackbar.make(
+                                binding.root,
+                                errorMessage,
+                                Snackbar.LENGTH_LONG
+                            ).show()
+
+                            viewModel.resetError()
+                        }
                     }
                 }
             }

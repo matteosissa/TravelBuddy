@@ -21,8 +21,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import dadm.ndescot.quotationshake.R
 import dadm.ndescot.quotationshake.databinding.FragmentFavouritesBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class FavouritesFragment : Fragment(R.layout.fragment_favourites), MenuProvider {
     private val viewModel: FavouritesViewModel by activityViewModels()
     private var _binding : FragmentFavouritesBinding? = null

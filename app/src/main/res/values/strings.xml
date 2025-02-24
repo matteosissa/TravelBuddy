@@ -14,4 +14,8 @@
     <string name="refresh">Refresh</string>
     <string name="anonymous_author_error">Sorry, can not retrieve information about anonymous author.</string>
     <string name="unable_to_handle_action">Sorry, an error has occured while retrieving author information.</string>
+    <string name="error_network_connection">Cannot connect to the network. Please check your connection.</string>
+    <string name="error_timeout">Operation timed out. Please try again later.</string>
+    <string name="error_failed_retrieval">Failed to retrieve quotation. Please try again.</string>
+    <string name="error_unexpected">An unexpected error occurred: %1$s</string>
 </resources>

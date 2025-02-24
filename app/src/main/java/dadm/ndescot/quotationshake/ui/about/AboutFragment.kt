@@ -5,7 +5,9 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import dadm.ndescot.quotationshake.R
 import dadm.ndescot.quotationshake.databinding.FragmentAboutBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AboutFragment : Fragment(R.layout.fragment_about) {
     private var _binding : FragmentAboutBinding? = null
     private val binding get() = _binding!!

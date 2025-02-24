@@ -19,7 +19,9 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationBarView
 import dadm.ndescot.quotationshake.R
 import dadm.ndescot.quotationshake.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity(), MenuProvider {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var navController: NavController
