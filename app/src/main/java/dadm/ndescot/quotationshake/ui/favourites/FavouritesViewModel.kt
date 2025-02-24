@@ -27,12 +27,32 @@ class FavouritesViewModel: ViewModel() {
 
     private fun getFavouriteQuotations(): List<Quotation> {
         return List(20) { index ->
-            Quotation(
-                id = UUID.randomUUID().toString(),
-                quote = "Random quote number $index",
-                author = "Author $index"
-            )
+            when (index) {
+                0 -> {
+                    Quotation(
+                        id = UUID.randomUUID().toString(),
+                        quote = "E = MC2",
+                        author = "Albert Einstein"
+                    )
+                }
+                1 -> {
+                    Quotation(
+                        id = UUID.randomUUID().toString(),
+                        quote = "Climbing is life",
+                        author = "Anonymous"
+                    )
+                }
+                else -> {
+                    Quotation(
+                        id = UUID.randomUUID().toString(),
+                        quote = "Random quote number $index",
+                        author = "Author $index"
+                    )
+                }
+            }
+
         }
+
     }
 
     fun deleteAllQuotations() {

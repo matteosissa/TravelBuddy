@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import dadm.ndescot.quotationshake.databinding.QuotationItemBinding
 import dadm.ndescot.quotationshake.domain.model.Quotation
 
-class QuotationListAdapter : ListAdapter<Quotation,
+class QuotationListAdapter(private val onItemClick: (String) -> Unit) : ListAdapter<Quotation,
         QuotationListAdapter.ViewHolder>(QuotationDiff) {
 
     object QuotationDiff : DiffUtil.ItemCallback<Quotation>() {
@@ -21,7 +21,13 @@ class QuotationListAdapter : ListAdapter<Quotation,
         }
     }
 
-    class ViewHolder(private val binding: QuotationItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(private val binding: QuotationItemBinding, private val onItemClick: (String) -> Unit) : RecyclerView.ViewHolder(binding.root) {
+        init {
+            binding.root.setOnClickListener {
+                onItemClick(binding.tvQuoteItemAuthor.text.toString())
+            }
+        }
+
         fun bind(quotation: Quotation) {
             binding.tvQuoteItemText.text = quotation.quote
             binding.tvQuoteItemAuthor.text = quotation.author
@@ -34,7 +40,7 @@ class QuotationListAdapter : ListAdapter<Quotation,
                 LayoutInflater.from(parent.context),
                 parent,
                 false
-            )
+            ), onItemClick
         )
     }
 

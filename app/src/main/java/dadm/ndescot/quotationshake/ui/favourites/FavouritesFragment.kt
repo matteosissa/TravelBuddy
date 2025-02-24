@@ -1,5 +1,8 @@
 package dadm.ndescot.quotationshake.ui.favourites
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
@@ -15,6 +18,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import dadm.ndescot.quotationshake.R
 import dadm.ndescot.quotationshake.databinding.FragmentFavouritesBinding
 import kotlinx.coroutines.launch
@@ -28,7 +32,29 @@ class FavouritesFragment : Fragment(R.layout.fragment_favourites), MenuProvider 
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentFavouritesBinding.bind(view)
 
-        val adapter = QuotationListAdapter()
+        val adapter = QuotationListAdapter{ authorName ->
+            if (authorName == "Anonymous") {
+                Snackbar.make(
+                    binding.root,
+                    getString(R.string.anonymous_author_error),
+                    Snackbar.LENGTH_SHORT
+                ).show()
+            } else {
+                try {
+                    val searchUrl = "https://en.wikipedia.org/wiki/Special:Search?search=$authorName"
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(searchUrl))
+                    startActivity(intent)
+                } catch (e: ActivityNotFoundException) {
+                    Snackbar.make(
+                        binding.root,
+                        getString(R.string.unable_to_handle_action),
+                        Snackbar.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        }
+
+
         binding.recyclerView.adapter = adapter
 
         requireActivity().addMenuProvider(this,

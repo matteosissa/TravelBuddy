@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="get_a_new_quotation">Obtenir une nouvelle citation</string>
+    <string name="favourite_quotations">Citations favorites</string>
+    <string name="settings">Réglages</string>
+    <string name="about">À propos</string>
+    <string name="quotations">Citations</string>
+    <string name="favourites">Favoris</string>
+    <string name="About_information">"QuotationShake par   Nicolas Descoteaux  nicolas.descoteaux.1@ens.etsmtl.ca  Développé pour DADM 2025 "</string>
+    <string name="Description_of_portrait">Portrait du créateur</string>
+    <string name="button_to_add_quote_to_favorites">Bouton pour ajouter citation aux favoris</string>
+    <string name="greetings">Bonjour %1s!,\\n\\nRafraichir pour obtenir une nouvelle citation.\\n\\n(tirer vers le bas ou utiliser le menu)</string>
+    <string name="anonymous">Bonjour Anonyme!,\\n\\nRafraichir pour obtenir une nouvelle citation\\n\\n(tirer vers le bas ou utiliser le menu)</string>
+    <string name="refresh">Rafraichir</string>
+    <string name="anonymous_author_error">Désolé, aucune information à propos d\'auteurs anonymes.</string>
+    <string name="unable_to_handle_action">Désolé, une erreure est survenue lors du chargement des informations de l\'auteur.</string>
+</resources>
