@@ -12,7 +12,7 @@ class NewQuotationRepositoryImpl @Inject constructor(
 
     override suspend fun getNewQuotation(): Result<Quotation> {
         return if (connectivityChecker.isConnectionAvailable()) {
-             newQuotationDataSource.getQuotation().toDomain()
+             newQuotationDataSource.getQuotation(arrayOf("en", "ru", "xx").random()).toDomain()
         } else {
              Result.failure(NoInternetException())
         }
