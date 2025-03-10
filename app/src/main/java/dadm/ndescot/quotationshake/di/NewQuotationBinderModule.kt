@@ -2,8 +2,8 @@ package dadm.ndescot.quotationshake.di
 
 import dadm.ndescot.quotationshake.data.newquotation.NewQuotationDataSource
 import dadm.ndescot.quotationshake.data.newquotation.NewQuotationDataSourceImpl
-import dadm.ndescot.quotationshake.ui.newquotation.NewQuotationRepository
-import dadm.ndescot.quotationshake.ui.newquotation.NewQuotationRepositoryImpl
+import dadm.ndescot.quotationshake.data.newquotation.NewQuotationRepository
+import dadm.ndescot.quotationshake.data.newquotation.NewQuotationRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

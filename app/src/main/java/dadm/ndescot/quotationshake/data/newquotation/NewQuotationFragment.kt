@@ -1,4 +1,4 @@
-package dadm.ndescot.quotationshake.ui.newquotation
+package dadm.ndescot.quotationshake.data.newquotation
 
 import android.os.Bundle
 import android.view.Menu

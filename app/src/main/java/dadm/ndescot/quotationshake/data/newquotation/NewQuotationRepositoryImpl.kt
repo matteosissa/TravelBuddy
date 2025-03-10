@@ -1,7 +1,6 @@
-package dadm.ndescot.quotationshake.ui.newquotation
+package dadm.ndescot.quotationshake.data.newquotation
 
-import dadm.ndescot.quotationshake.data.newquotation.ConnectivityChecker
-import dadm.ndescot.quotationshake.data.newquotation.NewQuotationDataSource
+import dadm.ndescot.quotationshake.data.newquotation.model.toDomain
 import dadm.ndescot.quotationshake.domain.model.Quotation
 import dadm.ndescot.quotationshake.utils.NoInternetException
 import javax.inject.Inject
@@ -13,7 +12,7 @@ class NewQuotationRepositoryImpl @Inject constructor(
 
     override suspend fun getNewQuotation(): Result<Quotation> {
         return if (connectivityChecker.isConnectionAvailable()) {
-             newQuotationDataSource.getQuotation()
+             newQuotationDataSource.getQuotation().toDomain()
         } else {
              Result.failure(NoInternetException())
         }

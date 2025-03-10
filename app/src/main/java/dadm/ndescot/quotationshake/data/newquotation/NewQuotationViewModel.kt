@@ -1,4 +1,4 @@
-package dadm.ndescot.quotationshake.ui.newquotation
+package dadm.ndescot.quotationshake.data.newquotation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

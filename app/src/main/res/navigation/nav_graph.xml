@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/newQuotationFragment"
-        android:name="dadm.ndescot.quotationshake.ui.newquotation.NewQuotationFragment"
+        android:name="dadm.ndescot.quotationshake.data.newquotation.NewQuotationFragment"
         android:label="@string/get_a_new_quotation" >
         <action
             android:id="@+id/action_newQuotationFragment_to_settingsFragment"
