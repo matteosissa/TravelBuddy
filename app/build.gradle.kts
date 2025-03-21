@@ -56,6 +56,8 @@ dependencies {
     ksp(libs.moshi.kotlin.codegen)
     implementation(libs.retrofit)
     implementation(libs.converter.moshi)
+    implementation(libs.androidx.preference.ktx)
+    implementation(libs.androidx.datastore.preferences)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

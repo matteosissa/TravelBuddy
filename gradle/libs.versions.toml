@@ -1,5 +1,6 @@
 [versions]
 agp = "8.8.1"
+datastorePreferences = "1.1.3"
 hiltAndroid = "2.50"
 kotlin = "1.9.24"
 coreKtx = "1.15.0"
@@ -13,13 +14,16 @@ activity = "1.10.0"
 constraintlayout = "2.2.0"
 moshiKotlin = "1.14.0"
 navigationUiKtxVersion = "2.8.7"
+preferenceKtx = "1.2.1"
 retrofit = "2.9.0"
 swiperefreshlayout = "1.1.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastorePreferences" }
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
 androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigationUiKtxVersion" }
+androidx-preference-ktx = { module = "androidx.preference:preference-ktx", version.ref = "preferenceKtx" }
 androidx-swiperefreshlayout = { module = "androidx.swiperefreshlayout:swiperefreshlayout", version.ref = "swiperefreshlayout" }
 converter-moshi = { module = "com.squareup.retrofit2:converter-moshi", version.ref = "retrofit" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }

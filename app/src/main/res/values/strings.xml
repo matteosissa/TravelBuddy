@@ -19,4 +19,11 @@
     <string name="error_failed_retrieval">Failed to retrieve quotation. Please try again.</string>
     <string name="error_unexpected">An unexpected error occurred: %1$s</string>
     <string name="error_unknown_host">Error connecting to unknown host, please try again</string>
+    <string name="russian">Russian</string>
+    <string name="english">English</string>
+    <string name="username_hint">Your name</string>
+    <string name="username_title">User name</string>
+    <string name="default_language">en</string>
+    <string name="language_title">Get quotations in...</string>
+    <string name="language_choice">Choose language</string>
 </resources>
