@@ -9,10 +9,11 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class FavouritesViewModel @Inject constructor(favouritesRepository: FavouritesRepository): ViewModel() {
+class FavouritesViewModel @Inject constructor(private val favouritesRepository: FavouritesRepository): ViewModel() {
 
     val favouriteQuotations : StateFlow<List<Quotation>> = favouritesRepository.getAllQuotations().stateIn(
         scope = viewModelScope,
@@ -29,12 +30,15 @@ class FavouritesViewModel @Inject constructor(favouritesRepository: FavouritesRe
     )
 
     fun deleteAllQuotations() {
-    //    _favouriteQuotations.update { emptyList() }
+        viewModelScope.launch { favouritesRepository.deleteAllQuotations() }
     }
 
     fun deleteQuotationAtPosition(position: Int) {
-    //    val copy = _favouriteQuotations.value.toMutableList()
-    //    copy.removeAt(position)
-    //    _favouriteQuotations.update { copy }
+        val quotationToDelete = favouriteQuotations.value.getOrNull(position)
+        quotationToDelete?.let { quotation ->
+            viewModelScope.launch {
+                favouritesRepository.deleteQuotation(quotation)
+            }
+        }
     }
 }

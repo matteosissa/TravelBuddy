@@ -22,8 +22,8 @@ class FavouritesRepositoryImpl @Inject constructor(private val favouritesDataSou
         }
     }
 
-    override fun getQuotationById(id: String): Flow<Quotation> {
-        return favouritesDataSource.getQuotationById(id).map { dto -> dto.toDomain() }
+    override fun getQuotationById(id: String): Flow<Quotation?> {
+        return favouritesDataSource.getQuotationById(id).map { dto -> dto?.toDomain() }
     }
 
     override suspend fun deleteAllQuotations() {

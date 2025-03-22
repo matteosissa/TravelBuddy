@@ -9,6 +9,9 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -32,8 +35,17 @@ class NewQuotationViewModel @Inject constructor(
     private val _isLoading = MutableStateFlow(false)
     val isLoading = _isLoading.asStateFlow()
 
-    private val _isAddFavoriteVisible = MutableStateFlow<Boolean>(false)
-    val isAddFavoriteVisible = _isAddFavoriteVisible.asStateFlow()
+    val isAddFavoriteVisible = _quotation.flatMapLatest { currentQuote ->
+        if (currentQuote == null) flowOf(false)
+        else favouritesRepository.getQuotationById(currentQuote.id)
+            .map { quotationInDatabase ->
+                quotationInDatabase == null
+            }
+    }.stateIn(
+    scope = viewModelScope,
+    initialValue = false,
+    started = SharingStarted.WhileSubscribed()
+    )
 
     private val _isError = MutableStateFlow<Throwable?>(null)
     val error = _isError.asStateFlow()
@@ -45,19 +57,19 @@ class NewQuotationViewModel @Inject constructor(
 
     fun getNewQuotation() {
         _isLoading.update { true }
-        _isAddFavoriteVisible.update { false }
+
 
         viewModelScope.launch {
-            newQuotationRepository.getNewQuotation().fold(
-                onSuccess = { quotation ->
-                    _quotation.update { quotation }
-                    _isAddFavoriteVisible.update { true }
-                    _isError.update { null }
-                },
-                onFailure = { throwable ->
-                    _isError.update { throwable }
-                }
-            )
+                newQuotationRepository.getNewQuotation().fold(
+                    onSuccess = { quotation ->
+                        _quotation.update { quotation }
+                        _isError.update { null }
+                    },
+                    onFailure = { throwable ->
+                        _isError.update { throwable }
+                    }
+                )
+
 
             _isLoading.update { false }
         }
@@ -66,7 +78,6 @@ class NewQuotationViewModel @Inject constructor(
     fun addToFavorites() {
         viewModelScope.launch {
             favouritesRepository.insertQuotation(currentQuote.value!!)
-            _isAddFavoriteVisible.update { false }
         }
 
     }

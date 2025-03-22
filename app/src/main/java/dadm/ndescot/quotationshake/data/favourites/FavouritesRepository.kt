@@ -7,6 +7,6 @@ interface FavouritesRepository {
     suspend fun insertQuotation(quotation: Quotation)
     suspend fun deleteQuotation(quotation: Quotation)
     fun getAllQuotations(): Flow<List<Quotation>>
-    fun getQuotationById(id: String): Flow<Quotation>
+    fun getQuotationById(id: String): Flow<Quotation?>
     suspend fun deleteAllQuotations()
 }
