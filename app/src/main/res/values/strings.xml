@@ -13,7 +13,7 @@
     <string name="anonymous">Hello Anonymous!,\n\nRefresh to get a new quotation\n\n(swipe down or menu options)</string>
     <string name="refresh">Refresh</string>
     <string name="anonymous_author_error">Sorry, can not retrieve information about anonymous author.</string>
-    <string name="unable_to_handle_action">Sorry, an error has occured while retrieving author information.</string>
+    <string name="unable_to_handle_action">Sorry, an error has occurred while retrieving author information.</string>
     <string name="error_network_connection">Cannot connect to the network. Please check your connection.</string>
     <string name="error_timeout">Operation timed out. Please try again later.</string>
     <string name="error_failed_retrieval">Failed to retrieve quotation. Please try again.</string>
@@ -23,7 +23,7 @@
     <string name="english">English</string>
     <string name="username_hint">Your name</string>
     <string name="username_title">User name</string>
-    <string name="default_language">en</string>
-    <string name="language_title">Get quotations in...</string>
+    <string name="language_title">Get quotations in…</string>
+    <string name="delete_all_quotations">Delete all quotations</string>
     <string name="language_choice">Choose language</string>
 </resources>

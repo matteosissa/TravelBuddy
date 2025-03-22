@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity(), MenuProvider {
                     WindowInsetsCompat.Type.systemBars())
             view.updatePadding(
                 left = bars.left,
-                top = 0, //Todo instructions say to put bars.top here but it looks bad
+                top = 0,
                 right = 0,
                 bottom = 0
             )

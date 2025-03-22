@@ -14,4 +14,16 @@
     <string name="refresh">Rafraichir</string>
     <string name="anonymous_author_error">Désolé, aucune information à propos d\'auteurs anonymes.</string>
     <string name="unable_to_handle_action">Désolé, une erreure est survenue lors du chargement des informations de l\'auteur.</string>
+    <string name="error_network_connection">Connexion au réseau impossible. Veillez vérifier votre connexion.</string>
+    <string name="error_timeout">L\'opération a expiré. Veuillez réessayer plus tard.</string>
+    <string name="error_failed_retrieval">Impossible de récupérer la citation. Veuillez réessayer.</string>
+    <string name="error_unexpected">Une erreur inattendue s\'est produite : %1$s</string>
+    <string name="error_unknown_host">Erreur de connexion à un hôte inconnu, veuillez réessayer</string>
+    <string name="russian">Russe</string>
+    <string name="english">Anglais</string>
+    <string name="username_hint">Votre nom</string>
+    <string name="username_title">Nom d\'utilisateur</string>
+    <string name="language_title">Obtenir des citations en…</string>
+    <string name="delete_all_quotations">Supprimer toutes les citations</string>
+    <string name="language_choice">Choisir la langue</string>
 </resources>

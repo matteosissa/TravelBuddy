@@ -14,4 +14,16 @@
     <string name="anonymous_author_error">Lo sentimos, no se puede obtener información sobre autores anónimos.</string>
     <string name="unable_to_handle_action">Lo sentimos, ha ocurrido un error al obtener la información del autor.</string>
     <string name="favourites">Favoritos</string>
+    <string name="error_network_connection">La operación ha caducado. Por favor, inténtelo de nuevo más tarde.</string>
+    <string name="error_timeout">No se pudo recuperar la cotización. Por favor, inténtelo de nuevo.</string>
+    <string name="error_failed_retrieval">No se pudo recuperar la cotización. Por favor, inténtelo de nuevo.</string>
+    <string name="error_unexpected">Ocurrió un error inesperado: %1$s</string>
+    <string name="error_unknown_host">Error al conectar con el host desconocido, por favor intente de nuevo</string>
+    <string name="russian">Ruso</string>
+    <string name="english">Inglés</string>
+    <string name="username_hint">Tu nombre</string>
+    <string name="username_title">Nombre de usuario</string>
+    <string name="language_title">Obtener citas en…</string>
+    <string name="delete_all_quotations">Eliminar todas las citas</string>
+    <string name="language_choice">Selectionar la idioma</string>
 </resources>

@@ -67,7 +67,7 @@ class NewQuotationFragment : Fragment(R.layout.fragment_new_quotation), MenuProv
                         quotation?.let {
                             binding.tvQuoteText.text = it.quote
                             binding.tvQuoteAuthor.text =
-                                if (it.author.isEmpty()) "Anonymous" else it.author
+                                it.author.ifEmpty { "Anonymous" }
                         }
                     }
                 }

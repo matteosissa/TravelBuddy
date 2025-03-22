@@ -6,6 +6,7 @@ import dadm.ndescot.quotationshake.data.favourites.FavouritesRepository
 import dadm.ndescot.quotationshake.data.settings.SettingsRepository
 import dadm.ndescot.quotationshake.domain.model.Quotation
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow
@@ -20,7 +21,7 @@ import javax.inject.Inject
 @HiltViewModel
 class NewQuotationViewModel @Inject constructor(
     private val newQuotationRepository: NewQuotationRepository,
-    private val settingsRepository: SettingsRepository,
+    settingsRepository: SettingsRepository,
     private val favouritesRepository: FavouritesRepository
 ): ViewModel() {
      val userName = settingsRepository.getUserName().stateIn(
@@ -35,6 +36,7 @@ class NewQuotationViewModel @Inject constructor(
     private val _isLoading = MutableStateFlow(false)
     val isLoading = _isLoading.asStateFlow()
 
+    @OptIn(ExperimentalCoroutinesApi::class)
     val isAddFavoriteVisible = _quotation.flatMapLatest { currentQuote ->
         if (currentQuote == null) flowOf(false)
         else favouritesRepository.getQuotationById(currentQuote.id)

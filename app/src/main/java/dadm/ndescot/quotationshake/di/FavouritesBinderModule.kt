@@ -1,3 +1,7 @@
+@file:Suppress(
+    "unused"
+)
+
 package dadm.ndescot.quotationshake.di
 
 import dadm.ndescot.quotationshake.data.favourites.FavouritesDataSource

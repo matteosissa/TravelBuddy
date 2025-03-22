@@ -8,15 +8,15 @@ import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
 class SettingsPreferenceDataStore @Inject constructor(private val repository: SettingsRepository) : PreferenceDataStore(){
-    private val KEY_USER_NAME = "prefs_username"
-    private val KEY_LANGUAGE = "prefs_language"
+    private val keyUserName = "prefs_username"
+    private val keyLanguage = "prefs_language"
 
     override fun putString(key: String, value: String?) {
         if (value == null) return
         CoroutineScope(Dispatchers.IO).launch {
             when (key) {
-                KEY_USER_NAME -> repository.setUserName(value)
-                KEY_LANGUAGE -> repository.setLanguage(value)
+                keyUserName -> repository.setUserName(value)
+                keyLanguage -> repository.setLanguage(value)
             }
         }
     }
@@ -24,8 +24,8 @@ class SettingsPreferenceDataStore @Inject constructor(private val repository: Se
     override fun getString(key: String, defValue: String?): String? {
         return runBlocking(Dispatchers.IO) {
             when (key) {
-                KEY_USER_NAME -> repository.getUserNameSnapshot()
-                KEY_LANGUAGE -> repository.getLanguageSnapshot()
+                keyUserName -> repository.getUserNameSnapshot()
+                keyLanguage -> repository.getLanguageSnapshot()
                 else -> defValue
             }
         }

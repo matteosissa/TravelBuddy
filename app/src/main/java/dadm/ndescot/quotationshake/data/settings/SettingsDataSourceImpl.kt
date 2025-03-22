@@ -13,8 +13,8 @@ import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class SettingsDataSourceImpl @Inject constructor(private val dataStore :DataStore<Preferences>): SettingsDataSource {
-    private val USERNAME = stringPreferencesKey("prefs_username")
-    private val LANGUAGE = stringPreferencesKey("prefs_language")
+    private val username = stringPreferencesKey("prefs_username")
+    private val language = stringPreferencesKey("prefs_language")
 
 
     override fun getUserName(): Flow<String> {
@@ -23,17 +23,17 @@ class SettingsDataSourceImpl @Inject constructor(private val dataStore :DataStor
                 emit(emptyPreferences())
             } else throw exception
         }.map { preferences ->
-            preferences[USERNAME].orEmpty()
+            preferences[username].orEmpty()
         }
     }
 
     override suspend fun getUserNameSnapshot(): String {
-        return dataStore.data.first()[USERNAME] ?: ""
+        return dataStore.data.first()[username] ?: ""
     }
 
     override suspend fun setUserName(userName: String) {
         dataStore.edit { preferences ->
-            preferences[USERNAME] = userName
+            preferences[username] = userName
         }
     }
 
@@ -43,17 +43,17 @@ class SettingsDataSourceImpl @Inject constructor(private val dataStore :DataStor
                 emit(emptyPreferences())
             } else throw exception
         }.map { preferences ->
-            preferences[LANGUAGE].orEmpty()
+            preferences[language].orEmpty()
         }
     }
 
     override suspend fun getLanguageSnapshot(): String {
-        return dataStore.data.first()[LANGUAGE] ?: "en"
+        return dataStore.data.first()[language] ?: "en"
     }
 
     override suspend fun setLanguage(language: String) {
         dataStore.edit { preferences ->
-            preferences[LANGUAGE] = language
+            preferences[this.language] = language
         }
     }
 }

@@ -5,5 +5,4 @@ import dadm.ndescot.quotationshake.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class AboutDialogFragment: DialogFragment(R.layout.fragment_about) {
-}
+class AboutDialogFragment: DialogFragment(R.layout.fragment_about)
