@@ -2,6 +2,7 @@ package dadm.ndescot.quotationshake.data.newquotation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dadm.ndescot.quotationshake.data.favourites.FavouritesRepository
 import dadm.ndescot.quotationshake.data.settings.SettingsRepository
 import dadm.ndescot.quotationshake.domain.model.Quotation
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -16,7 +17,8 @@ import javax.inject.Inject
 @HiltViewModel
 class NewQuotationViewModel @Inject constructor(
     private val newQuotationRepository: NewQuotationRepository,
-    private val settingsRepository: SettingsRepository
+    private val settingsRepository: SettingsRepository,
+    private val favouritesRepository: FavouritesRepository
 ): ViewModel() {
      val userName = settingsRepository.getUserName().stateIn(
         scope = viewModelScope,
@@ -62,6 +64,10 @@ class NewQuotationViewModel @Inject constructor(
     }
 
     fun addToFavorites() {
-        _isAddFavoriteVisible.update { false }
+        viewModelScope.launch {
+            favouritesRepository.insertQuotation(currentQuote.value!!)
+            _isAddFavoriteVisible.update { false }
+        }
+
     }
 }
