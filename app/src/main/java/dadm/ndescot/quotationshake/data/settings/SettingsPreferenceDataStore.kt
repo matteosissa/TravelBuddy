@@ -16,7 +16,7 @@ class SettingsPreferenceDataStore @Inject constructor(private val repository: Se
         CoroutineScope(Dispatchers.IO).launch {
             when (key) {
                 KEY_USER_NAME -> repository.setUserName(value)
-                // KEY_LANGUAGE -> repository.setUserLanguage(value)
+                KEY_LANGUAGE -> repository.setLanguage(value)
             }
         }
     }
@@ -25,7 +25,7 @@ class SettingsPreferenceDataStore @Inject constructor(private val repository: Se
         return runBlocking(Dispatchers.IO) {
             when (key) {
                 KEY_USER_NAME -> repository.getUserNameSnapshot()
-                // KEY_LANGUAGE -> repository.getUserLanguageSnapshot()
+                KEY_LANGUAGE -> repository.getLanguageSnapshot()
                 else -> defValue
             }
         }

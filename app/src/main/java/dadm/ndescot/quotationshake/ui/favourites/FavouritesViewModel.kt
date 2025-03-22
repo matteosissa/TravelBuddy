@@ -2,20 +2,23 @@ package dadm.ndescot.quotationshake.ui.favourites
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dadm.ndescot.quotationshake.data.favourites.FavouritesRepository
 import dadm.ndescot.quotationshake.domain.model.Quotation
-import kotlinx.coroutines.flow.MutableStateFlow
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
-import kotlinx.coroutines.flow.update
-import java.util.UUID
+import javax.inject.Inject
 
-class FavouritesViewModel: ViewModel() {
-    private val _favouriteQuotations = MutableStateFlow<List<Quotation>>(getFavouriteQuotations())
+@HiltViewModel
+class FavouritesViewModel @Inject constructor(favouritesRepository: FavouritesRepository): ViewModel() {
 
-    val favouriteQuotations : StateFlow<List<Quotation>> = _favouriteQuotations.asStateFlow()
+    val favouriteQuotations : StateFlow<List<Quotation>> = favouritesRepository.getAllQuotations().stateIn(
+        scope = viewModelScope,
+        initialValue = listOf(),
+        started = SharingStarted.WhileSubscribed()
+    )
 
     val isDeleteAllMenuVisible = favouriteQuotations.map { list ->
         list.isNotEmpty()
@@ -25,43 +28,13 @@ class FavouritesViewModel: ViewModel() {
         initialValue = true
     )
 
-    private fun getFavouriteQuotations(): List<Quotation> {
-        return List(20) { index ->
-            when (index) {
-                0 -> {
-                    Quotation(
-                        id = UUID.randomUUID().toString(),
-                        quote = "E = MC2",
-                        author = "Albert Einstein"
-                    )
-                }
-                1 -> {
-                    Quotation(
-                        id = UUID.randomUUID().toString(),
-                        quote = "Climbing is life",
-                        author = "Anonymous"
-                    )
-                }
-                else -> {
-                    Quotation(
-                        id = UUID.randomUUID().toString(),
-                        quote = "Random quote number $index",
-                        author = "Author $index"
-                    )
-                }
-            }
-
-        }
-
-    }
-
     fun deleteAllQuotations() {
-        _favouriteQuotations.update { emptyList() }
+    //    _favouriteQuotations.update { emptyList() }
     }
 
     fun deleteQuotationAtPosition(position: Int) {
-        val copy = _favouriteQuotations.value.toMutableList()
-        copy.removeAt(position)
-        _favouriteQuotations.update { copy }
+    //    val copy = _favouriteQuotations.value.toMutableList()
+    //    copy.removeAt(position)
+    //    _favouriteQuotations.update { copy }
     }
 }

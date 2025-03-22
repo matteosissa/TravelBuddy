@@ -14,6 +14,8 @@ import javax.inject.Inject
 
 class SettingsDataSourceImpl @Inject constructor(private val dataStore :DataStore<Preferences>): SettingsDataSource {
     private val USERNAME = stringPreferencesKey("prefs_username")
+    private val LANGUAGE = stringPreferencesKey("prefs_language")
+
 
     override fun getUserName(): Flow<String> {
         return dataStore.data.catch { exception ->
@@ -32,6 +34,26 @@ class SettingsDataSourceImpl @Inject constructor(private val dataStore :DataStor
     override suspend fun setUserName(userName: String) {
         dataStore.edit { preferences ->
             preferences[USERNAME] = userName
+        }
+    }
+
+    override fun getLanguage(): Flow<String> {
+        return dataStore.data.catch { exception ->
+            if (exception is IOException) {
+                emit(emptyPreferences())
+            } else throw exception
+        }.map { preferences ->
+            preferences[LANGUAGE].orEmpty()
+        }
+    }
+
+    override suspend fun getLanguageSnapshot(): String {
+        return dataStore.data.first()[LANGUAGE] ?: "en"
+    }
+
+    override suspend fun setLanguage(language: String) {
+        dataStore.edit { preferences ->
+            preferences[LANGUAGE] = language
         }
     }
 }

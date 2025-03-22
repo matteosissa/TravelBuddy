@@ -22,7 +22,7 @@ class NewQuotationViewModel @Inject constructor(
         scope = viewModelScope,
         initialValue = "",
         started = SharingStarted.WhileSubscribed()
-    )
+     )
 
     private val _quotation = MutableStateFlow<Quotation?>(null)
     val currentQuote = _quotation.asStateFlow()

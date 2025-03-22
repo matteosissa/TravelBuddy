@@ -15,4 +15,16 @@ class SettingsRepositoryImpl @Inject constructor(private val dataSource: Setting
     override suspend fun setUserName(userName: String) {
         dataSource.setUserName(userName)
     }
+
+    override fun getLanguage(): Flow<String> {
+        return dataSource.getLanguage()
+    }
+
+    override suspend fun getLanguageSnapshot(): String {
+        return dataSource.getLanguageSnapshot()
+    }
+
+    override suspend fun setLanguage(language: String) {
+        dataSource.setLanguage(language)
+    }
 }
