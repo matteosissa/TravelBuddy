@@ -6,9 +6,9 @@
         android:title="@string/quotations" />
 
     <item
-        android:id="@+id/favouritesFragment"
+        android:id="@+id/tripsFragment"
         android:icon="@drawable/favourites"
-        android:title="@string/favourites" />
+        android:title="@string/Trips" />
 
     <item
         android:id="@+id/settingsFragment"

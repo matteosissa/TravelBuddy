@@ -15,7 +15,7 @@
             app:destination="@id/aboutDialogFragment" />
         <action
             android:id="@+id/action_newQuotationFragment_to_favouritesFragment"
-            app:destination="@id/favouritesFragment" />
+            app:destination="@id/tripsFragment" />
         <action
             android:id="@+id/action_newQuotationFragment_to_aboutFragment"
             app:destination="@id/aboutFragment" />
@@ -29,7 +29,7 @@
             app:destination="@id/newQuotationFragment" />
         <action
             android:id="@+id/action_settingsFragment_to_favouritesFragment"
-            app:destination="@id/favouritesFragment" />
+            app:destination="@id/tripsFragment" />
         <action
             android:id="@+id/action_settingsFragment_to_aboutDialogFragment"
             app:destination="@id/aboutDialogFragment" />
@@ -38,9 +38,9 @@
             app:destination="@id/aboutFragment" />
     </fragment>
     <fragment
-        android:id="@+id/favouritesFragment"
-        android:name="dadm.ndescot.quotationshake.ui.favourites.FavouritesFragment"
-        android:label="@string/favourite_quotations" >
+        android:id="@+id/tripsFragment"
+        android:name="dadm.ndescot.quotationshake.ui.trip.TripFragment"
+        android:label="@string/my_trips" >
         <action
             android:id="@+id/action_favouritesFragment_to_newQuotationFragment"
             app:destination="@id/newQuotationFragment" />
@@ -53,9 +53,10 @@
         <action
             android:id="@+id/action_favouritesFragment_to_aboutFragment"
             app:destination="@id/aboutFragment" />
-        <action
+        <!-- Remove this action if you don't need delete functionality for trips -->
+        <!-- <action
             android:id="@+id/action_favouritesFragment_to_deleteAllDialogFragment"
-            app:destination="@id/deleteAllDialogFragment" />
+            app:destination="@id/deleteAllDialogFragment" /> -->
     </fragment>
     <dialog
         android:id="@+id/aboutDialogFragment"
@@ -66,7 +67,7 @@
             app:destination="@id/newQuotationFragment" />
         <action
             android:id="@+id/action_aboutDialogFragment_to_favouritesFragment"
-            app:destination="@id/favouritesFragment" />
+            app:destination="@id/tripsFragment" />
         <action
             android:id="@+id/action_aboutDialogFragment_to_aboutFragment"
             app:destination="@id/aboutFragment" />
@@ -80,7 +81,7 @@
             app:destination="@id/aboutDialogFragment" />
         <action
             android:id="@+id/action_aboutFragment_to_favouritesFragment"
-            app:destination="@id/favouritesFragment" />
+            app:destination="@id/tripsFragment" />
         <action
             android:id="@+id/action_aboutFragment_to_newQuotationFragment"
             app:destination="@id/newQuotationFragment" />

@@ -71,8 +71,6 @@ class NewQuotationViewModel @Inject constructor(
                         _isError.update { throwable }
                     }
                 )
-
-
             _isLoading.update { false }
         }
     }
@@ -81,6 +79,5 @@ class NewQuotationViewModel @Inject constructor(
         viewModelScope.launch {
             favouritesRepository.insertQuotation(currentQuote.value!!)
         }
-
     }
 }

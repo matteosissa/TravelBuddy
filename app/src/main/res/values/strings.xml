@@ -26,4 +26,11 @@
     <string name="language_title">Get quotations in…</string>
     <string name="delete_all_quotations">Delete all quotations</string>
     <string name="language_choice">Choose language</string>
+    <string name="activities">Activities</string>
+    <string name="budget">Budget</string>
+    <string name="duration">Duration</string>
+    <string name="date">Date</string>
+    <string name="destination">Destination</string>
+    <string name="my_trips">My trips</string>
+    <string name="Trips">Trips</string>
 </resources>
