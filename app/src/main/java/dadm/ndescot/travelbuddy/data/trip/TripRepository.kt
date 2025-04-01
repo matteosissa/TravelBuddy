@@ -1,0 +1,8 @@
+package dadm.ndescot.travelbuddy.data.trip
+
+import dadm.ndescot.travelbuddy.domain.model.Trip
+
+interface TripRepository {
+    suspend fun getTrips(): List<Trip>
+
+}

@@ -5,7 +5,7 @@
 
     <fragment
         android:id="@+id/newQuotationFragment"
-        android:name="dadm.ndescot.quotationshake.data.newquotation.NewQuotationFragment"
+        android:name="travelbuddy.data.newquotation.NewQuotationFragment"
         android:label="@string/get_a_new_quotation" >
         <action
             android:id="@+id/action_newQuotationFragment_to_settingsFragment"
@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="dadm.ndescot.quotationshake.ui.settings.SettingsFragment"
+        android:name="travelbuddy.ui.settings.SettingsFragment"
         android:label="@string/settings" >
         <action
             android:id="@+id/action_settingsFragment_to_newQuotationFragment"
@@ -39,7 +39,7 @@
     </fragment>
     <fragment
         android:id="@+id/tripsFragment"
-        android:name="dadm.ndescot.quotationshake.ui.trip.TripFragment"
+        android:name="travelbuddy.ui.trip.TripFragment"
         android:label="@string/my_trips" >
         <action
             android:id="@+id/action_favouritesFragment_to_newQuotationFragment"
@@ -60,7 +60,7 @@
     </fragment>
     <dialog
         android:id="@+id/aboutDialogFragment"
-        android:name="dadm.ndescot.quotationshake.ui.about.AboutDialogFragment"
+        android:name="travelbuddy.ui.about.AboutDialogFragment"
         android:label="@string/about" >
         <action
             android:id="@+id/action_aboutDialogFragment_to_newQuotationFragment"
@@ -74,7 +74,7 @@
     </dialog>
     <fragment
         android:id="@+id/aboutFragment"
-        android:name="dadm.ndescot.quotationshake.ui.about.AboutFragment"
+        android:name="travelbuddy.ui.about.AboutFragment"
         android:label="@string/about" >
         <action
             android:id="@+id/action_aboutFragment_to_aboutDialogFragment"
@@ -88,6 +88,6 @@
     </fragment>
     <dialog
         android:id="@+id/deleteAllDialogFragment"
-        android:name="dadm.ndescot.quotationshake.ui.favourites.DeleteAllDialogFragment"
+        android:name="travelbuddy.ui.favourites.DeleteAllDialogFragment"
         android:label="DeleteAllDialogFragment" />
 </navigation>

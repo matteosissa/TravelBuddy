@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "dadm.ndescot.quotationshake"
+    namespace = "dadm.ndescot.travelbuddy"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "dadm.ndescot.quotationshake"
+        applicationId = "dadm.ndescot.travelbuddy"
         minSdk = 26
         targetSdk = 35
         versionCode = 1

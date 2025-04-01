@@ -1,0 +1,125 @@
+package dadm.ndescot.travelbuddy.data.newquotation
+
+import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
+import androidx.core.view.MenuProvider
+import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import com.google.android.material.snackbar.Snackbar
+import dadm.ndescot.travelbuddy.R
+import dadm.ndescot.travelbuddy.databinding.FragmentNewQuotationBinding
+import dadm.ndescot.travelbuddy.utils.NoInternetException
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
+import java.net.UnknownHostException
+import java.util.concurrent.TimeoutException
+
+@AndroidEntryPoint
+class NewQuotationFragment : Fragment(R.layout.fragment_new_quotation), MenuProvider {
+    private var _binding: FragmentNewQuotationBinding? = null
+    private val binding get() = _binding!!
+    private val viewModel: NewQuotationViewModel by viewModels()
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        requireActivity().addMenuProvider(this,
+            viewLifecycleOwner, Lifecycle.State.RESUMED)
+
+        _binding = FragmentNewQuotationBinding.bind(view)
+
+        binding.swipeToRefresh.setOnRefreshListener {
+            viewModel.getNewQuotation()
+        }
+
+        binding.fabAddToFavorites.setOnClickListener {
+            viewModel.addToFavorites()
+        }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                launch {
+                    viewModel.userName.collect { userName ->
+                        binding.tvGreetings.text = getString(
+                            R.string.greetings,
+                            userName.ifEmpty { getString(R.string.anonymous) }
+                        )
+                    }
+                }
+
+                launch {
+                    viewModel.isLoading.collect { isLoading ->
+                        binding.swipeToRefresh.isRefreshing = isLoading
+                    }
+                }
+
+                launch {
+                    viewModel.currentQuote.collect { quotation ->
+                        binding.tvGreetings.isVisible = quotation == null
+
+                        quotation?.let {
+                            binding.tvQuoteText.text = it.quote
+                            binding.tvQuoteAuthor.text =
+                                it.author.ifEmpty { "Anonymous" }
+                        }
+                    }
+                }
+
+                launch {
+                    viewModel.isAddFavoriteVisible.collect { isVisible ->
+                        binding.fabAddToFavorites.isVisible = isVisible
+                    }
+                }
+
+                launch {
+                    viewModel.error.collect { throwable ->
+                        throwable?.let { error ->
+                            val errorMessage = when (error) {
+                                is UnknownHostException -> getString(R.string.error_unknown_host)
+                                is NoInternetException -> getString(R.string.error_network_connection)
+                                is TimeoutException -> getString(R.string.error_timeout)
+                                is RuntimeException -> getString(R.string.error_failed_retrieval)
+                                else -> getString(R.string.error_unexpected, error.message ?: "Unknown error")
+                            }
+
+                            Snackbar.make(
+                                binding.root,
+                                errorMessage,
+                                Snackbar.LENGTH_LONG
+                            ).show()
+
+                            viewModel.resetError()
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+
+        _binding = null
+    }
+
+    override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+        menuInflater.inflate(R.menu.menu_new_quotation, menu)
+    }
+
+    override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+        return when (menuItem.itemId) {
+            R.id.refresh_button -> {
+                viewModel.getNewQuotation()
+                true
+            }
+            else -> false
+        }
+    }
+}
