@@ -51,8 +51,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/appBarLayout"
-            app:navGraph="@navigation/nav_graph"
-            tools:layout="@layout/fragment_new_quotation" />
+            app:navGraph="@navigation/nav_graph" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

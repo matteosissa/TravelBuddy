@@ -114,13 +114,15 @@ class FavouritesFragment : Fragment(R.layout.fragment_favourites), MenuProvider 
     }
 
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-        return when (menuItem.itemId) {
+        /*return when (menuItem.itemId) {
             R.id.menu_favourites_delete -> {
                 findNavController().navigate(R.id.deleteAllDialogFragment)
                 true
             }
             else -> false
-        }
+        }*/
+
+        return false
     }
 
     override fun onPrepareMenu(menu: Menu) {

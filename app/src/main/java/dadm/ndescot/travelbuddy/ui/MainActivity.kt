@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity(), MenuProvider {
 
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.newQuotationFragment,
+                R.id.sitesGuideFragment,
                 R.id.tripsFragment,
                 R.id.settingsFragment,
             )
