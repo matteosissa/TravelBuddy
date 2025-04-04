@@ -11,7 +11,7 @@
         android:title="@string/Trips" />
 
     <item
-        android:id="@+id/settingsFragment"
+        android:id="@+id/requestGuideFragment"
         android:icon="@drawable/settings"
         android:title="@string/settings" />
 

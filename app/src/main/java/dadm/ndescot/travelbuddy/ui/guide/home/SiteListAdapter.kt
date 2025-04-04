@@ -1,14 +1,14 @@
-package dadm.ndescot.travelbuddy.ui.guidehome
+package dadm.ndescot.travelbuddy.ui.guide.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import dadm.ndescot.travelbuddy.data.guidehome.Site
+import dadm.ndescot.travelbuddy.data.guide.Site
 import dadm.ndescot.travelbuddy.databinding.SiteItemBinding
 
-class SiteListAdapter : ListAdapter<Site, SiteListAdapter.SiteViewHolder>(SiteListAdapter.SiteDiff) {
+class SiteListAdapter : ListAdapter<Site, SiteListAdapter.SiteViewHolder>(SiteDiff) {
 
 
     /**
@@ -17,7 +17,8 @@ class SiteListAdapter : ListAdapter<Site, SiteListAdapter.SiteViewHolder>(SiteLi
     class SiteViewHolder(private val siteItemBinding: SiteItemBinding) : RecyclerView.ViewHolder(siteItemBinding.root) {
 
         fun bind(site: Site) {
-            siteItemBinding.tvSiteName.text = site.name
+            siteItemBinding.tvSiteName.text = site.siteName
+            siteItemBinding.tvCountryName.text = site.countryName
         }
     }
 
@@ -45,7 +46,8 @@ class SiteListAdapter : ListAdapter<Site, SiteListAdapter.SiteViewHolder>(SiteLi
         }
 
         override fun areContentsTheSame(oldItem: Site, newItem: Site): Boolean {
-            return oldItem.name == newItem.name
+            return oldItem.siteName == newItem.siteName && oldItem.countryName == newItem.countryName
+
         }
     }
 

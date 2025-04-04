@@ -99,12 +99,13 @@ class MainActivity : AppCompatActivity(), MenuProvider {
     }
 
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-        return when (menuItem.itemId) {
+        /*return when (menuItem.itemId) {
             R.id.menu_about -> {
                 navController.navigate(R.id.aboutDialogFragment)
                 true
             }
             else -> false
-        }
+        }*/
+        return false
     }
 }

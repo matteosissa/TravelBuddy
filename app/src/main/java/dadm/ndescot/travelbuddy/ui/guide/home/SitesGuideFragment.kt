@@ -1,11 +1,11 @@
-package dadm.ndescot.travelbuddy.ui.guidehome
+package dadm.ndescot.travelbuddy.ui.guide.home
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import dadm.ndescot.travelbuddy.R
-import dadm.ndescot.travelbuddy.data.guidehome.Site
+import dadm.ndescot.travelbuddy.data.guide.Site
 import dadm.ndescot.travelbuddy.databinding.FragmentSitesGuideBinding
 
 class SitesGuideFragment : Fragment(R.layout.fragment_sites_guide) {
@@ -17,7 +17,19 @@ class SitesGuideFragment : Fragment(R.layout.fragment_sites_guide) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentSitesGuideBinding.bind(view)
 
-        val dataset = listOf(Site("Paris"), Site("London"), Site("New York"))
+        val dataset = listOf(
+            Site(
+                "Paris",
+                "France"
+            ),
+            Site(
+                "London",
+                "United Kingdom"
+            ),
+            Site(
+                "New York",
+                "United States")
+        )
         val customAdapter = SiteListAdapter()
         binding.rvSitesGuide.adapter = customAdapter
         binding.rvSitesGuide.layoutManager = LinearLayoutManager(requireContext())

@@ -10,12 +10,6 @@
         <action
             android:id="@+id/action_settingsFragment_to_favouritesFragment"
             app:destination="@id/tripsFragment" />
-        <action
-            android:id="@+id/action_settingsFragment_to_aboutDialogFragment"
-            app:destination="@id/aboutDialogFragment" />
-        <action
-            android:id="@+id/action_settingsFragment_to_aboutFragment"
-            app:destination="@id/aboutFragment" />
     </fragment>
     <fragment
         android:id="@+id/tripsFragment"
@@ -25,43 +19,22 @@
             android:id="@+id/action_favouritesFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
         <action
-            android:id="@+id/action_favouritesFragment_to_aboutDialogFragment"
-            app:destination="@id/aboutDialogFragment" />
-        <action
-            android:id="@+id/action_favouritesFragment_to_aboutFragment"
-            app:destination="@id/aboutFragment" />
-        <action
             android:id="@+id/action_tripsFragment_to_sitesGuideFragment"
             app:destination="@id/sitesGuideFragment" />
+        <action
+            android:id="@+id/action_tripsFragment_to_requestGuideFragment"
+            app:destination="@id/requestGuideFragment" />
         <!-- Remove this action if you don't need delete functionality for trips -->
         <!-- <action
             android:id="@+id/action_favouritesFragment_to_deleteAllDialogFragment"
             app:destination="@id/deleteAllDialogFragment" /> -->
     </fragment>
-    <dialog
-        android:id="@+id/aboutDialogFragment"
-        android:name="dadm.ndescot.travelbuddy.ui.about.AboutDialogFragment"
-        android:label="@string/about" >
-        <action
-            android:id="@+id/action_aboutDialogFragment_to_favouritesFragment"
-            app:destination="@id/tripsFragment" />
-        <action
-            android:id="@+id/action_aboutDialogFragment_to_aboutFragment"
-            app:destination="@id/aboutFragment" />
-    </dialog>
-    <fragment
-        android:id="@+id/aboutFragment"
-        android:name="dadm.ndescot.travelbuddy.ui.about.AboutFragment"
-        android:label="@string/about" >
-        <action
-            android:id="@+id/action_aboutFragment_to_aboutDialogFragment"
-            app:destination="@id/aboutDialogFragment" />
-        <action
-            android:id="@+id/action_aboutFragment_to_favouritesFragment"
-            app:destination="@id/tripsFragment" />
-    </fragment>
     <fragment
         android:id="@+id/sitesGuideFragment"
-        android:name="dadm.ndescot.travelbuddy.ui.guidehome.SitesGuideFragment"
+        android:name="dadm.ndescot.travelbuddy.ui.guide.home.SitesGuideFragment"
         android:label="SitesGuideFragment" />
+    <fragment
+        android:id="@+id/requestGuideFragment"
+        android:name="dadm.ndescot.travelbuddy.ui.guide.requests.RequestGuideFragment"
+        android:label="RequestGuideFragment" />
 </navigation>
