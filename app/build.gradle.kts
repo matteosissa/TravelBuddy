@@ -51,6 +51,7 @@ dependencies {
     implementation(libs.androidx.swiperefreshlayout)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.hilt.android)
+    implementation(libs.androidx.recyclerview)
     ksp(libs.hilt.compiler)
     implementation(libs.moshi.kotlin)
     ksp(libs.moshi.kotlin.codegen)

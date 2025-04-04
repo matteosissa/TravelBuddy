@@ -8,8 +8,7 @@ A card representing a site/location that the user adds in the guides section
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    app:cardCornerRadius="8dp"
-    app:cardElevation="4dp">
+    style="@style/DefaultCardStyle">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -25,7 +24,7 @@ A card representing a site/location that the user adds in the guides section
             app:layout_constraintStart_toStartOf="parent"
 
             android:text=""
-            android:textStyle="bold">
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6">
 
         </TextView>
 

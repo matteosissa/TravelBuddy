@@ -33,4 +33,5 @@
     <string name="destination">Destination</string>
     <string name="my_trips">My trips</string>
     <string name="Trips">Trips</string>
+    <string name="description_fab_add_site_guide">Add a new site for the guide</string>
 </resources>
