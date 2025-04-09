@@ -11,6 +11,7 @@ class TripDataSourceImpl @Inject constructor() : TripDataSource {
         return listOf(
             Trip(
                 id = 1,
+                username = "Matteo",
                 date = Date(123, 5, 15), // June 15, 2023
                 locationCity = "Valencia",
                 locationCountry = "Spain",
@@ -20,10 +21,12 @@ class TripDataSourceImpl @Inject constructor() : TripDataSource {
                     Activity.PHOTOGRAPHY
                 ),
                 durationDays = 7,
-                budget = 1200
+                budget = 1200,
+                description = "Description of the trip"
             ),
             Trip(
                 id = 2,
+                username = "John Doe",
                 date = Date(123, 7, 10), // August 10, 2023
                 locationCity = "Paris",
                 locationCountry = "France",
@@ -34,10 +37,12 @@ class TripDataSourceImpl @Inject constructor() : TripDataSource {
                     Activity.COOKING
                 ),
                 durationDays = 8,
-                budget = 1800
+                budget = 1800,
+                description = "Description of the trip"
             ),
             Trip(
                 id = 3,
+                username = "Jane Smith",
                 date = Date(123, 11, 20), // December 20, 2023
                 locationCity = "Honolulu",
                 locationCountry = "USA",
@@ -48,7 +53,8 @@ class TripDataSourceImpl @Inject constructor() : TripDataSource {
                     Activity.PADDLE_BOARDING
                 ),
                 durationDays = 10,
-                budget = 3500
+                budget = 3500,
+                description = "Description of the trip"
             )
         )
     }

@@ -5,18 +5,18 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import dadm.ndescot.travelbuddy.data.guide.Request
 import dadm.ndescot.travelbuddy.databinding.TripRequestItemBinding
+import dadm.ndescot.travelbuddy.domain.model.Trip
 
-class RequestListAdapter : ListAdapter<Request, RequestListAdapter.RequestViewHolder>(RequestDiff) {
+class RequestListAdapter : ListAdapter<Trip, RequestListAdapter.RequestViewHolder>(RequestDiff) {
 
 
     class RequestViewHolder(private val requestItemBinding: TripRequestItemBinding) : RecyclerView.ViewHolder(requestItemBinding.root) {
 
-        fun bind(request: Request) {
-            requestItemBinding.tvTravellerName.text = request.travellerName
-            requestItemBinding.tvStartDate.text = request.startDate
-            requestItemBinding.tvDuration.text = request.duration
+        fun bind(request: Trip) {
+            requestItemBinding.tvTravellerName.text = request.username
+            requestItemBinding.tvStartDate.text = "${request.date.day}/${request.date.month}/${request.date.year}"
+            requestItemBinding.tvDuration.text = "${request.durationDays} days"
             requestItemBinding.tvTravellerDescription.text = request.description
         }
 
@@ -38,17 +38,13 @@ class RequestListAdapter : ListAdapter<Request, RequestListAdapter.RequestViewHo
     }
 
 
-    object RequestDiff : DiffUtil.ItemCallback<Request>() {
-        override fun areItemsTheSame(oldItem: Request, newItem: Request): Boolean {
+    object RequestDiff : DiffUtil.ItemCallback<Trip>() {
+        override fun areItemsTheSame(oldItem: Trip, newItem: Trip): Boolean {
             return oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: Request, newItem: Request): Boolean {
-            return oldItem.travellerName == newItem.travellerName &&
-                    oldItem.startDate == newItem.startDate &&
-                    oldItem.duration == newItem.duration &&
-                    oldItem.description == newItem.description
-
+        override fun areContentsTheSame(oldItem: Trip, newItem: Trip): Boolean {
+            return oldItem.id == newItem.id
         }
 
     }

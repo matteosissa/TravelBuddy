@@ -5,7 +5,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import dadm.ndescot.travelbuddy.R
-import dadm.ndescot.travelbuddy.data.guide.Site
+import dadm.ndescot.travelbuddy.domain.model.guide.Site
 import dadm.ndescot.travelbuddy.databinding.FragmentSitesGuideBinding
 
 class SitesGuideFragment : Fragment(R.layout.fragment_sites_guide) {

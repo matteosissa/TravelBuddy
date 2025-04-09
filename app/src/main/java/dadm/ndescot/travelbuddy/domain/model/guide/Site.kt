@@ -1,4 +1,4 @@
-package dadm.ndescot.travelbuddy.data.guide
+package dadm.ndescot.travelbuddy.domain.model.guide
 
 data class Site(
     var siteName: String,

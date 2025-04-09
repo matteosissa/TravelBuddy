@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import dadm.ndescot.travelbuddy.data.guide.Site
+import dadm.ndescot.travelbuddy.domain.model.guide.Site
 import dadm.ndescot.travelbuddy.databinding.SiteItemBinding
 
 class SiteListAdapter : ListAdapter<Site, SiteListAdapter.SiteViewHolder>(SiteDiff) {
