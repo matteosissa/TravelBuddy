@@ -108,4 +108,8 @@ class MainActivity : AppCompatActivity(), MenuProvider {
         }*/
         return false
     }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp() || super.onSupportNavigateUp()
+    }
 }

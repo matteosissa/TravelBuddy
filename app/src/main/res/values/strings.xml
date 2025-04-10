@@ -29,7 +29,7 @@
     <string name="activities">Activities</string>
     <string name="budget">Budget</string>
     <string name="duration">Duration</string>
-    <string name="date">Date</string>
+    <string name="date">Departure date</string>
     <string name="destination">Destination</string>
     <string name="my_trips">My trips</string>
     <string name="Trips">Trips</string>
@@ -37,4 +37,14 @@
     <string name="description_from_the_traveller_title">Description from the traveller:</string>
     <string name="lore_ipsum_test">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of</string>
     <string name="button_contact_traveller">Contact Them</string>
+    <string name="add_new_trip">New trip</string>
+    <string name="create_new_trip">Create new trip !</string>
+    <string name="city">City</string>
+    <string name="country">Country</string>
+    <string name="select_date">Select date</string>
+    <string name="duration_days">Duration (days)</string>
+    <string name="budget_usd">Budget (USD)</string>
+    <string name="description">Description</string>
+    <string name="create_trip">Create trip</string>
+    <string name="field_required">This field is required</string>
 </resources>

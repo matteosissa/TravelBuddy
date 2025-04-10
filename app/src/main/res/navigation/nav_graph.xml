@@ -24,6 +24,9 @@
         <action
             android:id="@+id/action_tripsFragment_to_requestGuideFragment"
             app:destination="@id/requestGuideFragment" />
+        <action
+            android:id="@+id/action_tripsFragment_to_createTripFragment"
+            app:destination="@id/createTripFragment" />
         <!-- Remove this action if you don't need delete functionality for trips -->
         <!-- <action
             android:id="@+id/action_favouritesFragment_to_deleteAllDialogFragment"
@@ -37,4 +40,8 @@
         android:id="@+id/requestGuideFragment"
         android:name="dadm.ndescot.travelbuddy.ui.guide.requests.RequestGuideFragment"
         android:label="RequestGuideFragment" />
+    <fragment
+        android:id="@+id/createTripFragment"
+        android:name="dadm.ndescot.travelbuddy.ui.trip.CreateTripFragment"
+        android:label="@string/create_new_trip" />
 </navigation>

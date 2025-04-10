@@ -7,6 +7,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import dadm.ndescot.travelbuddy.R
 import dadm.ndescot.travelbuddy.databinding.FragmentTripsBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -34,6 +35,12 @@ class TripFragment : Fragment(R.layout.fragment_trips) {
                 }
             }
         }
+
+        binding.fabAddTrip.setOnClickListener {
+            findNavController().navigate(R.id.action_tripsFragment_to_createTripFragment)
+        }
+
+
     }
 
     override fun onDestroyView() {
