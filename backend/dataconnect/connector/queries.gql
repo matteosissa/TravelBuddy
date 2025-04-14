@@ -1,0 +1,47 @@
+
+# Retrieve all the sites where the user wants to offer its services as a guide
+query allSitesAsGuide($userId: Int) @auth(level:PUBLIC) {
+    users(where: {
+        id: {
+            eq: $userId
+        }
+    }) {
+        guideSites: siteGuides_via_SiteGuideList{
+            siteName
+            countryName
+        }
+    }
+}
+
+query allTripsByUser($userId: Int) @auth(level:PUBLIC) {
+    trips(where: {
+        userId: {
+            eq: $userId
+        }
+    }) {
+        date
+        locationCity
+        locationCountry
+        activities
+        durationDays
+        budget
+        description
+    }
+}
+
+query allTripsByLocation($siteName: String, $countryName: String) @auth(level:PUBLIC) {
+    trips(where: {
+        _and: [
+            {locationCity: { eq: $siteName }},
+            {locationCountry: { eq: $countryName }}
+            ]
+        }) {
+        date
+        locationCity
+        locationCountry
+        activities
+        durationDays
+        budget
+        description
+    }
+}
