@@ -40,4 +40,9 @@ class SitesGuideFragment : Fragment(R.layout.fragment_sites_guide) {
         }
         
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }
