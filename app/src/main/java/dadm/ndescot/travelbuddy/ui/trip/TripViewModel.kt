@@ -38,7 +38,12 @@ class TripViewModel @Inject constructor(private val tripRepository: TripReposito
 
     init {
         viewModelScope.launch {
-            _trips.value = tripRepository.getTrips()
+            // TODO: ID of user needs to be injected dynamically
+            _trips.value = tripRepository.getTripsByUserId(1)
+            // print the trips for the user
+            _trips.value.forEach { trip ->
+                println(trip)
+            }
         }
     }
 }

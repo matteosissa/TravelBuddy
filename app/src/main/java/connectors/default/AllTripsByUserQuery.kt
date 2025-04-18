@@ -90,6 +90,8 @@ public interface AllTripsByUserQuery :
         @kotlinx.serialization.Serializable
   public data class TripsItem(
   
+    val id:
+    Int,
     val date:
     com.google.firebase.Timestamp,
     val locationCity:
@@ -103,8 +105,22 @@ public interface AllTripsByUserQuery :
     val budget:
     Int?,
     val description:
+    String?,
+    val user:
+    User
+  ) {
+    
+      
+        @kotlinx.serialization.Serializable
+  public data class User(
+  
+    val name:
     String?
   ) {
+    
+    
+  }
+      
     
     
   }

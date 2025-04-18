@@ -19,6 +19,7 @@ query allTripsByUser($userId: Int) @auth(level:PUBLIC) {
             eq: $userId
         }
     }) {
+        id
         date
         locationCity
         locationCountry
@@ -26,6 +27,9 @@ query allTripsByUser($userId: Int) @auth(level:PUBLIC) {
         durationDays
         budget
         description
+        user {
+            name
+        }
     }
 }
 
@@ -36,6 +40,7 @@ query allTripsByLocation($siteName: String, $countryName: String) @auth(level:PU
             {locationCountry: { eq: $countryName }}
             ]
         }) {
+        id
         date
         locationCity
         locationCountry
@@ -43,5 +48,9 @@ query allTripsByLocation($siteName: String, $countryName: String) @auth(level:PU
         durationDays
         budget
         description
+        user {
+            id
+            name
+        }
     }
 }

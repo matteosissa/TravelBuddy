@@ -20,5 +20,15 @@ enum class Activity {
     COOKING,
     PHOTOGRAPHY,
     MUSIC,
-    DANCE
+    DANCE;
+
+    companion object {
+        fun fromString(value: String): Activity? {
+            return entries.find { it.name.equals(value, ignoreCase = true) }
+        }
+    }
+
+    fun asString(): String = this.name
+
+
 }

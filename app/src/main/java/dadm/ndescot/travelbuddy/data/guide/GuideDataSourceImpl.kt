@@ -1,0 +1,29 @@
+package dadm.ndescot.travelbuddy.data.guide
+
+import connectors.default.execute
+import connectors.default.instance
+import dadm.ndescot.travelbuddy.data.guide.domain.toDomain
+import dadm.ndescot.travelbuddy.domain.model.Trip
+import dadm.ndescot.travelbuddy.domain.model.guide.Site
+import javax.inject.Inject
+
+class GuideDataSourceImpl @Inject constructor() : GuideDataSource {
+
+    private val connector = connectors.default.DefaultConnector.instance
+
+    override suspend fun getGuideSitesByUserId(id: Int): List<Site> {
+        return connector.allSitesAsGuide.execute{ userId = id }.data.users.map {
+            el -> el.guideSites.map {
+                site -> site.toDomain()
+        }
+        }.flatten()     // API returns a list of lists (one list per user), but the parameter is the userID which is unique
+    }
+
+    override suspend fun getTripsByLocation(siteName: String, countryName: String): List<Trip> {
+        return connector.allTripsByLocation.execute{ this.siteName = siteName; this.countryName = countryName }.data.trips.map {
+            el -> el.toDomain()
+        }
+    }
+
+
+}
