@@ -21,6 +21,16 @@
 package connectors.default
 
 
+  @kotlinx.serialization.Serializable
+  public data class UserKey(
+  
+    val id:
+    Int
+  ) {
+    
+    
+  }
+
 
 // The lines below are used by the code generator to ensure that this file is deleted if it is no
 // longer needed. Any files in this directory that contain the lines below will be deleted by the

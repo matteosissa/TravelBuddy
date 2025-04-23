@@ -22,9 +22,8 @@ import dadm.ndescot.travelbuddy.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity(), MenuProvider {
-    private lateinit var appBarConfiguration: AppBarConfiguration
-    private lateinit var navController: NavController
+class MainActivity : AppCompatActivity() {
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +33,7 @@ class MainActivity : AppCompatActivity(), MenuProvider {
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
 
-        ViewCompat.setOnApplyWindowInsetsListener(binding.bottomNavigationView) { view, insets ->
+        /*ViewCompat.setOnApplyWindowInsetsListener(binding.bottomNavigationView) { view, insets ->
             val bars = insets.getInsets(WindowInsetsCompat.Type.displayCutout() or
                     WindowInsetsCompat.Type.systemBars())
             view.updatePadding(
@@ -68,15 +67,9 @@ class MainActivity : AppCompatActivity(), MenuProvider {
                 bottom = 0
             )
             WindowInsetsCompat.CONSUMED
-        }
+        }*/
 
-        appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.sitesGuideFragment,
-                R.id.tripsFragment,
-                R.id.settingsFragment,
-            )
-        )
+
 
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -85,31 +78,14 @@ class MainActivity : AppCompatActivity(), MenuProvider {
             insets
         }
 
-        navController =
-            binding.navHostFragment.getFragment<NavHostFragment>().navController
-        (binding.bottomNavigationView as NavigationBarView).setupWithNavController(navController)
 
-        setupActionBarWithNavController(navController, appBarConfiguration)
 
-        addMenuProvider(this)
+
     }
 
-    override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-        menuInflater.inflate(R.menu.menu_about, menu)
-    }
 
-    override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-        /*return when (menuItem.itemId) {
-            R.id.menu_about -> {
-                navController.navigate(R.id.aboutDialogFragment)
-                true
-            }
-            else -> false
-        }*/
-        return false
-    }
 
-    override fun onSupportNavigateUp(): Boolean {
+    /*override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()
-    }
+    }*/
 }

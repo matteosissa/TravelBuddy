@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_app"
+    app:startDestination="@id/tripFragment">
+
+    <fragment
+        android:id="@+id/tripFragment"
+        android:name="dadm.ndescot.travelbuddy.ui.trip.TripFragment"
+        android:label="TripFragment" >
+        <action
+            android:id="@+id/action_tripFragment_to_createTripFragment"
+            app:destination="@id/createTripFragment" />
+        <action
+            android:id="@+id/action_tripFragment_to_sitesGuideFragment"
+            app:destination="@id/sitesGuideFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createTripFragment"
+        android:name="dadm.ndescot.travelbuddy.ui.trip.CreateTripFragment"
+        android:label="CreateTripFragment" />
+    <fragment
+        android:id="@+id/sitesGuideFragment"
+        android:name="dadm.ndescot.travelbuddy.ui.guide.home.SitesGuideFragment"
+        android:label="SitesGuideFragment" >
+        <action
+            android:id="@+id/action_sitesGuideFragment_to_requestGuideFragment"
+            app:destination="@id/requestGuideFragment" />
+        <action
+            android:id="@+id/action_sitesGuideFragment_to_tripFragment"
+            app:destination="@id/tripFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/requestGuideFragment"
+        android:name="dadm.ndescot.travelbuddy.ui.guide.requests.RequestGuideFragment"
+        android:label="RequestGuideFragment" />
+</navigation>

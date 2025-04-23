@@ -18,6 +18,8 @@ public interface DefaultConnector : com.google.firebase.dataconnect.generated.Ge
   override val dataConnect: com.google.firebase.dataconnect.FirebaseDataConnect
 
   
+    public val addNewUser: AddNewUserMutation
+  
     public val allSitesAsGuide: AllSitesAsGuideQuery
   
     public val allTripsByLocation: AllTripsByLocationQuery
@@ -63,6 +65,10 @@ private class DefaultConnectorImpl(
   override val dataConnect: com.google.firebase.dataconnect.FirebaseDataConnect
 ) : DefaultConnector {
   
+    override val addNewUser by lazy(LazyThreadSafetyMode.PUBLICATION) {
+      AddNewUserMutationImpl(this)
+    }
+  
     override val allSitesAsGuide by lazy(LazyThreadSafetyMode.PUBLICATION) {
       AllSitesAsGuideQueryImpl(this)
     }
@@ -83,7 +89,8 @@ private class DefaultConnectorImpl(
   @com.google.firebase.dataconnect.ExperimentalFirebaseDataConnect
   override fun mutations(): List<com.google.firebase.dataconnect.generated.GeneratedMutation<DefaultConnector, *, *>> =
     listOf(
-      
+      addNewUser,
+        
     )
 
   @com.google.firebase.dataconnect.ExperimentalFirebaseDataConnect
@@ -225,6 +232,21 @@ private open class DefaultConnectorGeneratedMutationImpl<Data, Variables>(
     "connector=$connector)"
 }
 
+
+
+private class AddNewUserMutationImpl(
+  connector: DefaultConnector
+):
+  AddNewUserMutation,
+  DefaultConnectorGeneratedMutationImpl<
+      AddNewUserMutation.Data,
+      AddNewUserMutation.Variables
+  >(
+    connector,
+    AddNewUserMutation.Companion.operationName,
+    AddNewUserMutation.Companion.dataDeserializer,
+    AddNewUserMutation.Companion.variablesSerializer,
+  )
 
 
 private class AllSitesAsGuideQueryImpl(

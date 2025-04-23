@@ -25,18 +25,18 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#8BC34A"
                 app:layout_scrollFlags="scroll|enterAlways|snap"
-                app:titleTextColor="@color/black" />
+                app:titleTextColor="@color/black"
+                android:background="#8BC34A"/>
         </com.google.android.material.appbar.AppBarLayout>
 
-        <com.google.android.material.navigationrail.NavigationRailView
+        <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigationView"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
             app:menu="@menu/menu_navigation" />
 
         <androidx.fragment.app.FragmentContainerView
@@ -47,12 +47,11 @@
             app:defaultNavHost="true"
 
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/bottomNavigationView"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/appBarLayout"
-            app:navGraph="@navigation/nav_entry"
-            tools:layout="@layout/fragment_new_quotation" />
+            app:navGraph="@navigation/nav_app" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,7 +22,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class SettingsProviderModule {
+class UserDataProviderModule {
     @Provides
     @Singleton
     fun provideSettingsPreferenceDataStore(repository: SettingsRepository): PreferenceDataStore {
@@ -31,14 +31,14 @@ class SettingsProviderModule {
 
     @Provides
     @Singleton
-    fun provideSettingsDataStore(
+    fun provideUserDataDataStore(
         @ApplicationContext context: Context
     ): DataStore<Preferences> {
         return PreferenceDataStoreFactory.create(
             corruptionHandler = ReplaceFileCorruptionHandler { emptyPreferences() },
             migrations = listOf(),
             scope = CoroutineScope(Dispatchers.IO + SupervisorJob()),
-            produceFile = { context.preferencesDataStoreFile("QuotationShakeUserPreferences") }
+            produceFile = { context.preferencesDataStoreFile("TravelBuddyUserData") }
         )
     }
 }

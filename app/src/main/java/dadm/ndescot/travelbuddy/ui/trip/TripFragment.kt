@@ -37,7 +37,7 @@ class TripFragment : Fragment(R.layout.fragment_trips) {
         }
 
         binding.fabAddTrip.setOnClickListener {
-            findNavController().navigate(R.id.action_tripsFragment_to_createTripFragment)
+            findNavController().navigate(R.id.action_tripFragment_to_createTripFragment)
         }
 
 

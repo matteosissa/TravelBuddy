@@ -47,4 +47,8 @@
     <string name="description">Description</string>
     <string name="create_trip">Create trip</string>
     <string name="field_required">This field is required</string>
+    <string name="enter_your_username">Enter your username</string>
+    <string name="confirm">Confirm</string>
+    <string name="welcome">Welcome!</string>
+    <string name="guide_icon">Guide</string>
 </resources>
