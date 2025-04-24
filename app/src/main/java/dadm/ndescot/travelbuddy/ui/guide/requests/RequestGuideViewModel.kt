@@ -17,16 +17,9 @@ class RequestGuideViewModel @Inject constructor(private val guideRepository: Gui
     private var _requests = MutableStateFlow<List<Trip>>(emptyList())
     val requests = _requests.asStateFlow()
 
-    suspend fun getTripsByLocation(siteName: String, countryName: String) {
-        _requests.value = guideRepository.getTripsByLocation(siteName, countryName)
-    }
-
-    init {
+    fun getTripsByLocation(site: Site) {
         viewModelScope.launch {
-            getTripsByLocation("Valencia", "Spain")
-            _requests.value.forEach { trip ->
-                println(trip)
-            }
+            _requests.value = guideRepository.getTripsByLocation(site.siteName, site.countryName)
         }
     }
 

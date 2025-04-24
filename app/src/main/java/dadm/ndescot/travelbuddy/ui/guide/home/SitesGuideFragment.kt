@@ -7,6 +7,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import dadm.ndescot.travelbuddy.R
 import dadm.ndescot.travelbuddy.domain.model.guide.Site
@@ -25,7 +26,10 @@ class SitesGuideFragment : Fragment(R.layout.fragment_sites_guide) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentSitesGuideBinding.bind(view)
 
-        val customAdapter = SiteListAdapter()
+        val customAdapter = SiteListAdapter { site ->
+            val action = SitesGuideFragmentDirections.actionSitesGuideFragmentToRequestGuideFragment(site)
+            findNavController().navigate(action)
+        }
         binding.rvSitesGuide.adapter = customAdapter
         binding.rvSitesGuide.layoutManager = LinearLayoutManager(requireContext())
 

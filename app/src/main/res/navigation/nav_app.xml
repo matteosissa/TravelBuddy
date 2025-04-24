@@ -33,5 +33,9 @@
     <fragment
         android:id="@+id/requestGuideFragment"
         android:name="dadm.ndescot.travelbuddy.ui.guide.requests.RequestGuideFragment"
-        android:label="RequestGuideFragment" />
+        android:label="RequestGuideFragment" >
+        <argument
+            android:name="site"
+            app:argType="dadm.ndescot.travelbuddy.domain.model.guide.Site" />
+    </fragment>
 </navigation>
