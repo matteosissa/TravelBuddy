@@ -48,6 +48,18 @@ package connectors.default
   }
 
   @kotlinx.serialization.Serializable
+  public data class TripAnswerKey(
+  
+    val tripId:
+    Int,
+    val userId:
+    Int
+  ) {
+    
+    
+  }
+
+  @kotlinx.serialization.Serializable
   public data class TripKey(
   
     val id:

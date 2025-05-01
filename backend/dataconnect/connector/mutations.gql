@@ -32,3 +32,19 @@ mutation AddNewTrip(
         locationCountry: $locationCountry
     })
 }
+
+mutation AddNewGuideReply (
+    $userId: Int,
+    $tripId: Int,
+    $text: String,
+    $time: Timestamp
+) @auth(level: PUBLIC) {
+    tripAnswer_upsert(
+        data: {
+            userId: $userId,
+            tripId: $tripId,
+            text: $text,
+            time: $time
+        }
+    )
+}

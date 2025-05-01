@@ -1,10 +1,13 @@
 package dadm.ndescot.travelbuddy.data.guide
 
+import com.google.firebase.Timestamp
 import connectors.default.execute
 import connectors.default.instance
 import dadm.ndescot.travelbuddy.data.guide.domain.toDomain
 import dadm.ndescot.travelbuddy.domain.model.Trip
 import dadm.ndescot.travelbuddy.domain.model.guide.Site
+import java.time.LocalDateTime
+import java.time.ZoneOffset
 import javax.inject.Inject
 
 class GuideDataSourceImpl @Inject constructor() : GuideDataSource {
@@ -32,6 +35,15 @@ class GuideDataSourceImpl @Inject constructor() : GuideDataSource {
         println(result.data.siteGuide_upsert.countryName)
         println(result.data.siteGuideList_upsert.siteSiteName)
 
+    }
+
+    override suspend fun addAnswerToTrip(userId: Int, tripId: Int, message: String, dateTime: LocalDateTime) {
+        connector.addNewGuideReply.execute{
+            this.userId = userId
+            this.tripId = tripId
+            this.text = message
+            this.time = Timestamp(dateTime.toInstant(ZoneOffset.UTC))
+        }
     }
 
 

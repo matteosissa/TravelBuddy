@@ -33,7 +33,7 @@ class RequestGuideFragment : Fragment(R.layout.fragment_explore_requests_guide){
         // Note, calling this method will update the list of requests, so the coroutine will also trigger to update the UI
         viewModel.getTripsByLocation(args.site)
         val customAdapter = RequestListAdapter {
-            trip -> showAddAnswerDialog()
+            trip -> showAddAnswerDialog(trip.id)
 
 
         }
@@ -50,7 +50,7 @@ class RequestGuideFragment : Fragment(R.layout.fragment_explore_requests_guide){
 
     }
 
-    private fun showAddAnswerDialog() {
+    private fun showAddAnswerDialog(tripId: Int) {
         val dialogView = layoutInflater.inflate(R.layout.dialog_guide_reply, null)
         val editText = dialogView.findViewById<EditText>(R.id.ietGuideMessage)
 
@@ -60,7 +60,7 @@ class RequestGuideFragment : Fragment(R.layout.fragment_explore_requests_guide){
             .setPositiveButton("Send") { dialog, _ -> // use view model
                 val message = editText.text.toString()
                 if(message.isNotEmpty()) {
-                    viewModel.addAnswerToTrip(message)
+                    viewModel.addAnswerToTrip(message, tripId)
                 } else  {
                     editText.error = "Message cannot be empty"
                 }
