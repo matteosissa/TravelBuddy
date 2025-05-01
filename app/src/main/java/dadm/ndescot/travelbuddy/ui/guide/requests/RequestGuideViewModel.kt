@@ -23,4 +23,8 @@ class RequestGuideViewModel @Inject constructor(private val guideRepository: Gui
         }
     }
 
+    fun addAnswerToTrip(message: String) {
+
+    }
+
 }

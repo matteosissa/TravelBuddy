@@ -2,6 +2,8 @@ package dadm.ndescot.travelbuddy.ui.guide.requests
 
 import android.os.Bundle
 import android.view.View
+import android.widget.EditText
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -30,7 +32,11 @@ class RequestGuideFragment : Fragment(R.layout.fragment_explore_requests_guide){
         // Fetch the data
         // Note, calling this method will update the list of requests, so the coroutine will also trigger to update the UI
         viewModel.getTripsByLocation(args.site)
-        val customAdapter = RequestListAdapter()
+        val customAdapter = RequestListAdapter {
+            trip -> showAddAnswerDialog()
+
+
+        }
         binding.rvExploreRequestsGuide.adapter = customAdapter
         binding.rvExploreRequestsGuide.layoutManager = LinearLayoutManager(requireContext())
 
@@ -42,6 +48,25 @@ class RequestGuideFragment : Fragment(R.layout.fragment_explore_requests_guide){
             }
         }
 
+    }
+
+    private fun showAddAnswerDialog() {
+        val dialogView = layoutInflater.inflate(R.layout.dialog_guide_reply, null)
+        val editText = dialogView.findViewById<EditText>(R.id.ietGuideMessage)
+
+        AlertDialog.Builder(requireContext())
+            .setTitle("Add answer for the traveller")
+            .setView(dialogView)
+            .setPositiveButton("Send") { dialog, _ -> // use view model
+                val message = editText.text.toString()
+                if(message.isNotEmpty()) {
+                    viewModel.addAnswerToTrip(message)
+                } else  {
+                    editText.error = "Message cannot be empty"
+                }
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
     }
 
     override fun onDestroyView() {
