@@ -22,35 +22,37 @@ class TripViewModel @Inject constructor(
 ) : ViewModel() {
 
     val userId = localUserDataRepository.getUserId()
+    private val _successfulRequest = MutableStateFlow(false)
+    val successfulRequest = _successfulRequest.asStateFlow()
 
     fun createTrip(city: String, country: String, date: Date, activities: List<Activity>, durationDays: Int, budget: Int, description: String) {
         val trip = Trip(
-            id = 123456,
-            username = "default id",
+            id = 0,
+            username = "",
             locationCity = city,
             locationCountry = country,
             date = date,
             activities = activities,
             durationDays = durationDays,
             budget = budget,
-            description = description,
+            description = description
         )
         viewModelScope.launch {
-            // Todo add trip to the repository, once it is connected to firebase
-            //tripRepository.createTrip(trip)
+            tripRepository.createTrip(trip, userId.first())
+            _successfulRequest.value = true
         }
     }
 
     private val _trips = MutableStateFlow<List<Trip>>(emptyList())
     val trips: StateFlow<List<Trip>> = _trips.asStateFlow()
 
-    init {
+    fun getTripsByUserId() {
         viewModelScope.launch {
             _trips.value = tripRepository.getTripsByUserId(userId.first())
-            // print the trips for the user
-            _trips.value.forEach { trip ->
-                println(trip)
-            }
         }
+    }
+
+    init {
+        getTripsByUserId()
     }
 }

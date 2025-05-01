@@ -3,3 +3,32 @@
 mutation AddNewUser($username: String) @auth(level:PUBLIC) {
     user_insert(data: {name: $username})
 }
+
+mutation AddNewGuideSite($siteName: String, $countryName: String, $userId: Int) @auth(level:PUBLIC) {
+    siteGuide_upsert(data: {siteName: $siteName, countryName: $countryName})
+    # Add the link with the user
+    siteGuideList_upsert(data: {siteSiteName: $siteName, siteCountryName: $countryName, userId: $userId})
+}
+
+
+mutation AddNewTrip(
+    $userId: Int,
+    $activities: [String!],
+    $budget: Int,
+    $date: Timestamp,
+    $description: String,
+    $durationDays: Int,
+    $locationCity: String,
+    $locationCountry: String) @auth(level:PUBLIC) {
+
+    trip_insert(data: {
+        userId: $userId,
+        activities: $activities,
+        budget: $budget,
+        date: $date,
+        description: $description,
+        durationDays: $durationDays,
+        locationCity: $locationCity,
+        locationCountry: $locationCountry
+    })
+}

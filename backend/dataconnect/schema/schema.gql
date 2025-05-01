@@ -29,3 +29,12 @@ type Trip @table(name: "trips") {
   budget: Int
   description: String
 }
+
+# This entity represents the answer that a guide writes for a trip request
+# Notice: there can be a single answer from a user
+type TripAnswer @table(name: "trip_answer", key: ["trip", "user"]) {
+  trip: Trip!
+  user: User!
+  text: String!
+  time: Timestamp!
+}

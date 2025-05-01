@@ -27,8 +27,8 @@
             android:id="@+id/action_sitesGuideFragment_to_requestGuideFragment"
             app:destination="@id/requestGuideFragment" />
         <action
-            android:id="@+id/action_sitesGuideFragment_to_tripFragment"
-            app:destination="@id/tripFragment" />
+            android:id="@+id/action_sitesGuideFragment_to_addSiteFragment"
+            app:destination="@id/addSiteFragment" />
     </fragment>
     <fragment
         android:id="@+id/requestGuideFragment"
@@ -38,4 +38,8 @@
             android:name="site"
             app:argType="dadm.ndescot.travelbuddy.domain.model.guide.Site" />
     </fragment>
+    <fragment
+        android:id="@+id/addSiteFragment"
+        android:name="dadm.ndescot.travelbuddy.ui.guide.addsite.AddSiteFragment"
+        android:label="AddSiteFragment" />
 </navigation>

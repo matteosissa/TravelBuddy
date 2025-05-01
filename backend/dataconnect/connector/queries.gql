@@ -54,3 +54,10 @@ query allTripsByLocation($siteName: String, $countryName: String) @auth(level:PU
         }
     }
 }
+
+query searchGuideSite($siteName: String, $countryName: String) @auth(level:PUBLIC) {
+    siteGuide(key: { siteName: $siteName, countryName: $countryName }) {
+        siteName
+        countryName
+    }
+}

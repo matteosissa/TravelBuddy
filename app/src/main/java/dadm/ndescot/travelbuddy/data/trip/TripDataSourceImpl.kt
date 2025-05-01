@@ -1,12 +1,10 @@
 package dadm.ndescot.travelbuddy.data.trip
 
-import connectors.default.AllTripsByUserQuery
+import com.google.firebase.Timestamp
 import connectors.default.execute
 import connectors.default.instance
 import dadm.ndescot.travelbuddy.data.trip.model.toDomain
-import dadm.ndescot.travelbuddy.domain.model.Activity
 import dadm.ndescot.travelbuddy.domain.model.Trip
-import java.util.Date
 import javax.inject.Inject
 
 class TripDataSourceImpl @Inject constructor() : TripDataSource {
@@ -19,4 +17,20 @@ class TripDataSourceImpl @Inject constructor() : TripDataSource {
         }
 
     }
+
+    override suspend fun createTrip(trip: Trip, userId: Int) {
+
+        connector.addNewTrip.execute {
+            this.userId = userId
+            activities = trip.activities.map {it.asString()}
+            budget = trip.budget
+            date = Timestamp(trip.date)
+            description = trip.description
+            durationDays = trip.durationDays
+            locationCity = trip.locationCity
+            locationCountry = trip.locationCountry
+        }
+
+    }
+
 }

@@ -40,6 +40,16 @@ class TripFragment : Fragment(R.layout.fragment_trips) {
             findNavController().navigate(R.id.action_tripFragment_to_createTripFragment)
         }
 
+        // Manage the refresh of data in case of adding a new site
+        parentFragmentManager.setFragmentResultListener("refresh", viewLifecycleOwner) {
+                key, bundle ->
+            val refresh = bundle.getBoolean("refresh")
+            if(refresh) {
+                println("Refreshing data")
+                viewModel.getTripsByUserId()
+            }
+        }
+
 
     }
 

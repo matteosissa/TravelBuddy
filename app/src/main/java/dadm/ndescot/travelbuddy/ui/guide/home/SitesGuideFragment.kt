@@ -42,6 +42,20 @@ class SitesGuideFragment : Fragment(R.layout.fragment_sites_guide) {
                 }
             }
         }
+
+        binding.fabAddSite.setOnClickListener {
+            findNavController().navigate(R.id.action_sitesGuideFragment_to_addSiteFragment)
+        }
+
+        // Manage the refresh of data in case of adding a new site
+        parentFragmentManager.setFragmentResultListener("refresh", viewLifecycleOwner) {
+            key, bundle ->
+            val refresh = bundle.getBoolean("refresh")
+            if(refresh) {
+                println("Refreshing data")
+                viewModel.getGuideSitesByUserId()
+            }
+        }
         
     }
 

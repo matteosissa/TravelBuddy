@@ -22,6 +22,42 @@ package connectors.default
 
 
   @kotlinx.serialization.Serializable
+  public data class SiteGuideKey(
+  
+    val siteName:
+    String,
+    val countryName:
+    String
+  ) {
+    
+    
+  }
+
+  @kotlinx.serialization.Serializable
+  public data class SiteGuideListKey(
+  
+    val userId:
+    Int,
+    val siteSiteName:
+    String,
+    val siteCountryName:
+    String
+  ) {
+    
+    
+  }
+
+  @kotlinx.serialization.Serializable
+  public data class TripKey(
+  
+    val id:
+    Int
+  ) {
+    
+    
+  }
+
+  @kotlinx.serialization.Serializable
   public data class UserKey(
   
     val id:

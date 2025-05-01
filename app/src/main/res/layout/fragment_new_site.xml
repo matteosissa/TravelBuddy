@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingHorizontal="35dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+
+    <EditText
+        android:id="@+id/etCreateNewSiteLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints="locationName"
+        android:hint="@string/hint_create_new_site_location"
+        android:inputType="text"
+
+        android:layout_marginBottom="40dp" />
+
+        <EditText
+            android:id="@+id/etCreateNewSiteCountry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="locationName"
+            android:hint="@string/country_name"
+            android:inputType="text"
+            android:layout_marginBottom="60dp" />
+
+        <Button
+            android:id="@+id/btnCreateNewSite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add"
+            android:layout_gravity="center" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

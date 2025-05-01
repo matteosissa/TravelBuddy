@@ -1,10 +1,9 @@
-package dadm.ndescot.travelbuddy.ui.guide.home
+package dadm.ndescot.travelbuddy.ui.guide.addsite
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dadm.ndescot.travelbuddy.data.guide.GuideRepository
 import dadm.ndescot.travelbuddy.data.userdata.local.LocalUserDataRepository
-import dadm.ndescot.travelbuddy.domain.model.guide.Site
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -13,24 +12,25 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class SiteGuideViewModel @Inject constructor(
+class AddSiteViewModel @Inject constructor(
     private val guideRepository: GuideRepository,
-    private val localUserDataRepository: LocalUserDataRepository
+    private val userDataRepository: LocalUserDataRepository
 ) : ViewModel() {
 
-    private val userId = localUserDataRepository.getUserId()
+    private val _successfulRequest = MutableStateFlow(false)
+    val successfulRequest = _successfulRequest.asStateFlow()
 
-    private var _guideSites = MutableStateFlow<List<Site>>(emptyList())
-    val guideSites = _guideSites.asStateFlow()
+    fun addSite(siteName: String, countryName: String) {
 
-    fun getGuideSitesByUserId() {
         viewModelScope.launch {
-            _guideSites.value = guideRepository.getGuideSitesByUserId(userId.first())
+            val userId = userDataRepository.getUserId()
+            println("Adding site for user ${userId.first()}")
+            guideRepository.addGuideSite(siteName, countryName, userId.first())
+            _successfulRequest.value = true
+
         }
+
     }
 
-    init {
-        getGuideSitesByUserId()
-    }
 
 }

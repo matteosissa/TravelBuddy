@@ -9,4 +9,5 @@ interface GuideDataSource {
 
     suspend fun getTripsByLocation(siteName: String, countryName: String) : List<Trip>
 
+    suspend fun addGuideSite(siteName: String, countryName: String, userId: Int)
 }

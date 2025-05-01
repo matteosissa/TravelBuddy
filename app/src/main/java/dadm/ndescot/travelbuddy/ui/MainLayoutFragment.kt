@@ -5,6 +5,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
+import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
@@ -13,6 +14,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import dadm.ndescot.travelbuddy.R
@@ -32,10 +34,6 @@ class MainLayoutFragment : Fragment(R.layout.fragment_main_layout), MenuProvider
         val toolbar = binding.toolbar
         (requireActivity() as AppCompatActivity).setSupportActionBar(toolbar)
 
-        toolbar.setNavigationOnClickListener {
-            findNavController().popBackStack()
-        }
-
         navController = binding.navHostFragment.getFragment<NavHostFragment>().navController
 
         appBarConfiguration = AppBarConfiguration(
@@ -48,6 +46,8 @@ class MainLayoutFragment : Fragment(R.layout.fragment_main_layout), MenuProvider
             appBarConfiguration
         )
         binding.bottomNavigationView.setupWithNavController(navController)
+
+        NavigationUI.setupWithNavController(toolbar, navController, appBarConfiguration)
 
         requireActivity().addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
@@ -67,7 +67,6 @@ class MainLayoutFragment : Fragment(R.layout.fragment_main_layout), MenuProvider
         }*/
         return false
     }
-
 
 
 

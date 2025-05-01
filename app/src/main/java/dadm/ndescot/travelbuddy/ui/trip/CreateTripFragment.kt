@@ -5,12 +5,14 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.chip.Chip
 import dadm.ndescot.travelbuddy.R
 import dadm.ndescot.travelbuddy.databinding.FragmentCreateTripBinding
 import dadm.ndescot.travelbuddy.domain.model.Activity
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
@@ -33,6 +35,18 @@ class CreateTripFragment : Fragment(R.layout.fragment_create_trip) {
         setupActivityChips()
         setupDatePicker()
         setupSaveButton()
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.successfulRequest.collect {
+                if (it) {
+                    // Previous fragment has to refresh the data
+                    val refresh = Bundle().apply { putBoolean("refresh", true) }
+                    parentFragmentManager.setFragmentResult("refresh", refresh)
+
+                    findNavController().popBackStack()
+                }
+            }
+        }
     }
 
     private fun setupActivityChips() {
@@ -86,7 +100,6 @@ class CreateTripFragment : Fragment(R.layout.fragment_create_trip) {
                     description = description
                 )
 
-                findNavController().popBackStack()
             }
         }
     }

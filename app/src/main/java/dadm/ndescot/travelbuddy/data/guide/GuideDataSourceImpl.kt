@@ -25,5 +25,14 @@ class GuideDataSourceImpl @Inject constructor() : GuideDataSource {
         }
     }
 
+    override suspend fun addGuideSite(siteName: String, countryName: String, userId: Int) {
+        val result = connector.addNewGuideSite.execute{ this.siteName = siteName; this.countryName = countryName; this.userId = userId }
+        println("addGuideSite")
+        println(result.data.siteGuide_upsert.siteName)
+        println(result.data.siteGuide_upsert.countryName)
+        println(result.data.siteGuideList_upsert.siteSiteName)
+
+    }
+
 
 }

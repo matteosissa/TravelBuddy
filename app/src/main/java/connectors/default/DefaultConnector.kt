@@ -18,6 +18,10 @@ public interface DefaultConnector : com.google.firebase.dataconnect.generated.Ge
   override val dataConnect: com.google.firebase.dataconnect.FirebaseDataConnect
 
   
+    public val addNewGuideSite: AddNewGuideSiteMutation
+  
+    public val addNewTrip: AddNewTripMutation
+  
     public val addNewUser: AddNewUserMutation
   
     public val allSitesAsGuide: AllSitesAsGuideQuery
@@ -25,6 +29,8 @@ public interface DefaultConnector : com.google.firebase.dataconnect.generated.Ge
     public val allTripsByLocation: AllTripsByLocationQuery
   
     public val allTripsByUser: AllTripsByUserQuery
+  
+    public val searchGuideSite: SearchGuideSiteQuery
   
 
   public companion object {
@@ -65,6 +71,14 @@ private class DefaultConnectorImpl(
   override val dataConnect: com.google.firebase.dataconnect.FirebaseDataConnect
 ) : DefaultConnector {
   
+    override val addNewGuideSite by lazy(LazyThreadSafetyMode.PUBLICATION) {
+      AddNewGuideSiteMutationImpl(this)
+    }
+  
+    override val addNewTrip by lazy(LazyThreadSafetyMode.PUBLICATION) {
+      AddNewTripMutationImpl(this)
+    }
+  
     override val addNewUser by lazy(LazyThreadSafetyMode.PUBLICATION) {
       AddNewUserMutationImpl(this)
     }
@@ -81,6 +95,10 @@ private class DefaultConnectorImpl(
       AllTripsByUserQueryImpl(this)
     }
   
+    override val searchGuideSite by lazy(LazyThreadSafetyMode.PUBLICATION) {
+      SearchGuideSiteQueryImpl(this)
+    }
+  
 
   @com.google.firebase.dataconnect.ExperimentalFirebaseDataConnect
   override fun operations(): List<com.google.firebase.dataconnect.generated.GeneratedOperation<DefaultConnector, *, *>> =
@@ -89,7 +107,9 @@ private class DefaultConnectorImpl(
   @com.google.firebase.dataconnect.ExperimentalFirebaseDataConnect
   override fun mutations(): List<com.google.firebase.dataconnect.generated.GeneratedMutation<DefaultConnector, *, *>> =
     listOf(
-      addNewUser,
+      addNewGuideSite,
+        addNewTrip,
+        addNewUser,
         
     )
 
@@ -99,6 +119,7 @@ private class DefaultConnectorImpl(
       allSitesAsGuide,
         allTripsByLocation,
         allTripsByUser,
+        searchGuideSite,
         
     )
 
@@ -234,6 +255,36 @@ private open class DefaultConnectorGeneratedMutationImpl<Data, Variables>(
 
 
 
+private class AddNewGuideSiteMutationImpl(
+  connector: DefaultConnector
+):
+  AddNewGuideSiteMutation,
+  DefaultConnectorGeneratedMutationImpl<
+      AddNewGuideSiteMutation.Data,
+      AddNewGuideSiteMutation.Variables
+  >(
+    connector,
+    AddNewGuideSiteMutation.Companion.operationName,
+    AddNewGuideSiteMutation.Companion.dataDeserializer,
+    AddNewGuideSiteMutation.Companion.variablesSerializer,
+  )
+
+
+private class AddNewTripMutationImpl(
+  connector: DefaultConnector
+):
+  AddNewTripMutation,
+  DefaultConnectorGeneratedMutationImpl<
+      AddNewTripMutation.Data,
+      AddNewTripMutation.Variables
+  >(
+    connector,
+    AddNewTripMutation.Companion.operationName,
+    AddNewTripMutation.Companion.dataDeserializer,
+    AddNewTripMutation.Companion.variablesSerializer,
+  )
+
+
 private class AddNewUserMutationImpl(
   connector: DefaultConnector
 ):
@@ -291,6 +342,21 @@ private class AllTripsByUserQueryImpl(
     AllTripsByUserQuery.Companion.operationName,
     AllTripsByUserQuery.Companion.dataDeserializer,
     AllTripsByUserQuery.Companion.variablesSerializer,
+  )
+
+
+private class SearchGuideSiteQueryImpl(
+  connector: DefaultConnector
+):
+  SearchGuideSiteQuery,
+  DefaultConnectorGeneratedQueryImpl<
+      SearchGuideSiteQuery.Data,
+      SearchGuideSiteQuery.Variables
+  >(
+    connector,
+    SearchGuideSiteQuery.Companion.operationName,
+    SearchGuideSiteQuery.Companion.dataDeserializer,
+    SearchGuideSiteQuery.Companion.variablesSerializer,
   )
 
 

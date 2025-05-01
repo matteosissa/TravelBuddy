@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import dadm.ndescot.travelbuddy.databinding.TripRequestItemBinding
 import dadm.ndescot.travelbuddy.domain.model.Trip
-import dadm.ndescot.travelbuddy.domain.model.guide.Site
 
 class RequestListAdapter : ListAdapter<Trip, RequestListAdapter.RequestViewHolder>(RequestDiff) {
 
