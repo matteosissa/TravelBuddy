@@ -56,4 +56,5 @@
     <string name="add">Add</string>
     <string name="country_name">Country name</string>
     <string name="hint_guide_message">Write your message here</string>
+    <string name="chat_with_them_button">Chat with them</string>
 </resources>

@@ -26,6 +26,8 @@ public interface DefaultConnector : com.google.firebase.dataconnect.generated.Ge
   
     public val addNewUser: AddNewUserMutation
   
+    public val allAnswersToTrip: AllAnswersToTripQuery
+  
     public val allSitesAsGuide: AllSitesAsGuideQuery
   
     public val allTripsByLocation: AllTripsByLocationQuery
@@ -89,6 +91,10 @@ private class DefaultConnectorImpl(
       AddNewUserMutationImpl(this)
     }
   
+    override val allAnswersToTrip by lazy(LazyThreadSafetyMode.PUBLICATION) {
+      AllAnswersToTripQueryImpl(this)
+    }
+  
     override val allSitesAsGuide by lazy(LazyThreadSafetyMode.PUBLICATION) {
       AllSitesAsGuideQueryImpl(this)
     }
@@ -123,7 +129,8 @@ private class DefaultConnectorImpl(
   @com.google.firebase.dataconnect.ExperimentalFirebaseDataConnect
   override fun queries(): List<com.google.firebase.dataconnect.generated.GeneratedQuery<DefaultConnector, *, *>> =
     listOf(
-      allSitesAsGuide,
+      allAnswersToTrip,
+        allSitesAsGuide,
         allTripsByLocation,
         allTripsByUser,
         searchGuideSite,
@@ -319,6 +326,21 @@ private class AddNewUserMutationImpl(
     AddNewUserMutation.Companion.operationName,
     AddNewUserMutation.Companion.dataDeserializer,
     AddNewUserMutation.Companion.variablesSerializer,
+  )
+
+
+private class AllAnswersToTripQueryImpl(
+  connector: DefaultConnector
+):
+  AllAnswersToTripQuery,
+  DefaultConnectorGeneratedQueryImpl<
+      AllAnswersToTripQuery.Data,
+      AllAnswersToTripQuery.Variables
+  >(
+    connector,
+    AllAnswersToTripQuery.Companion.operationName,
+    AllAnswersToTripQuery.Companion.dataDeserializer,
+    AllAnswersToTripQuery.Companion.variablesSerializer,
   )
 
 

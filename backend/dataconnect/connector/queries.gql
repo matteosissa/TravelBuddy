@@ -61,3 +61,14 @@ query searchGuideSite($siteName: String, $countryName: String) @auth(level:PUBLI
         countryName
     }
 }
+
+query allAnswersToTrip($tripId: Int) @auth(level:PUBLIC) {
+    tripAnswers(where: {tripId: {eq: $tripId} }) {
+        user {
+            id
+            name
+        }
+        text
+        time
+    }
+}

@@ -23,8 +23,9 @@ class TripFragment : Fragment(R.layout.fragment_trips) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentTripsBinding.bind(view)
 
-        val adapter = TripListAdapter { trip ->
-            // Handle trip click if needed
+        val adapter = TripListAdapter { id ->
+            val action = TripFragmentDirections.actionTripFragmentToTripAnswersFragment(id)
+            findNavController().navigate(action)
         }
         binding.recyclerView.adapter = adapter
 

@@ -4,6 +4,7 @@ import com.google.firebase.Timestamp
 import connectors.default.execute
 import connectors.default.instance
 import dadm.ndescot.travelbuddy.data.trip.model.toDomain
+import dadm.ndescot.travelbuddy.domain.model.GuideAnswer
 import dadm.ndescot.travelbuddy.domain.model.Trip
 import javax.inject.Inject
 
@@ -31,6 +32,14 @@ class TripDataSourceImpl @Inject constructor() : TripDataSource {
             locationCountry = trip.locationCountry
         }
 
+    }
+
+    override suspend fun getTripAnswers(tripId: Int): List<GuideAnswer> {
+        return connector.allAnswersToTrip.execute {
+            this.tripId = tripId
+        }.data.tripAnswers.map {
+            el -> el.toDomain()
+        }
     }
 
 }

@@ -23,9 +23,6 @@ class RequestGuideViewModel @Inject constructor(
     private var _requests = MutableStateFlow<List<Trip>>(emptyList())
     val requests = _requests.asStateFlow()
 
-    init {
-
-    }
 
     fun getTripsByLocation(site: Site) {
         viewModelScope.launch {

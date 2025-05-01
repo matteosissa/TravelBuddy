@@ -2,9 +2,10 @@ package dadm.ndescot.travelbuddy.domain.model
 
 import java.time.LocalDateTime
 
-data class GuideReply (
+data class GuideAnswer (
     val userId: Int,
-    val tripId: Int,
+    val userName: String,
+    val tripId: Int?,
     val message: String,
     val dateTime: LocalDateTime
 )

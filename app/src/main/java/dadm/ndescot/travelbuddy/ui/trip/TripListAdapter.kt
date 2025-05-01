@@ -11,7 +11,7 @@ import dadm.ndescot.travelbuddy.domain.model.Trip
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-class TripListAdapter(private val onItemClick: (String) -> Unit) : ListAdapter<Trip,
+class TripListAdapter(private val onItemClick: (Int) -> Unit) : ListAdapter<Trip,
         TripListAdapter.ViewHolder>(TripDiff) {
 
     object TripDiff : DiffUtil.ItemCallback<Trip>() {
@@ -24,17 +24,8 @@ class TripListAdapter(private val onItemClick: (String) -> Unit) : ListAdapter<T
         }
     }
 
-    class ViewHolder(private val binding: TripItemBinding, private val onItemClick: (String) -> Unit) :
+    class ViewHolder(private val binding: TripItemBinding, private val onItemClick: (Int) -> Unit) :
         RecyclerView.ViewHolder(binding.root) {
-
-        init {
-            binding.root.setOnClickListener {
-                val position = adapterPosition
-                if (position != RecyclerView.NO_POSITION) {
-                    onItemClick(binding.tvCity.text.toString())
-                }
-            }
-        }
 
         fun bind(trip: Trip) {
             binding.tvCity.text = trip.locationCity
@@ -52,6 +43,10 @@ class TripListAdapter(private val onItemClick: (String) -> Unit) : ListAdapter<T
                 val chip = Chip(binding.chipGroupActivities.context)
                 chip.text = activity.name
                 binding.chipGroupActivities.addView(chip)
+            }
+
+            binding.root.setOnClickListener {
+                onItemClick(trip.id)
             }
         }
     }

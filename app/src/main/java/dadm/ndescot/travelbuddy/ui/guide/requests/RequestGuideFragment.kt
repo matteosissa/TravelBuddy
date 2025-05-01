@@ -34,8 +34,6 @@ class RequestGuideFragment : Fragment(R.layout.fragment_explore_requests_guide){
         viewModel.getTripsByLocation(args.site)
         val customAdapter = RequestListAdapter {
             trip -> showAddAnswerDialog(trip.id)
-
-
         }
         binding.rvExploreRequestsGuide.adapter = customAdapter
         binding.rvExploreRequestsGuide.layoutManager = LinearLayoutManager(requireContext())
