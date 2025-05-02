@@ -29,15 +29,21 @@ class LocalUserDataDataSourceImpl  @Inject constructor(private val dataStore : D
         }
     }
 
-    override fun getUserId(): Flow<Int> {
+    override fun getUserId(): Flow<Int?> {
         return dataStore.data.map {
-            data -> data[UserDataKeys.USER_ID] ?: -1        // Returns -1 in case does not find the userId
+            data -> data[UserDataKeys.USER_ID]
         }
     }
 
     override suspend fun setUserId(userId: Int) {
         dataStore.edit {
             data -> data[UserDataKeys.USER_ID] = userId
+        }
+    }
+
+    override suspend fun deleteUserId() {
+        dataStore.edit {
+            data -> data.remove(UserDataKeys.USER_ID)
         }
     }
 }

@@ -9,8 +9,11 @@ class RemoteUserDataDataSourceImpl @Inject constructor() : RemoteUserDataDataSou
 
     private val connector = DefaultConnector.instance
 
-    override suspend fun addNewUser(userName: String): Int {
-        return connector.addNewUser.execute { username = userName }.data.key.id
+    override suspend fun addNewUser(userName: String, phoneNumber: String): Int {
+        return connector.addNewUser.execute {
+            username = userName
+            this.phoneNumber = phoneNumber
+        }.data.key.id
     }
 
 }

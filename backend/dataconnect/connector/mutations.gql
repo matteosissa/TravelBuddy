@@ -1,7 +1,7 @@
 
 
-mutation AddNewUser($username: String) @auth(level:PUBLIC) {
-    user_insert(data: {name: $username})
+mutation AddNewUser($username: String, $phoneNumber: String) @auth(level:PUBLIC) {
+    user_insert(data: {name: $username, phoneNumber: $phoneNumber})
 }
 
 mutation AddNewGuideSite($siteName: String, $countryName: String, $userId: Int) @auth(level:PUBLIC) {

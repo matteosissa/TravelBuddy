@@ -7,7 +7,8 @@ interface LocalUserDataDataSource {
     fun getUserName(): Flow<String>
     suspend fun setUserName(userName: String)
 
-    fun getUserId(): Flow<Int>
+    fun getUserId(): Flow<Int?>
     suspend fun setUserId(userId: Int)
+    suspend fun deleteUserId()
 
 }

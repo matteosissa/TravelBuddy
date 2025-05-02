@@ -3,6 +3,7 @@
 type User @table(name: "user", key: "id") {
   id: Int! @col(name: "user_id", dataType: "serial")
   name: String
+  phoneNumber: String
 }
 
 # Sites for the guides

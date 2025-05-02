@@ -25,7 +25,7 @@ class AddSiteViewModel @Inject constructor(
         viewModelScope.launch {
             val userId = userDataRepository.getUserId()
             println("Adding site for user ${userId.first()}")
-            guideRepository.addGuideSite(siteName, countryName, userId.first())
+            guideRepository.addGuideSite(siteName, countryName, userId.first()!!)
             _successfulRequest.value = true
 
         }

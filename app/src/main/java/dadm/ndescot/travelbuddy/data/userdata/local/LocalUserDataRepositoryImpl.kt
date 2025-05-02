@@ -14,13 +14,18 @@ class LocalUserDataRepositoryImpl @Inject constructor(private val dataSource: Lo
         dataSource.setUserName(userName)
     }
 
-    override fun getUserId(): Flow<Int> {
+    override fun getUserId(): Flow<Int?> {
         return dataSource.getUserId()
     }
 
     override suspend fun setUserId(userId: Int) {
         dataSource.setUserId(userId)
     }
+
+    override suspend fun deleteUserId() {
+        dataSource.deleteUserId()
+    }
+
 
 
 }

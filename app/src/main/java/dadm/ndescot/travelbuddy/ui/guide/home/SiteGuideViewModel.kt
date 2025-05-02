@@ -25,7 +25,7 @@ class SiteGuideViewModel @Inject constructor(
 
     fun getGuideSitesByUserId() {
         viewModelScope.launch {
-            _guideSites.value = guideRepository.getGuideSitesByUserId(userId.first())
+            _guideSites.value = guideRepository.getGuideSitesByUserId(userId.first()!!)
         }
     }
 

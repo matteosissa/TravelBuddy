@@ -28,6 +28,8 @@ public interface AddNewUserMutation :
   public data class Variables(
   
     val username:
+    com.google.firebase.dataconnect.OptionalVariable<String?>,
+    val phoneNumber:
     com.google.firebase.dataconnect.OptionalVariable<String?>
   ) {
     
@@ -38,6 +40,7 @@ public interface AddNewUserMutation :
       @BuilderDsl
       public interface Builder {
         public var username: String?
+        public var phoneNumber: String?
         
       }
 
@@ -49,6 +52,8 @@ public interface AddNewUserMutation :
         ): Variables {
           var username: com.google.firebase.dataconnect.OptionalVariable<String?> =
                 com.google.firebase.dataconnect.OptionalVariable.Undefined
+            var phoneNumber: com.google.firebase.dataconnect.OptionalVariable<String?> =
+                com.google.firebase.dataconnect.OptionalVariable.Undefined
             
 
           return object : Builder {
@@ -56,11 +61,15 @@ public interface AddNewUserMutation :
               get() = throw UnsupportedOperationException("getting builder values is not supported")
               set(value_) { username = com.google.firebase.dataconnect.OptionalVariable.Value(value_) }
               
+            override var phoneNumber: String?
+              get() = throw UnsupportedOperationException("getting builder values is not supported")
+              set(value_) { phoneNumber = com.google.firebase.dataconnect.OptionalVariable.Value(value_) }
+              
             
           }.apply(block_)
           .let {
             Variables(
-              username=username,
+              username=username,phoneNumber=phoneNumber,
             )
           }
         }

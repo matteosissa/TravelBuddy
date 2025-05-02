@@ -38,7 +38,7 @@ class TripViewModel @Inject constructor(
             description = description
         )
         viewModelScope.launch {
-            tripRepository.createTrip(trip, userId.first())
+            tripRepository.createTrip(trip, userId.first()!!)
             _successfulRequest.value = true
         }
     }
@@ -48,7 +48,7 @@ class TripViewModel @Inject constructor(
 
     fun getTripsByUserId() {
         viewModelScope.launch {
-            _trips.value = tripRepository.getTripsByUserId(userId.first())
+            _trips.value = tripRepository.getTripsByUserId(userId.first()!!)
         }
     }
 

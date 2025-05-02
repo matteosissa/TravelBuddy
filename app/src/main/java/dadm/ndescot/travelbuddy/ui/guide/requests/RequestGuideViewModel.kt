@@ -32,7 +32,7 @@ class RequestGuideViewModel @Inject constructor(
 
     fun addAnswerToTrip(message: String, tripId: Int) {
         viewModelScope.launch {
-            val userId = localUserDataRepository.getUserId().first()
+            val userId = localUserDataRepository.getUserId().first()!!
             guideRepository.addAnswerToTrip(userId, tripId, message, LocalDateTime.now())
         }
     }

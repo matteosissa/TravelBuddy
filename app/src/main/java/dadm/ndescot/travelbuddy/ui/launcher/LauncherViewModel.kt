@@ -11,7 +11,7 @@ import javax.inject.Inject
 class LauncherViewModel @Inject constructor(private val localUserDataRepository: LocalUserDataRepository) : ViewModel() {
 
     val isFirstAccess: Flow<Boolean> = localUserDataRepository.getUserId().map {
-        id -> id == -1
+        id -> id == null
     }
 
 }
