@@ -57,6 +57,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.hilt.android)
     implementation(libs.androidx.recyclerview)
+    implementation(libs.firebase.common.ktx)
     ksp(libs.hilt.compiler)
     implementation(libs.moshi.kotlin)
     ksp(libs.moshi.kotlin.codegen)

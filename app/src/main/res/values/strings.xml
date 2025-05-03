@@ -35,7 +35,7 @@
     <string name="Trips">Trips</string>
     <string name="description_fab_add_site_guide">Add a new site for the guide</string>
     <string name="description_from_the_traveller_title">Description from the traveller:</string>
-    <string name="lore_ipsum_test">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of</string>
+    <string name="lore_ipsum_test" translatable="false">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of</string>
     <string name="button_contact_traveller">Contact Them</string>
     <string name="add_new_trip">New trip</string>
     <string name="create_new_trip">Create new trip !</string>
@@ -58,4 +58,12 @@
     <string name="hint_guide_message">Write your message here</string>
     <string name="chat_with_them_button">Chat with them</string>
     <string name="enter_your_phone_number_welcome_screen">Enter your phone number</string>
+    <string name="filter_trips">Filter Trips</string>
+    <string name="toggle_filters">Toggle filters</string>
+    <string name="maximum_budget">Maximum Budget</string>
+    <string name="_10000" translatable="false">€10000</string>
+    <string name="apply_filters">Apply Filters</string>
+    <string name="matteo_sissa" translatable="false">Matteo Sissa</string>
+    <string name="_16_05_2025" translatable="false">16/05/2025</string>
+    <string name="_2_weeks">2 weeks</string>
 </resources>
