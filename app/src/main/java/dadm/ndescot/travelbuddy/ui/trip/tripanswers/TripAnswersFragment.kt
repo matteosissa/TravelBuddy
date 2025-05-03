@@ -32,9 +32,10 @@ class TripAnswersFragment : Fragment(R.layout.fragment_trip_answers) {
 
         val adapter = TripAnswersListAdapter { guideAnswer ->
             val phoneNumber = guideAnswer.guidePhoneNumber
+            println("this is the phone number: " + phoneNumber)
             val cleanedNumber = phoneNumber.replace(Regex("[^\\d+]"), "")
-            val intent = Intent(Intent.ACTION_VIEW).apply {
-                data = Uri.parse("sms:$cleanedNumber")
+            val intent = Intent(Intent.ACTION_SENDTO).apply {
+                data = Uri.parse("smsto:$cleanedNumber")
             }
             startActivity(intent)
         }

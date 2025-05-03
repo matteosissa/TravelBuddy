@@ -7,6 +7,7 @@ import dadm.ndescot.travelbuddy.data.userdata.remote.RemoteUserDataRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -25,6 +26,8 @@ class WelcomeViewModel @Inject constructor(
             localUserDataRepository.setUserName(userName)
             localUserDataRepository.setUserId(userId)
             localUserDataRepository.setPhoneNumber(phoneNumber)
+            println("Registered the information of the user locally with phone number : $phoneNumber")
+            println("Trying to fetch the user phone number from the datastore: ${localUserDataRepository.getPhoneNumber().first()}")
             _successfulRegistration.value = true
         }
     }

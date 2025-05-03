@@ -38,55 +38,13 @@ class MainActivity : AppCompatActivity() {
 
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setSupportActionBar(binding.toolbar)
+        // setSupportActionBar(binding.toolbar)
 
-        /*ViewCompat.setOnApplyWindowInsetsListener(binding.bottomNavigationView) { view, insets ->
-            val bars = insets.getInsets(WindowInsetsCompat.Type.displayCutout() or
-                    WindowInsetsCompat.Type.systemBars())
-            view.updatePadding(
-                left = bars.left,
-                top = 0,
-                right = 0,
-                bottom = bars.bottom
-            )
-            WindowInsetsCompat.CONSUMED
-        }
-
-        ViewCompat.setOnApplyWindowInsetsListener(binding.navHostFragment) { view, insets ->
-            val bars = insets.getInsets(WindowInsetsCompat.Type.displayCutout() or
-                    WindowInsetsCompat.Type.systemBars())
-            view.updatePadding(
-                left = 0,
-                top = 0,
-                right = bars.right,
-                bottom = if (resources.configuration.orientation == ORIENTATION_LANDSCAPE) bars.bottom else 0
-            )
-            WindowInsetsCompat.CONSUMED
-        }
-
-        ViewCompat.setOnApplyWindowInsetsListener(binding.appBarLayout) { view, insets ->
-            val bars = insets.getInsets(WindowInsetsCompat.Type.displayCutout() or
-                    WindowInsetsCompat.Type.systemBars())
-            view.updatePadding(
-                left = bars.left,
-                top = 0,
-                right = 0,
-                bottom = 0
-            )
-            WindowInsetsCompat.CONSUMED
-        }*/
-
-
-
-
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.mainHostContainer)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
-
-
 
     }
 

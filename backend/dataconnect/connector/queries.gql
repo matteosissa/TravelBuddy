@@ -33,11 +33,12 @@ query allTripsByUser($userId: Int) @auth(level:PUBLIC) {
     }
 }
 
-query allTripsByLocation($siteName: String, $countryName: String) @auth(level:PUBLIC) {
+query allTripsByLocation($siteName: String, $countryName: String, $userId: Int) @auth(level:PUBLIC) {
     trips(where: {
         _and: [
             {locationCity: { eq: $siteName }},
             {locationCountry: { eq: $countryName }}
+            {userId: { ne: $userId }}
             ]
         }) {
         id
@@ -55,12 +56,12 @@ query allTripsByLocation($siteName: String, $countryName: String) @auth(level:PU
     }
 }
 
-query searchGuideSite($siteName: String, $countryName: String) @auth(level:PUBLIC) {
-    siteGuide(key: { siteName: $siteName, countryName: $countryName }) {
-        siteName
-        countryName
-    }
-}
+#query searchGuideSite($siteName: String, $countryName: String) @auth(level:PUBLIC) {
+ #   siteGuide(key: { siteName: $siteName, countryName: $countryName }) {
+  #      siteName
+   #     countryName
+    #}
+#}
 
 query allAnswersToTrip($tripId: Int) @auth(level:PUBLIC) {
     tripAnswers(where: {tripId: {eq: $tripId} }) {

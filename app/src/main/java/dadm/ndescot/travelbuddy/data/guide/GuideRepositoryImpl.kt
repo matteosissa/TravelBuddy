@@ -12,8 +12,8 @@ class GuideRepositoryImpl @Inject constructor(private val dataSource: GuideDataS
         return dataSource.getGuideSitesByUserId(id)
     }
 
-    override suspend fun getTripsByLocation(siteName: String, countryName: String): List<Trip> {
-        return dataSource.getTripsByLocation(siteName, countryName)
+    override suspend fun getTripsByLocation(siteName: String, countryName: String, userId: Int): List<Trip> {
+        return dataSource.getTripsByLocation(siteName, countryName, userId)
     }
 
     override suspend fun addGuideSite(siteName: String, countryName: String, userId: Int) {

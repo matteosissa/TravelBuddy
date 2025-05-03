@@ -22,8 +22,8 @@ class GuideDataSourceImpl @Inject constructor() : GuideDataSource {
         }.flatten()     // API returns a list of lists (one list per user), but the parameter is the userID which is unique
     }
 
-    override suspend fun getTripsByLocation(siteName: String, countryName: String): List<Trip> {
-        return connector.allTripsByLocation.execute{ this.siteName = siteName; this.countryName = countryName }.data.trips.map {
+    override suspend fun getTripsByLocation(siteName: String, countryName: String, userId: Int): List<Trip> {
+        return connector.allTripsByLocation.execute{ this.siteName = siteName; this.countryName = countryName; this.userId = userId }.data.trips.map {
             el -> el.toDomain()
         }
     }

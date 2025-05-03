@@ -8,7 +8,7 @@ interface GuideRepository {
 
     suspend fun getGuideSitesByUserId(id: Int) : List<Site>
 
-    suspend fun getTripsByLocation(siteName: String, countryName: String) : List<Trip>
+    suspend fun getTripsByLocation(siteName: String, countryName: String, userId: Int) : List<Trip>
 
     suspend fun addGuideSite(siteName: String, countryName: String, userId: Int)
 

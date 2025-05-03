@@ -26,7 +26,8 @@ class RequestGuideViewModel @Inject constructor(
 
     fun getTripsByLocation(site: Site) {
         viewModelScope.launch {
-            _requests.value = guideRepository.getTripsByLocation(site.siteName, site.countryName)
+            val userId = localUserDataRepository.getUserId().first()!!
+            _requests.value = guideRepository.getTripsByLocation(site.siteName, site.countryName, userId)
         }
     }
 

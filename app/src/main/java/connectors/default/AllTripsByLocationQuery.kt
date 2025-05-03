@@ -39,7 +39,9 @@ public interface AllTripsByLocationQuery :
     val siteName:
     com.google.firebase.dataconnect.OptionalVariable<String?>,
     val countryName:
-    com.google.firebase.dataconnect.OptionalVariable<String?>
+    com.google.firebase.dataconnect.OptionalVariable<String?>,
+    val userId:
+    com.google.firebase.dataconnect.OptionalVariable<Int?>
   ) {
     
     
@@ -50,6 +52,7 @@ public interface AllTripsByLocationQuery :
       public interface Builder {
         public var siteName: String?
         public var countryName: String?
+        public var userId: Int?
         
       }
 
@@ -63,6 +66,8 @@ public interface AllTripsByLocationQuery :
                 com.google.firebase.dataconnect.OptionalVariable.Undefined
             var countryName: com.google.firebase.dataconnect.OptionalVariable<String?> =
                 com.google.firebase.dataconnect.OptionalVariable.Undefined
+            var userId: com.google.firebase.dataconnect.OptionalVariable<Int?> =
+                com.google.firebase.dataconnect.OptionalVariable.Undefined
             
 
           return object : Builder {
@@ -74,11 +79,15 @@ public interface AllTripsByLocationQuery :
               get() = throw UnsupportedOperationException("getting builder values is not supported")
               set(value_) { countryName = com.google.firebase.dataconnect.OptionalVariable.Value(value_) }
               
+            override var userId: Int?
+              get() = throw UnsupportedOperationException("getting builder values is not supported")
+              set(value_) { userId = com.google.firebase.dataconnect.OptionalVariable.Value(value_) }
+              
             
           }.apply(block_)
           .let {
             Variables(
-              siteName=siteName,countryName=countryName,
+              siteName=siteName,countryName=countryName,userId=userId,
             )
           }
         }
