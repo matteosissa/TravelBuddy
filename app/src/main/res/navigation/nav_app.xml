@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/tripFragment"
         android:name="dadm.ndescot.travelbuddy.ui.trip.TripFragment"
-        android:label="TripFragment" >
+        android:label="Your trips" >
         <action
             android:id="@+id/action_tripFragment_to_createTripFragment"
             app:destination="@id/createTripFragment" />
@@ -21,11 +21,11 @@
     <fragment
         android:id="@+id/createTripFragment"
         android:name="dadm.ndescot.travelbuddy.ui.trip.CreateTripFragment"
-        android:label="CreateTripFragment" />
+        android:label="Create a new trip" />
     <fragment
         android:id="@+id/sitesGuideFragment"
         android:name="dadm.ndescot.travelbuddy.ui.guide.home.SitesGuideFragment"
-        android:label="SitesGuideFragment" >
+        android:label="Selection location to guide" >
         <action
             android:id="@+id/action_sitesGuideFragment_to_requestGuideFragment"
             app:destination="@id/requestGuideFragment" />
@@ -36,7 +36,7 @@
     <fragment
         android:id="@+id/requestGuideFragment"
         android:name="dadm.ndescot.travelbuddy.ui.guide.requests.RequestGuideFragment"
-        android:label="RequestGuideFragment" >
+        android:label="Trip requests" >
         <argument
             android:name="site"
             app:argType="dadm.ndescot.travelbuddy.domain.model.guide.Site" />
@@ -44,11 +44,11 @@
     <fragment
         android:id="@+id/addSiteFragment"
         android:name="dadm.ndescot.travelbuddy.ui.guide.addsite.AddSiteFragment"
-        android:label="AddSiteFragment" />
+        android:label="Add guide location" />
     <fragment
         android:id="@+id/tripAnswersFragment"
         android:name="dadm.ndescot.travelbuddy.ui.trip.tripanswers.TripAnswersFragment"
-        android:label="TripAnswersFragment" >
+        android:label="Answers you have received" >
         <argument
             android:name="tripId"
             app:argType="integer" />
