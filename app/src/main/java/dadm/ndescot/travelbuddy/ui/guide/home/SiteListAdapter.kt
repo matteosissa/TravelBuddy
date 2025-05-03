@@ -8,18 +8,25 @@ import androidx.recyclerview.widget.RecyclerView
 import dadm.ndescot.travelbuddy.domain.model.guide.Site
 import dadm.ndescot.travelbuddy.databinding.SiteItemBinding
 
-class SiteListAdapter : ListAdapter<Site, SiteListAdapter.SiteViewHolder>(SiteDiff) {
+class SiteListAdapter (
+    private val onItemClick: (Site) -> Unit
+): ListAdapter<Site, SiteListAdapter.SiteViewHolder>(SiteDiff) {
 
 
     /**
      * ViewHolder class responsible to inject data into a single item of the view
      */
-    class SiteViewHolder(private val siteItemBinding: SiteItemBinding) : RecyclerView.ViewHolder(siteItemBinding.root) {
+    class SiteViewHolder(private val siteItemBinding: SiteItemBinding, private val onItemClick: (Site) -> Unit) : RecyclerView.ViewHolder(siteItemBinding.root) {
 
         fun bind(site: Site) {
             siteItemBinding.tvSiteName.text = site.siteName
             siteItemBinding.tvCountryName.text = site.countryName
+
+            siteItemBinding.root.setOnClickListener {
+                onItemClick(site)
+            }
         }
+
     }
 
     override fun getItemCount(): Int {
@@ -28,7 +35,8 @@ class SiteListAdapter : ListAdapter<Site, SiteListAdapter.SiteViewHolder>(SiteDi
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SiteViewHolder {
         return SiteViewHolder(
-            SiteItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            SiteItemBinding.inflate(LayoutInflater.from(parent.context), parent, false),
+            onItemClick
         )
     }
 

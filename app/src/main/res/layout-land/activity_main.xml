@@ -51,7 +51,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/bottomNavigationView"
             app:layout_constraintTop_toBottomOf="@id/appBarLayout"
-            app:navGraph="@navigation/nav_graph"
+            app:navGraph="@navigation/nav_entry"
             tools:layout="@layout/fragment_new_quotation" />
 
 

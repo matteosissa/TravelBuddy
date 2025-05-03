@@ -1,0 +1,12 @@
+specVersion: "v1"
+serviceId: "travelbuddy-73574-2-service"
+location: "us-central1"
+schema:
+  source: "./schema"
+  datasource:
+    postgresql:
+      database: "travelbuddy-73574-2-database"
+      cloudSql:
+        instanceId: "travelbuddy-73574-2-instance"
+      # schemaValidation: "COMPATIBLE"
+connectorDirs: ["./connector"]

@@ -1,5 +1,6 @@
 package dadm.ndescot.travelbuddy.data.favourites
 
+import connectors.default.instance
 import dadm.ndescot.travelbuddy.data.favourites.model.toDatabaseDto
 import dadm.ndescot.travelbuddy.data.favourites.model.toDomain
 import dadm.ndescot.travelbuddy.domain.model.Quotation

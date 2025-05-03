@@ -1,0 +1,41 @@
+
+# User of the application
+type User @table(name: "user", key: "id") {
+  id: Int! @col(name: "user_id", dataType: "serial")
+  name: String
+  phoneNumber: String
+}
+
+# Sites for the guides
+type SiteGuide @table(name: "sites_guide", key: ["siteName", "countryName"]) {
+  siteName: String!
+  countryName: String!
+}
+
+# Many to many relationship between User and SiteGuide
+# Notice: it is automatically detected by DataConnect and specific fields are created in the SiteGuide and User tables to navigate the data
+type SiteGuideList @table(name: "guide_site_list", key: ["user", "site"]) {
+  user: User!
+  site: SiteGuide!
+}
+
+type Trip @table(name: "trips") {
+  id: Int! @col(name: "id", dataType: "serial")
+  user: User!  # Automatic One-to-many relationship detected
+  date: Timestamp!
+  locationCity: String,
+  locationCountry: String,
+  activities: [String!]
+  durationDays: Int
+  budget: Int
+  description: String
+}
+
+# This entity represents the answer that a guide writes for a trip request
+# Notice: there can be a single answer from a user
+type TripAnswer @table(name: "trip_answer", key: ["trip", "user"]) {
+  trip: Trip!
+  user: User!
+  text: String!
+  time: Timestamp!
+}

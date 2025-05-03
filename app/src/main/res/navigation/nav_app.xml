@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_app"
+    app:startDestination="@id/tripFragment">
+
+    <fragment
+        android:id="@+id/tripFragment"
+        android:name="dadm.ndescot.travelbuddy.ui.trip.TripFragment"
+        android:label="TripFragment" >
+        <action
+            android:id="@+id/action_tripFragment_to_createTripFragment"
+            app:destination="@id/createTripFragment" />
+        <action
+            android:id="@+id/action_tripFragment_to_sitesGuideFragment"
+            app:destination="@id/sitesGuideFragment" />
+        <action
+            android:id="@+id/action_tripFragment_to_tripAnswersFragment"
+            app:destination="@id/tripAnswersFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createTripFragment"
+        android:name="dadm.ndescot.travelbuddy.ui.trip.CreateTripFragment"
+        android:label="CreateTripFragment" />
+    <fragment
+        android:id="@+id/sitesGuideFragment"
+        android:name="dadm.ndescot.travelbuddy.ui.guide.home.SitesGuideFragment"
+        android:label="SitesGuideFragment" >
+        <action
+            android:id="@+id/action_sitesGuideFragment_to_requestGuideFragment"
+            app:destination="@id/requestGuideFragment" />
+        <action
+            android:id="@+id/action_sitesGuideFragment_to_addSiteFragment"
+            app:destination="@id/addSiteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/requestGuideFragment"
+        android:name="dadm.ndescot.travelbuddy.ui.guide.requests.RequestGuideFragment"
+        android:label="RequestGuideFragment" >
+        <argument
+            android:name="site"
+            app:argType="dadm.ndescot.travelbuddy.domain.model.guide.Site" />
+    </fragment>
+    <fragment
+        android:id="@+id/addSiteFragment"
+        android:name="dadm.ndescot.travelbuddy.ui.guide.addsite.AddSiteFragment"
+        android:label="AddSiteFragment" />
+    <fragment
+        android:id="@+id/tripAnswersFragment"
+        android:name="dadm.ndescot.travelbuddy.ui.trip.tripanswers.TripAnswersFragment"
+        android:label="TripAnswersFragment" >
+        <argument
+            android:name="tripId"
+            app:argType="integer" />
+    </fragment>
+</navigation>

@@ -8,16 +8,22 @@ import androidx.recyclerview.widget.RecyclerView
 import dadm.ndescot.travelbuddy.databinding.TripRequestItemBinding
 import dadm.ndescot.travelbuddy.domain.model.Trip
 
-class RequestListAdapter : ListAdapter<Trip, RequestListAdapter.RequestViewHolder>(RequestDiff) {
+class RequestListAdapter(
+    private val onClick: (Trip) -> Unit
+) : ListAdapter<Trip, RequestListAdapter.RequestViewHolder>(RequestDiff) {
 
 
-    class RequestViewHolder(private val requestItemBinding: TripRequestItemBinding) : RecyclerView.ViewHolder(requestItemBinding.root) {
+    class RequestViewHolder(private val requestItemBinding: TripRequestItemBinding, private val onClick: (Trip) -> Unit) : RecyclerView.ViewHolder(requestItemBinding.root) {
 
         fun bind(request: Trip) {
             requestItemBinding.tvTravellerName.text = request.username
             requestItemBinding.tvStartDate.text = "${request.date.day}/${request.date.month}/${request.date.year}"
             requestItemBinding.tvDuration.text = "${request.durationDays} days"
             requestItemBinding.tvTravellerDescription.text = request.description
+
+            requestItemBinding.btContactThem.setOnClickListener {
+                onClick(request)
+            }
         }
 
     }
@@ -25,7 +31,8 @@ class RequestListAdapter : ListAdapter<Trip, RequestListAdapter.RequestViewHolde
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RequestViewHolder {
         return RequestViewHolder(
-            TripRequestItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            TripRequestItemBinding.inflate(LayoutInflater.from(parent.context), parent, false),
+            onClick
         )
     }
 

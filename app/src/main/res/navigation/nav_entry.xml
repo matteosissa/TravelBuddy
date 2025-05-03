@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:startDestination="@id/launcherFragment">
+
+    <fragment
+        android:id="@+id/launcherFragment"
+        android:name="dadm.ndescot.travelbuddy.ui.launcher.LauncherFragment"
+        android:label="LauncherFragment" >
+        <action
+            android:id="@+id/action_launcherFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment" />
+        <action
+            android:id="@+id/action_launcherFragment_to_mainLayoutFragment"
+            app:destination="@id/mainLayoutFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="dadm.ndescot.travelbuddy.ui.welcome.WelcomeFragment"
+        android:label="WelcomeFragment" >
+        <action
+            android:id="@+id/action_welcomeFragment_to_mainLayoutFragment"
+            app:destination="@id/mainLayoutFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainLayoutFragment"
+        android:name="dadm.ndescot.travelbuddy.ui.MainLayoutFragment"
+        android:label="MainLayoutFragment" />
+</navigation>

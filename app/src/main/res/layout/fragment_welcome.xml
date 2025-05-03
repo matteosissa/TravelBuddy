@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/welcome"
+        android:textSize="24sp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="70dp"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:id="@+id/etUserName"
+        android:autofillHints="username"
+        android:hint="@string/enter_your_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:layout_gravity="center"/>
+
+    <EditText
+        android:id="@+id/etPhoneNumber"
+        android:autofillHints="phone number"
+        android:hint="@string/enter_your_phone_number_welcome_screen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="phone"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"/>
+
+    <Button
+        android:id="@+id/btnUserName"
+        android:text="@string/confirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center"/>
+
+
+</LinearLayout>

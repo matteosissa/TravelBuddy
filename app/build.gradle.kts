@@ -1,8 +1,13 @@
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    id("com.google.devtools.ksp")
+    alias(libs.plugins.ksp)
     id("com.google.dagger.hilt.android")
+    id("com.google.gms.google-services")
+    id("androidx.navigation.safeargs.kotlin")
+    id("kotlin-parcelize")
+    kotlin("plugin.serialization") version "2.1.20"
 }
 
 android {
@@ -65,4 +70,13 @@ dependencies {
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)
+
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.analytics)
+    implementation(libs.firebase.dataconnect)
+    implementation(libs.google.firebase.dataconnect)
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.serialization.core)
+    implementation(libs.firebase.auth) // Optional
+    implementation(libs.firebase.appcheck) // Optional
 }

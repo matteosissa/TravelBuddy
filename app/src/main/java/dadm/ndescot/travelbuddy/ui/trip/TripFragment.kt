@@ -23,8 +23,9 @@ class TripFragment : Fragment(R.layout.fragment_trips) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentTripsBinding.bind(view)
 
-        val adapter = TripListAdapter { trip ->
-            // Handle trip click if needed
+        val adapter = TripListAdapter { id ->
+            val action = TripFragmentDirections.actionTripFragmentToTripAnswersFragment(id)
+            findNavController().navigate(action)
         }
         binding.recyclerView.adapter = adapter
 
@@ -37,7 +38,17 @@ class TripFragment : Fragment(R.layout.fragment_trips) {
         }
 
         binding.fabAddTrip.setOnClickListener {
-            findNavController().navigate(R.id.action_tripsFragment_to_createTripFragment)
+            findNavController().navigate(R.id.action_tripFragment_to_createTripFragment)
+        }
+
+        // Manage the refresh of data in case of adding a new site
+        parentFragmentManager.setFragmentResultListener("refresh", viewLifecycleOwner) {
+                key, bundle ->
+            val refresh = bundle.getBoolean("refresh")
+            if(refresh) {
+                println("Refreshing data")
+                viewModel.getTripsByUserId()
+            }
         }
 
 
