@@ -1,4 +1,4 @@
-package dadm.ndescot.travelbuddy.data.newquotation
+package dadm.ndescot.travelbuddy.data
 
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities.TRANSPORT_CELLULAR
