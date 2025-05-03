@@ -20,13 +20,22 @@ class RequestGuideViewModel @Inject constructor(
     private val localUserDataRepository: LocalUserDataRepository
 ) : ViewModel() {
 
+    private var _allTrips: List<Trip> = emptyList()
+
     private var _requests = MutableStateFlow<List<Trip>>(emptyList())
     val requests = _requests.asStateFlow()
 
 
     fun getTripsByLocation(site: Site) {
         viewModelScope.launch {
-            _requests.value = guideRepository.getTripsByLocation(site.siteName, site.countryName)
+            _allTrips = guideRepository.getTripsByLocation(site.siteName, site.countryName)
+            _requests.value = _allTrips
+        }
+    }
+
+    fun filterTripsByBudget(maxBudget: Int) {
+        viewModelScope.launch {
+            _requests.value = _allTrips.filter { trip -> trip.budget <= maxBudget }
         }
     }
 
