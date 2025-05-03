@@ -52,4 +52,8 @@
             android:name="tripId"
             app:argType="integer" />
     </fragment>
+    <dialog
+        android:id="@+id/aboutDialogFragment"
+        android:name="dadm.ndescot.travelbuddy.ui.about.AboutDialogFragment"
+        android:label="About" />
 </navigation>
