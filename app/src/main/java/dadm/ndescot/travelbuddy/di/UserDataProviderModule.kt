@@ -7,9 +7,6 @@ import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.emptyPreferences
 import androidx.datastore.preferences.preferencesDataStoreFile
-import androidx.preference.PreferenceDataStore
-import dadm.ndescot.travelbuddy.data.settings.SettingsPreferenceDataStore
-import dadm.ndescot.travelbuddy.data.settings.SettingsRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,11 +20,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 class UserDataProviderModule {
-    @Provides
-    @Singleton
-    fun provideSettingsPreferenceDataStore(repository: SettingsRepository): PreferenceDataStore {
-        return SettingsPreferenceDataStore(repository)
-    }
 
     @Provides
     @Singleton
