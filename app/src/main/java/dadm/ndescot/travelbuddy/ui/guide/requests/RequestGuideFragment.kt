@@ -27,7 +27,6 @@ class RequestGuideFragment : Fragment(R.layout.fragment_explore_requests_guide){
         loadTrips()
         setupFilterListeners()
         setupFilterToggle()
-
     }
 
     private fun setupFilterListeners() {
