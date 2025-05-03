@@ -27,5 +27,12 @@ class LocalUserDataRepositoryImpl @Inject constructor(private val dataSource: Lo
     }
 
 
+    override fun getPhoneNumber(): Flow<String> {
+        return dataSource.getPhoneNumber()
+    }
+
+    override suspend fun setPhoneNumber(phoneNumber: String) {
+        dataSource.setPhoneNumber(phoneNumber)
+    }
 
 }

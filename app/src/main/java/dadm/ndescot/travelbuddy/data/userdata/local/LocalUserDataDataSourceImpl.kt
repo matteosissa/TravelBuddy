@@ -15,6 +15,7 @@ class LocalUserDataDataSourceImpl  @Inject constructor(private val dataStore : D
     private object UserDataKeys {
         val USER_NAME = stringPreferencesKey("user_name")
         val USER_ID = intPreferencesKey("user_id")
+        val PHONE_NUMBER = stringPreferencesKey("phone_number")
     }
 
     override fun getUserName(): Flow<String> {
@@ -46,4 +47,18 @@ class LocalUserDataDataSourceImpl  @Inject constructor(private val dataStore : D
             data -> data.remove(UserDataKeys.USER_ID)
         }
     }
+
+
+    override fun getPhoneNumber() : Flow<String> {
+        return dataStore.data.map {
+            data -> data[UserDataKeys.PHONE_NUMBER] ?: ""
+        }
+    }
+
+    override suspend fun setPhoneNumber(phoneNumber: String) {
+        dataStore.edit {
+            data -> data[UserDataKeys.PHONE_NUMBER] = phoneNumber
+        }
+    }
+
 }

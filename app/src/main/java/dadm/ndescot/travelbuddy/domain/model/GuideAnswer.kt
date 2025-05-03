@@ -7,5 +7,6 @@ data class GuideAnswer (
     val userName: String,
     val tripId: Int?,
     val message: String,
-    val dateTime: LocalDateTime
+    val dateTime: LocalDateTime,
+    val guidePhoneNumber: String
 )

@@ -11,5 +11,8 @@ interface LocalUserDataRepository {
     suspend fun setUserId(userId: Int)
     suspend fun deleteUserId()
 
+    fun getPhoneNumber(): Flow<String>
+    suspend fun setPhoneNumber(phoneNumber: String)
+
 
 }

@@ -67,6 +67,7 @@ query allAnswersToTrip($tripId: Int) @auth(level:PUBLIC) {
         user {
             id
             name
+            phoneNumber
         }
         text
         time

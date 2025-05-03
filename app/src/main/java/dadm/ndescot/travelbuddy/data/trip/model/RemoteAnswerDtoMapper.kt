@@ -11,6 +11,7 @@ fun AllAnswersToTripQuery.Data.TripAnswersItem.toDomain() : GuideAnswer {
         userName = user.name ?: "Anonymous",
         tripId = null,
         message = this.text,
-        dateTime = LocalDateTime.ofInstant(this.time.toInstant(), ZoneId.systemDefault())
+        dateTime = LocalDateTime.ofInstant(this.time.toInstant(), ZoneId.systemDefault()),
+        guidePhoneNumber = this.user.phoneNumber ?: ""
     )
 }

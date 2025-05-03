@@ -24,6 +24,7 @@ class WelcomeViewModel @Inject constructor(
             val userId = remoteUserDataRepository.addNewUser(userName, phoneNumber)
             localUserDataRepository.setUserName(userName)
             localUserDataRepository.setUserId(userId)
+            localUserDataRepository.setPhoneNumber(phoneNumber)
             _successfulRegistration.value = true
         }
     }

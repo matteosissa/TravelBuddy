@@ -1,5 +1,7 @@
 package dadm.ndescot.travelbuddy.ui.trip.tripanswers
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -28,9 +30,15 @@ class TripAnswersFragment : Fragment(R.layout.fragment_trip_answers) {
         // Fetch the answers through the viewmodel
         viewModel.loadTripAnswers(args.tripId)
 
-        val adapter = TripAnswersListAdapter {
-            // Setup for contact through whattsapp
+        val adapter = TripAnswersListAdapter { guideAnswer ->
+            val phoneNumber = guideAnswer.guidePhoneNumber
+            val cleanedNumber = phoneNumber.replace(Regex("[^\\d+]"), "")
+            val intent = Intent(Intent.ACTION_VIEW).apply {
+                data = Uri.parse("sms:$cleanedNumber")
+            }
+            startActivity(intent)
         }
+
         binding.rvGuideAnswers.adapter = adapter
         binding.rvGuideAnswers.layoutManager = LinearLayoutManager(requireContext())
 
