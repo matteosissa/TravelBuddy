@@ -1,49 +1,22 @@
 <resources>
     <string name="app_name" translatable="false">QuotationShake</string>
-    <string name="get_a_new_quotation">Get a new quotation</string>
-    <string name="favourite_quotations">Favourite quotations</string>
-    <string name="settings">Settings</string>
     <string name="about">About</string>
-    <string name="quotations">Quotations</string>
-    <string name="favourites">Favourites</string>
-    <string name="About_information">"QuotationShake by   Nicolas Descoteaux  nicolas.descoteaux.1@ens.etsmtl.ca  Developed for DADM 2025 "</string>
+    <string name="About_information">"TravelBuddy by\n\nMatteo Sissa\nNicolas Descoteaux\n\nDeveloped for DADM 2025"</string>
     <string name="Description_of_portrait">Portrait of creator</string>
     <string name="button_to_add_quote_to_favorites">Button to add quote to favorites</string>
-    <string name="greetings">Hello %1s!,\n\nRefresh to get a new quotation\n\n(swipe down or menu options)</string>
-    <string name="anonymous">Hello Anonymous!,\n\nRefresh to get a new quotation\n\n(swipe down or menu options)</string>
-    <string name="refresh">Refresh</string>
-    <string name="anonymous_author_error">Sorry, can not retrieve information about anonymous author.</string>
-    <string name="unable_to_handle_action">Sorry, an error has occurred while retrieving author information.</string>
-    <string name="error_network_connection">Cannot connect to the network. Please check your connection.</string>
-    <string name="error_timeout">Operation timed out. Please try again later.</string>
-    <string name="error_failed_retrieval">Failed to retrieve quotation. Please try again.</string>
-    <string name="error_unexpected">An unexpected error occurred: %1$s</string>
-    <string name="error_unknown_host">Error connecting to unknown host, please try again</string>
-    <string name="russian">Russian</string>
-    <string name="english">English</string>
-    <string name="username_hint">Your name</string>
-    <string name="username_title">User name</string>
-    <string name="language_title">Get quotations in…</string>
-    <string name="delete_all_quotations">Delete all quotations</string>
-    <string name="language_choice">Choose language</string>
     <string name="activities">Activities</string>
     <string name="budget">Budget</string>
-    <string name="duration">Duration</string>
     <string name="date">Departure date</string>
-    <string name="destination">Destination</string>
-    <string name="my_trips">My trips</string>
     <string name="Trips">Trips</string>
     <string name="description_fab_add_site_guide">Add a new site for the guide</string>
     <string name="description_from_the_traveller_title">Description from the traveller:</string>
-    <string name="lore_ipsum_test">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of</string>
+    <string name="lore_ipsum_test" translatable="false">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of</string>
     <string name="button_contact_traveller">Contact Them</string>
     <string name="add_new_trip">New trip</string>
-    <string name="create_new_trip">Create new trip !</string>
     <string name="city">City</string>
     <string name="country">Country</string>
     <string name="select_date">Select date</string>
     <string name="duration_days">Duration (days)</string>
-    <string name="budget_usd">Budget (USD)</string>
     <string name="description">Description</string>
     <string name="create_trip">Create trip</string>
     <string name="field_required">This field is required</string>
@@ -52,10 +25,17 @@
     <string name="welcome">Welcome!</string>
     <string name="guide_icon">Guide</string>
     <string name="hint_create_new_site_location">Location name</string>
-    <string name="insert_the_name_of_the_location">Insert the name of the location</string>
     <string name="add">Add</string>
     <string name="country_name">Country name</string>
     <string name="hint_guide_message">Write your message here</string>
     <string name="chat_with_them_button">Chat with them</string>
     <string name="enter_your_phone_number_welcome_screen">Enter your phone number</string>
+    <string name="filter_trips">Filter Trips</string>
+    <string name="toggle_filters">Toggle filters</string>
+    <string name="maximum_budget">Maximum Budget</string>
+    <string name="_10000" translatable="false">€10000</string>
+    <string name="apply_filters">Apply Filters</string>
+    <string name="matteo_sissa" translatable="false">Matteo Sissa</string>
+    <string name="_16_05_2025" translatable="false">16/05/2025</string>
+    <string name="_2_weeks">2 weeks</string>
 </resources>

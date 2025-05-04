@@ -33,19 +33,45 @@ class RequestGuideFragment : Fragment(R.layout.fragment_explore_requests_guide){
         // Note, calling this method will update the list of requests, so the coroutine will also trigger to update the UI
         viewModel.getTripsByLocation(args.site)
         val customAdapter = RequestListAdapter {
-            trip -> showAddAnswerDialog(trip.id)
+                trip -> showAddAnswerDialog(trip.id)
         }
         binding.rvExploreRequestsGuide.adapter = customAdapter
         binding.rvExploreRequestsGuide.layoutManager = LinearLayoutManager(requireContext())
 
+        setupFilterSection()
+
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.requests.collect {
-                    requests -> customAdapter.submitList(requests)
+                        requests -> customAdapter.submitList(requests)
                 }
             }
         }
 
+    }
+
+    private fun setupFilterSection() {
+        binding.filterContent.visibility = View.VISIBLE
+
+        binding.btnToggleFilters.setOnClickListener {
+            if (binding.filterContent.visibility == View.VISIBLE) {
+                binding.filterContent.visibility = View.GONE
+                binding.btnToggleFilters.setImageResource(android.R.drawable.arrow_down_float)
+            } else {
+                binding.filterContent.visibility = View.VISIBLE
+                binding.btnToggleFilters.setImageResource(android.R.drawable.arrow_up_float)
+            }
+        }
+
+        binding.sliderBudget.addOnChangeListener { slider, value, fromUser ->
+            val formattedValue = "€${value.toInt()}"
+            binding.tvBudgetValue.text = formattedValue
+        }
+
+        binding.btnApplyFilters.setOnClickListener {
+            val maxBudget = binding.sliderBudget.value.toInt()
+            viewModel.filterTripsByBudget(maxBudget)
+        }
     }
 
     private fun showAddAnswerDialog(tripId: Int) {
