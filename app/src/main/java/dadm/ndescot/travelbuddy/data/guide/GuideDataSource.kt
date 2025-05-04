@@ -11,7 +11,7 @@ interface GuideDataSource {
 
     suspend fun getTripsByLocation(siteName: String, countryName: String, userId: Int) : List<Trip>
 
-    suspend fun addGuideSite(siteName: String, countryName: String, userId: Int)
+    suspend fun addGuideSite(siteName: String, countryName: String, userId: Int) : Boolean
 
-    suspend fun addAnswerToTrip(userId: Int, tripId: Int, message: String, instant: Instant)
+    suspend fun addAnswerToTrip(userId: Int, tripId: Int, message: String, instant: Instant) : Boolean
 }

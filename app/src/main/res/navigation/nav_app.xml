@@ -23,7 +23,7 @@
         android:label="Create a new trip" />
     <fragment
         android:id="@+id/sitesGuideFragment"
-        android:name="dadm.ndescot.travelbuddy.ui.guide.home.SitesGuideFragment"
+        android:name="dadm.ndescot.travelbuddy.ui.guide.home.GuideSitesFragment"
         android:label="Selection location to guide" >
         <action
             android:id="@+id/action_sitesGuideFragment_to_requestGuideFragment"

@@ -1,5 +1,6 @@
 package dadm.ndescot.travelbuddy.data.userdata.remote
 
+import android.util.Log
 import connectors.default.DefaultConnector
 import connectors.default.execute
 import connectors.default.instance
@@ -9,20 +10,21 @@ class RemoteUserDataDataSourceImpl @Inject constructor() : RemoteUserDataDataSou
 
     private val connector = DefaultConnector.instance
 
-    override suspend fun addNewUser(userName: String, phoneNumber: String): Int {
-        return connector.addNewUser.execute {
+    override suspend fun addNewUser(userName: String, phoneNumber: String): Int? {
+        val response = connector.addNewUser.execute {
             username = userName
             this.phoneNumber = phoneNumber
-        }.data.key.id
+        }
+        return response.data.key.id
     }
 
     override suspend fun getUserId(userName: String, phoneNumber: String): Int? {
-        val userId = connector.getUserId.execute {
+        val response = connector.getUserId.execute {
             username = userName
             this.phoneNumber = phoneNumber
-        }.data.users.firstOrNull()?.count
-        println("The user id is $userId")
+        }
+        val userId = response.data.users.firstOrNull()?.count
+        Log.d("RemoteUserDataDataSource", "The user id is $userId")
         return userId
     }
-
 }

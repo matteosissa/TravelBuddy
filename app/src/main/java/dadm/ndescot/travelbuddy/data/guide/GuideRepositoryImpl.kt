@@ -17,17 +17,12 @@ class GuideRepositoryImpl @Inject constructor(private val dataSource: GuideDataS
         return dataSource.getTripsByLocation(siteName, countryName, userId)
     }
 
-    override suspend fun addGuideSite(siteName: String, countryName: String, userId: Int) {
-        dataSource.addGuideSite(siteName, countryName, userId)
+    override suspend fun addGuideSite(siteName: String, countryName: String, userId: Int) : Boolean {
+        return dataSource.addGuideSite(siteName, countryName, userId)
     }
 
-    override suspend fun addAnswerToTrip(
-        userId: Int,
-        tripId: Int,
-        message: String,
-        instant: Instant
-    ) {
-        dataSource.addAnswerToTrip(userId, tripId, message, instant)
+    override suspend fun addAnswerToTrip(userId: Int, tripId: Int, message: String, instant: Instant) : Boolean {
+        return dataSource.addAnswerToTrip(userId, tripId, message, instant)
     }
 
 }

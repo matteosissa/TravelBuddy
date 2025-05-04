@@ -6,7 +6,7 @@ import dadm.ndescot.travelbuddy.domain.model.Trip
 interface TripDataSource {
     suspend fun getTripsByUserId(id: Int): List<Trip>
 
-    suspend fun createTrip(trip: Trip, userId: Int)
+    suspend fun createTrip(trip: Trip, userId: Int) : Boolean
 
     suspend fun getTripAnswers(tripId: Int): List<GuideAnswer>
 }

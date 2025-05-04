@@ -9,8 +9,8 @@ class TripRepositoryImpl @Inject constructor(private val dataSource: TripDataSou
         return dataSource.getTripsByUserId(id)
     }
 
-    override suspend fun createTrip(trip: Trip, userId: Int) {
-        dataSource.createTrip(trip, userId)
+    override suspend fun createTrip(trip: Trip, userId: Int) : Boolean {
+        return dataSource.createTrip(trip, userId)
     }
 
     override suspend fun getTripAnswers(tripId: Int): List<GuideAnswer> {

@@ -1,9 +1,11 @@
 package dadm.ndescot.travelbuddy.ui.trip.tripanswers
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dadm.ndescot.travelbuddy.data.trip.TripRepository
 import dadm.ndescot.travelbuddy.domain.model.GuideAnswer
+import dadm.ndescot.travelbuddy.utils.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -18,10 +20,22 @@ class TripAnswersViewModel @Inject constructor(
     private val _tripAnswers = MutableStateFlow(emptyList<GuideAnswer>())
     val tripAnswers = _tripAnswers.asStateFlow()
 
+    private val _uiState = MutableStateFlow<UiState>(UiState.Idle)
+    val uiState = _uiState.asStateFlow()
+
     fun loadTripAnswers(tripId: Int) {
         viewModelScope.launch {
-            _tripAnswers.value = tripRepository.getTripAnswers(tripId)
+            try {
+                _tripAnswers.value = tripRepository.getTripAnswers(tripId)
+            } catch (e: Exception) {
+                Log.e("TripAnswersViewModel", "Error loading trip answers", e)
+                _uiState.value = UiState.Error("Error loading trip answers")
+            }
         }
+    }
+
+    fun resetState() {
+        _uiState.value = UiState.Idle
     }
 
 }

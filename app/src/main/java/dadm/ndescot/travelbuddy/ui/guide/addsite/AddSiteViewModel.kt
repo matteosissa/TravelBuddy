@@ -1,9 +1,11 @@
 package dadm.ndescot.travelbuddy.ui.guide.addsite
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dadm.ndescot.travelbuddy.data.guide.GuideRepository
 import dadm.ndescot.travelbuddy.data.userdata.local.LocalUserDataRepository
+import dadm.ndescot.travelbuddy.utils.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -14,23 +16,30 @@ import javax.inject.Inject
 @HiltViewModel
 class AddSiteViewModel @Inject constructor(
     private val guideRepository: GuideRepository,
-    private val userDataRepository: LocalUserDataRepository
+    private val localUserDataRepository: LocalUserDataRepository
 ) : ViewModel() {
 
-    private val _successfulRequest = MutableStateFlow(false)
-    val successfulRequest = _successfulRequest.asStateFlow()
+    private val _uiState = MutableStateFlow<UiState>(UiState.Idle)
+    val uiState = _uiState.asStateFlow()
 
     fun addSite(siteName: String, countryName: String) {
-
         viewModelScope.launch {
-            val userId = userDataRepository.getUserId()
-            println("Adding site for user ${userId.first()}")
-            guideRepository.addGuideSite(siteName, countryName, userId.first()!!)
-            _successfulRequest.value = true
-
+            try {
+                val userId = localUserDataRepository.getUserId().first()
+                val success = guideRepository.addGuideSite(siteName, countryName, userId!!)
+                if (success) {
+                    _uiState.value = UiState.Success("Site successfully added")
+                } else {
+                    _uiState.value = UiState.Error("Network error while trying to add the site")
+                }
+            } catch (e: Exception) {
+                Log.e("AddSiteViewModel", "Error adding site: ${e.message}", e)
+                _uiState.value = UiState.Error("Error while trying to add the site")
+            }
         }
-
     }
 
-
+    fun resetState() {
+        _uiState.value = UiState.Idle
+    }
 }

@@ -3,14 +3,18 @@ package dadm.ndescot.travelbuddy.ui.trip
 import android.app.DatePickerDialog
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.chip.Chip
 import dadm.ndescot.travelbuddy.R
 import dadm.ndescot.travelbuddy.databinding.FragmentCreateTripBinding
 import dadm.ndescot.travelbuddy.domain.model.Activity
+import dadm.ndescot.travelbuddy.utils.UiState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
@@ -37,13 +41,26 @@ class CreateTripFragment : Fragment(R.layout.fragment_create_trip) {
         setupSaveButton()
 
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.successfulRequest.collect {
-                if (it) {
-                    // Previous fragment has to refresh the data
-                    val refresh = Bundle().apply { putBoolean("refresh", true) }
-                    parentFragmentManager.setFragmentResult("refresh", refresh)
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.uiState.collect { state ->
+                    when(state) {
+                        is UiState.Success -> {
+                            Toast.makeText(requireContext(), state.data, Toast.LENGTH_SHORT).show()
+                            // Previous fragment has to refresh the data
+                            val refresh = Bundle().apply { putBoolean("refresh", true) }
+                            parentFragmentManager.setFragmentResult("refresh", refresh)
 
-                    findNavController().popBackStack()
+                            findNavController().popBackStack()
+                            viewModel.resetState()
+                        }
+                        is UiState.Error -> {
+                            Toast.makeText(requireContext(), state.message, Toast.LENGTH_SHORT).show()
+                            viewModel.resetState()
+                        }
+                        is UiState.Idle -> {
+                            // Do nothing
+                        }
+                    }
                 }
             }
         }

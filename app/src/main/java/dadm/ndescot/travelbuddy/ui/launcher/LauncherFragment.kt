@@ -1,7 +1,9 @@
 package dadm.ndescot.travelbuddy.ui.launcher
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -23,9 +25,19 @@ class LauncherFragment : Fragment(R.layout.fragment_launcher) {
             viewModel.isFirstAccess.collect { isFirstAccess ->
                 val navController = findNavController()
                 if (isFirstAccess) {
-                    navController.navigate(R.id.action_launcherFragment_to_welcomeFragment)
+                    try {
+                        navController.navigate(R.id.action_launcherFragment_to_welcomeFragment)
+                    } catch (e: Exception) {
+                        Log.e("LauncherFragment", "Error navigating to WelcomeFragment", e)
+                        Toast.makeText(requireContext(), "There was an error while trying to enter the application", Toast.LENGTH_SHORT).show()
+                    }
                 } else {
-                    findNavController().navigate(R.id.action_launcherFragment_to_mainLayoutFragment)
+                    try {
+                        findNavController().navigate(R.id.action_launcherFragment_to_mainLayoutFragment)
+                    } catch (e: Exception) {
+                        Log.e("LauncherFragment", "Error navigating to MainLayoutFragment", e)
+                        Toast.makeText(requireContext(), "There was an error while trying to enter the application", Toast.LENGTH_SHORT).show()
+                    }
                 }
 
                 cancel()
