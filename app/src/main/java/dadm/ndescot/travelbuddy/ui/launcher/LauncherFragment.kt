@@ -8,6 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import dadm.ndescot.travelbuddy.R
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -26,6 +27,8 @@ class LauncherFragment : Fragment(R.layout.fragment_launcher) {
                 } else {
                     findNavController().navigate(R.id.action_launcherFragment_to_mainLayoutFragment)
                 }
+
+                cancel()
             }
         }
     }
