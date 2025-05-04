@@ -10,7 +10,6 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import dadm.ndescot.travelbuddy.R
-import dadm.ndescot.travelbuddy.domain.model.guide.Site
 import dadm.ndescot.travelbuddy.databinding.FragmentSitesGuideBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
