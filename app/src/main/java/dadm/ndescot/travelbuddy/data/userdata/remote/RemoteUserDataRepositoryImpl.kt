@@ -10,4 +10,8 @@ class RemoteUserDataRepositoryImpl @Inject constructor(
         return remoteUserDataDataSource.addNewUser(userName, phoneNumber)
     }
 
+    override suspend fun getUserId(userName: String, phoneNumber: String): Int? {
+        return remoteUserDataDataSource.getUserId(userName, phoneNumber)
+    }
+
 }

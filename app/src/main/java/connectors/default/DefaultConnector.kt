@@ -34,7 +34,7 @@ public interface DefaultConnector : com.google.firebase.dataconnect.generated.Ge
   
     public val allTripsByUser: AllTripsByUserQuery
   
-    public val searchGuideSite: SearchGuideSiteQuery
+    public val getUserId: GetUserIdQuery
   
 
   public companion object {
@@ -107,8 +107,8 @@ private class DefaultConnectorImpl(
       AllTripsByUserQueryImpl(this)
     }
   
-    override val searchGuideSite by lazy(LazyThreadSafetyMode.PUBLICATION) {
-      SearchGuideSiteQueryImpl(this)
+    override val getUserId by lazy(LazyThreadSafetyMode.PUBLICATION) {
+      GetUserIdQueryImpl(this)
     }
   
 
@@ -133,7 +133,7 @@ private class DefaultConnectorImpl(
         allSitesAsGuide,
         allTripsByLocation,
         allTripsByUser,
-        searchGuideSite,
+        getUserId,
         
     )
 
@@ -389,18 +389,18 @@ private class AllTripsByUserQueryImpl(
   )
 
 
-private class SearchGuideSiteQueryImpl(
+private class GetUserIdQueryImpl(
   connector: DefaultConnector
 ):
-  SearchGuideSiteQuery,
+  GetUserIdQuery,
   DefaultConnectorGeneratedQueryImpl<
-      SearchGuideSiteQuery.Data,
-      SearchGuideSiteQuery.Variables
+      GetUserIdQuery.Data,
+      GetUserIdQuery.Variables
   >(
     connector,
-    SearchGuideSiteQuery.Companion.operationName,
-    SearchGuideSiteQuery.Companion.dataDeserializer,
-    SearchGuideSiteQuery.Companion.variablesSerializer,
+    GetUserIdQuery.Companion.operationName,
+    GetUserIdQuery.Companion.dataDeserializer,
+    GetUserIdQuery.Companion.variablesSerializer,
   )
 
 

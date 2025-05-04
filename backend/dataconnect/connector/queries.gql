@@ -1,4 +1,17 @@
 
+# Fetch a userId if it exists in the database
+query getUserId($username: String, $phoneNumber: String) @auth(level:PUBLIC) {
+    users(where: {
+        _and: [
+            {name: {eq: $username}},
+            {phoneNumber: {eq: $phoneNumber}}
+        ]
+    }) {
+        id
+    }
+}
+
+
 # Retrieve all the sites where the user wants to offer its services as a guide
 query allSitesAsGuide($userId: Int) @auth(level:PUBLIC) {
     users(where: {

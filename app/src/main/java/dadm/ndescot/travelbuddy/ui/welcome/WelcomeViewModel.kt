@@ -20,9 +20,14 @@ class WelcomeViewModel @Inject constructor(
     private val _successfulRegistration = MutableStateFlow(false)
     val successfulRegistration = _successfulRegistration.asStateFlow()
 
-    fun addNewUser(userName: String, phoneNumber: String) {
+    fun logInUser(userName: String, phoneNumber: String) {
         viewModelScope.launch {
-            val userId = remoteUserDataRepository.addNewUser(userName, phoneNumber)
+            var userId : Int? = remoteUserDataRepository.getUserId(userName, phoneNumber)
+
+            if(userId == null) {    // Create new user
+                userId = remoteUserDataRepository.addNewUser(userName, phoneNumber)
+            }
+
             localUserDataRepository.setUserName(userName)
             localUserDataRepository.setUserId(userId)
             localUserDataRepository.setPhoneNumber(phoneNumber)

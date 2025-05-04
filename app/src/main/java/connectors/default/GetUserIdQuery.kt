@@ -19,20 +19,20 @@ import kotlinx.coroutines.flow.filterNotNull as _flow_filterNotNull
 import kotlinx.coroutines.flow.map as _flow_map
 
 
-public interface SearchGuideSiteQuery :
+public interface GetUserIdQuery :
     com.google.firebase.dataconnect.generated.GeneratedQuery<
       DefaultConnector,
-      SearchGuideSiteQuery.Data,
-      SearchGuideSiteQuery.Variables
+      GetUserIdQuery.Data,
+      GetUserIdQuery.Variables
     >
 {
   
     @kotlinx.serialization.Serializable
   public data class Variables(
   
-    val siteName:
+    val username:
     com.google.firebase.dataconnect.OptionalVariable<String?>,
-    val countryName:
+    val phoneNumber:
     com.google.firebase.dataconnect.OptionalVariable<String?>
   ) {
     
@@ -42,8 +42,8 @@ public interface SearchGuideSiteQuery :
 
       @BuilderDsl
       public interface Builder {
-        public var siteName: String?
-        public var countryName: String?
+        public var username: String?
+        public var phoneNumber: String?
         
       }
 
@@ -53,26 +53,26 @@ public interface SearchGuideSiteQuery :
           
           block_: Builder.() -> Unit
         ): Variables {
-          var siteName: com.google.firebase.dataconnect.OptionalVariable<String?> =
+          var username: com.google.firebase.dataconnect.OptionalVariable<String?> =
                 com.google.firebase.dataconnect.OptionalVariable.Undefined
-            var countryName: com.google.firebase.dataconnect.OptionalVariable<String?> =
+            var phoneNumber: com.google.firebase.dataconnect.OptionalVariable<String?> =
                 com.google.firebase.dataconnect.OptionalVariable.Undefined
             
 
           return object : Builder {
-            override var siteName: String?
+            override var username: String?
               get() = throw UnsupportedOperationException("getting builder values is not supported")
-              set(value_) { siteName = com.google.firebase.dataconnect.OptionalVariable.Value(value_) }
+              set(value_) { username = com.google.firebase.dataconnect.OptionalVariable.Value(value_) }
               
-            override var countryName: String?
+            override var phoneNumber: String?
               get() = throw UnsupportedOperationException("getting builder values is not supported")
-              set(value_) { countryName = com.google.firebase.dataconnect.OptionalVariable.Value(value_) }
+              set(value_) { phoneNumber = com.google.firebase.dataconnect.OptionalVariable.Value(value_) }
               
             
           }.apply(block_)
           .let {
             Variables(
-              siteName=siteName,countryName=countryName,
+              username=username,phoneNumber=phoneNumber,
             )
           }
         }
@@ -85,18 +85,16 @@ public interface SearchGuideSiteQuery :
     @kotlinx.serialization.Serializable
   public data class Data(
   
-    val siteGuide:
-    SiteGuide?
+    val users:
+    List<UsersItem>
   ) {
     
       
         @kotlinx.serialization.Serializable
-  public data class SiteGuide(
-  
-    val siteName:
-    String,
-    val countryName:
-    String
+  public data class UsersItem(
+  @kotlinx.serialization.SerialName("id")
+    val count:
+    Int
   ) {
     
     
@@ -108,7 +106,7 @@ public interface SearchGuideSiteQuery :
   
 
   public companion object {
-    public val operationName: String = "searchGuideSite"
+    public val operationName: String = "getUserId"
 
     public val dataDeserializer: kotlinx.serialization.DeserializationStrategy<Data> =
       kotlinx.serialization.serializer()
@@ -118,19 +116,19 @@ public interface SearchGuideSiteQuery :
   }
 }
 
-public fun SearchGuideSiteQuery.ref(
+public fun GetUserIdQuery.ref(
   
     
   
-    block_: SearchGuideSiteQuery.Variables.Builder.() -> Unit
+    block_: GetUserIdQuery.Variables.Builder.() -> Unit
   
 ): com.google.firebase.dataconnect.QueryRef<
-    SearchGuideSiteQuery.Data,
-    SearchGuideSiteQuery.Variables
+    GetUserIdQuery.Data,
+    GetUserIdQuery.Variables
   > =
   ref(
     
-      SearchGuideSiteQuery.Variables.build(
+      GetUserIdQuery.Variables.build(
         
   
     block_
@@ -138,15 +136,15 @@ public fun SearchGuideSiteQuery.ref(
     
   )
 
-public suspend fun SearchGuideSiteQuery.execute(
+public suspend fun GetUserIdQuery.execute(
   
     
   
-    block_: SearchGuideSiteQuery.Variables.Builder.() -> Unit
+    block_: GetUserIdQuery.Variables.Builder.() -> Unit
   
   ): com.google.firebase.dataconnect.QueryResult<
-    SearchGuideSiteQuery.Data,
-    SearchGuideSiteQuery.Variables
+    GetUserIdQuery.Data,
+    GetUserIdQuery.Variables
   > =
   ref(
     
@@ -157,13 +155,13 @@ public suspend fun SearchGuideSiteQuery.execute(
   ).execute()
 
 
-  public fun SearchGuideSiteQuery.flow(
+  public fun GetUserIdQuery.flow(
     
       
   
-    block_: SearchGuideSiteQuery.Variables.Builder.() -> Unit
+    block_: GetUserIdQuery.Variables.Builder.() -> Unit
     
-    ): kotlinx.coroutines.flow.Flow<SearchGuideSiteQuery.Data> =
+    ): kotlinx.coroutines.flow.Flow<GetUserIdQuery.Data> =
     ref(
         
           

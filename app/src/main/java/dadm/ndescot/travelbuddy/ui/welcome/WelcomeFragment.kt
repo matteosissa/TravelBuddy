@@ -28,7 +28,7 @@ class WelcomeFragment : Fragment(R.layout.fragment_welcome) {
             val phoneNumber = binding.etPhoneNumber.text.toString().trim()
             if(userName.isNotEmpty() && phoneNumber.isNotEmpty()) {
                 // Add new user to the DB and locally
-                viewModel.addNewUser(userName, phoneNumber)
+                viewModel.logInUser(userName, phoneNumber)
 
             } else {
                 Toast.makeText(requireContext(), "Please enter a valid username", Toast.LENGTH_SHORT).show()

@@ -16,4 +16,13 @@ class RemoteUserDataDataSourceImpl @Inject constructor() : RemoteUserDataDataSou
         }.data.key.id
     }
 
+    override suspend fun getUserId(userName: String, phoneNumber: String): Int? {
+        val userId = connector.getUserId.execute {
+            username = userName
+            this.phoneNumber = phoneNumber
+        }.data.users.firstOrNull()?.count
+        println("The user id is $userId")
+        return userId
+    }
+
 }
