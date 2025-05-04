@@ -5,7 +5,8 @@ import connectors.default.execute
 import connectors.default.instance
 import dadm.ndescot.travelbuddy.data.guide.domain.toDomain
 import dadm.ndescot.travelbuddy.domain.model.Trip
-import dadm.ndescot.travelbuddy.domain.model.guide.Site
+import dadm.ndescot.travelbuddy.domain.model.Site
+import java.time.Instant
 import java.time.LocalDateTime
 import java.time.ZoneOffset
 import javax.inject.Inject
@@ -37,12 +38,12 @@ class GuideDataSourceImpl @Inject constructor() : GuideDataSource {
 
     }
 
-    override suspend fun addAnswerToTrip(userId: Int, tripId: Int, message: String, dateTime: LocalDateTime) {
+    override suspend fun addAnswerToTrip(userId: Int, tripId: Int, message: String, instant: Instant) {
         connector.addNewGuideReply.execute{
             this.userId = userId
             this.tripId = tripId
             this.text = message
-            this.time = Timestamp(dateTime.toInstant(ZoneOffset.UTC))
+            this.time = Timestamp(instant)
         }
     }
 

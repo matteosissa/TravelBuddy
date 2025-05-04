@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:startDestination="@id/launcherFragment">
+    app:startDestination="@id/launcherFragment"
+    android:id="@+id/entry_nav_graph">
 
     <fragment
         android:id="@+id/launcherFragment"
@@ -24,6 +25,6 @@
     </fragment>
     <fragment
         android:id="@+id/mainLayoutFragment"
-        android:name="dadm.ndescot.travelbuddy.ui.MainLayoutFragment"
+        android:name="dadm.ndescot.travelbuddy.ui.mainlayout.MainLayoutFragment"
         android:label="MainLayoutFragment" />
 </navigation>

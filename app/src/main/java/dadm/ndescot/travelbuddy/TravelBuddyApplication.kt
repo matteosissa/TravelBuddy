@@ -15,10 +15,5 @@ class TravelBuddyApplication: Application() {
 
     override fun onCreate() {
         super.onCreate()
-
-        // Delete user id on every app startup
-        CoroutineScope(Dispatchers.IO).launch {
-            localUserDataRepository.deleteUserId()
-        }
     }
 }

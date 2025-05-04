@@ -1,7 +1,8 @@
 package dadm.ndescot.travelbuddy.data.guide
 
 import dadm.ndescot.travelbuddy.domain.model.Trip
-import dadm.ndescot.travelbuddy.domain.model.guide.Site
+import dadm.ndescot.travelbuddy.domain.model.Site
+import java.time.Instant
 import java.time.LocalDateTime
 import javax.inject.Inject
 
@@ -24,9 +25,9 @@ class GuideRepositoryImpl @Inject constructor(private val dataSource: GuideDataS
         userId: Int,
         tripId: Int,
         message: String,
-        dateTime: LocalDateTime
+        instant: Instant
     ) {
-        dataSource.addAnswerToTrip(userId, tripId, message, dateTime)
+        dataSource.addAnswerToTrip(userId, tripId, message, instant)
     }
 
 }

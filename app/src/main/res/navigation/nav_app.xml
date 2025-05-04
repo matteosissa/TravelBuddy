@@ -38,7 +38,7 @@
         android:label="Trip requests" >
         <argument
             android:name="site"
-            app:argType="dadm.ndescot.travelbuddy.domain.model.guide.Site" />
+            app:argType="dadm.ndescot.travelbuddy.domain.model.Site" />
     </fragment>
     <fragment
         android:id="@+id/addSiteFragment"

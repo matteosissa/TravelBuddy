@@ -38,4 +38,5 @@
     <string name="matteo_sissa" translatable="false">Matteo Sissa</string>
     <string name="_16_05_2025" translatable="false">16/05/2025</string>
     <string name="_2_weeks">2 weeks</string>
+    <string name="log_out_menu">Log out</string>
 </resources>

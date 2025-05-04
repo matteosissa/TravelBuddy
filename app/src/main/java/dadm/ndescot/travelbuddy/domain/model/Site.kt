@@ -1,4 +1,4 @@
-package dadm.ndescot.travelbuddy.domain.model.guide
+package dadm.ndescot.travelbuddy.domain.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

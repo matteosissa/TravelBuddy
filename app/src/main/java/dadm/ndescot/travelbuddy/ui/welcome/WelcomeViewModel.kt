@@ -31,6 +31,9 @@ class WelcomeViewModel @Inject constructor(
             localUserDataRepository.setUserName(userName)
             localUserDataRepository.setUserId(userId)
             localUserDataRepository.setPhoneNumber(phoneNumber)
+            localUserDataRepository.getUserId().first()
+            localUserDataRepository.getUserName().first()
+            localUserDataRepository.getPhoneNumber().first()
             println("Registered the information of the user locally with phone number : $phoneNumber")
             println("Trying to fetch the user phone number from the datastore: ${localUserDataRepository.getPhoneNumber().first()}")
             _successfulRegistration.value = true

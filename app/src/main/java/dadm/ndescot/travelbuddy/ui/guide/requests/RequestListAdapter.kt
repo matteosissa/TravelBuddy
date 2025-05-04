@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import dadm.ndescot.travelbuddy.databinding.TripRequestItemBinding
 import dadm.ndescot.travelbuddy.domain.model.Trip
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class RequestListAdapter(
     private val onClick: (Trip) -> Unit
@@ -17,7 +19,8 @@ class RequestListAdapter(
 
         fun bind(request: Trip) {
             requestItemBinding.tvTravellerName.text = request.username
-            requestItemBinding.tvStartDate.text = "${request.date.day}/${request.date.month}/${request.date.year}"
+            val dateFormat = SimpleDateFormat("MMMM d, yyyy", Locale.getDefault())
+            requestItemBinding.tvStartDate.text = dateFormat.format(request.date)
             requestItemBinding.tvDuration.text = "${request.durationDays} days"
             requestItemBinding.tvTravellerDescription.text = request.description
 

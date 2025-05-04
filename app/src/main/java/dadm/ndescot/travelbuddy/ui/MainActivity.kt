@@ -29,9 +29,6 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    @Inject
-    lateinit var localUserDataRepository: LocalUserDataRepository
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -46,16 +43,6 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-    }
-
-
-    override fun onDestroy() {
-        super.onDestroy()
-
-        // Delete user id
-        lifecycleScope.launch {
-            localUserDataRepository.deleteUserId()
-        }
     }
 
 }

@@ -1,4 +1,4 @@
-package dadm.ndescot.travelbuddy.ui
+package dadm.ndescot.travelbuddy.ui.mainlayout
 
 import android.content.res.Configuration.ORIENTATION_LANDSCAPE
 import android.os.Bundle
@@ -6,17 +6,19 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
-import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuProvider
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
+import androidx.navigation.NavOptions
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
@@ -25,13 +27,19 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigationrail.NavigationRailView
 import dadm.ndescot.travelbuddy.R
 import dadm.ndescot.travelbuddy.databinding.FragmentMainLayoutBinding
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MainLayoutFragment : Fragment(R.layout.fragment_main_layout), MenuProvider {
+@AndroidEntryPoint
+class MainLayoutFragment @Inject constructor() : Fragment(R.layout.fragment_main_layout),
+    MenuProvider {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var navController: NavController
     private var _binding: FragmentMainLayoutBinding? = null
     private val binding get() = _binding!!
+    private val viewModel: MainLayoutViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -40,7 +48,7 @@ class MainLayoutFragment : Fragment(R.layout.fragment_main_layout), MenuProvider
         val toolbar = binding.toolbar
         (requireActivity() as AppCompatActivity).setSupportActionBar(toolbar)
 
-        if(savedInstanceState == null) {
+        if (savedInstanceState == null) {
             navController = binding.navHostFragment.getFragment<NavHostFragment>().navController
 
             appBarConfiguration = AppBarConfiguration(
@@ -62,11 +70,28 @@ class MainLayoutFragment : Fragment(R.layout.fragment_main_layout), MenuProvider
 
         requireActivity().addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
+        lifecycleScope.launch {
+            viewModel.successfulLogout.collect { successfulLogout ->
+
+                if (successfulLogout) {
+                    val activityNavController = requireActivity()
+                        .findNavController(R.id.mainHostContainer)
+
+                    val navOptions = NavOptions.Builder()
+                        .setPopUpTo(R.id.entry_nav_graph, true) // clear the entire entry graph
+                        .build()
+
+                    activityNavController.navigate(R.id.welcomeFragment, null, navOptions)
+                }
+            }
+        }
+
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.bottomNavigationView) { view, insets ->
             val bars = insets.getInsets(
                 WindowInsetsCompat.Type.displayCutout() or
-                    WindowInsetsCompat.Type.systemBars())
+                        WindowInsetsCompat.Type.systemBars()
+            )
             view.updatePadding(
                 left = bars.left,
                 top = 0,
@@ -79,7 +104,8 @@ class MainLayoutFragment : Fragment(R.layout.fragment_main_layout), MenuProvider
         ViewCompat.setOnApplyWindowInsetsListener(binding.navHostFragment) { view, insets ->
             val bars = insets.getInsets(
                 WindowInsetsCompat.Type.displayCutout() or
-                    WindowInsetsCompat.Type.systemBars())
+                        WindowInsetsCompat.Type.systemBars()
+            )
             view.updatePadding(
                 left = 0,
                 top = 0,
@@ -92,7 +118,8 @@ class MainLayoutFragment : Fragment(R.layout.fragment_main_layout), MenuProvider
         ViewCompat.setOnApplyWindowInsetsListener(binding.appBarLayout) { view, insets ->
             val bars = insets.getInsets(
                 WindowInsetsCompat.Type.displayCutout() or
-                    WindowInsetsCompat.Type.systemBars())
+                        WindowInsetsCompat.Type.systemBars()
+            )
             view.updatePadding(
                 left = bars.left,
                 top = 0,
@@ -114,10 +141,14 @@ class MainLayoutFragment : Fragment(R.layout.fragment_main_layout), MenuProvider
                 navController.navigate(R.id.aboutDialogFragment)
                 true
             }
+
+            R.id.menu_logout -> {
+                viewModel.logout()
+                true
+            }
+
             else -> false
         }
     }
-
-
 
 }

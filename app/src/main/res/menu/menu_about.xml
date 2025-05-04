@@ -6,4 +6,8 @@
         android:id="@+id/menu_about"
         app:showAsAction="never"
         android:icon="@drawable/about"/>
+
+    <item android:title="@string/log_out_menu"
+        android:id="@+id/menu_logout"
+        app:showAsAction="never"/>
 </menu>
