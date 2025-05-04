@@ -48,24 +48,24 @@ class MainLayoutFragment @Inject constructor() : Fragment(R.layout.fragment_main
         val toolbar = binding.toolbar
         (requireActivity() as AppCompatActivity).setSupportActionBar(toolbar)
 
-        if (savedInstanceState == null) {
-            navController = binding.navHostFragment.getFragment<NavHostFragment>().navController
+        navController = binding.navHostFragment.getFragment<NavHostFragment>().navController
 
-            appBarConfiguration = AppBarConfiguration(
-                setOf(R.id.tripFragment, R.id.sitesGuideFragment)
-            )
+        appBarConfiguration = AppBarConfiguration(
+            setOf(R.id.tripFragment, R.id.sitesGuideFragment)
+        )
 
-            setupActionBarWithNavController(
-                requireActivity() as AppCompatActivity,
-                navController,
-                appBarConfiguration
-            )
-            when (val navView = binding.bottomNavigationView) {
-                is BottomNavigationView -> navView.setupWithNavController(navController)
-                is NavigationRailView -> navView.setupWithNavController(navController)
-            }
+        setupActionBarWithNavController(
+            requireActivity() as AppCompatActivity,
+            navController,
+            appBarConfiguration
+        )
 
-            NavigationUI.setupWithNavController(toolbar, navController, appBarConfiguration)
+        NavigationUI.setupWithNavController(toolbar, navController, appBarConfiguration)
+
+
+        when (val navView = binding.bottomNavigationView) {
+            is BottomNavigationView -> navView.setupWithNavController(navController)
+            is NavigationRailView -> navView.setupWithNavController(navController)
         }
 
         requireActivity().addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
