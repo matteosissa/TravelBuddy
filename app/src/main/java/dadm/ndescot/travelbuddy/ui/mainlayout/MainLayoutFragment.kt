@@ -7,6 +7,7 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuProvider
 import androidx.core.view.ViewCompat
@@ -167,11 +168,21 @@ class MainLayoutFragment @Inject constructor() : Fragment(R.layout.fragment_main
             }
 
             R.id.menu_logout -> {
-                viewModel.logout()
+                launchDialogToConfirmLogout()
                 true
             }
 
             else -> false
         }
+    }
+
+    private fun launchDialogToConfirmLogout() {
+        AlertDialog.Builder(requireContext())
+            .setTitle(getString(R.string.are_you_sure_you_want_to_logout_dialog_title))
+            .setPositiveButton(getString(R.string.confirm)) { _, _ ->
+                viewModel.logout()
+            }
+            .setNegativeButton(getString(R.string.cancel_button), null)
+            .show()
     }
 }

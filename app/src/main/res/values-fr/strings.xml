@@ -61,5 +61,12 @@
     <string name="please_enter_a_valid_username_and_phone_number_error_welcome">Veuillez entrer un nom d’utilisateur et un numéro de téléphone valides</string>
     <string name="no_internet_connection_dialog">Pas de connexion Internet</string>
     <string name="please_check_your_internet_connection_and_try_again_dialog">Veuillez vérifier votre connexion Internet et réessayer.</string>
+    <string name="trip_successfully_deleted_Toas">Voyage supprimé avec succès</string>
+    <string name="error_deleting_the_trip_toast">Erreur lors de la suppression du voyage</string>
+    <string name="your_site_has_been_deleted_successfully_toast">Votre site a été supprimé avec succès</string>
+    <string name="there_was_a_problem_deleting_the_site_toast">Un problème est survenu lors de la suppression du site</string>
+    <string name="are_you_sure_you_want_to_logout_dialog_title">Êtes-vous sûr de vouloir vous déconnecter ?</string>
+
+
 
 </resources>

@@ -68,4 +68,5 @@
     <string name="error_deleting_the_trip_toast">Error deleting the trip</string>
     <string name="your_site_has_been_deleted_successfully_toast">Your site has been deleted successfully</string>
     <string name="there_was_a_problem_deleting_the_site_toast">There was a problem deleting the site</string>
+    <string name="are_you_sure_you_want_to_logout_dialog_title">Are you sure you want to logout?</string>
 </resources>
