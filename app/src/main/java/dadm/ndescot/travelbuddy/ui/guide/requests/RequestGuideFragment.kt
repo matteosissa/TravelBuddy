@@ -39,7 +39,7 @@ class RequestGuideFragment : Fragment(R.layout.fragment_explore_requests_guide) 
         val slider = view.findViewById<Slider>(R.id.sliderBudget)
         slider.valueFrom = 0f
         slider.valueTo = 10000f
-        slider.value = 5000f  // Set to a safe initial value
+        slider.value = 5000f
         slider.stepSize = 100f
 
         slider.addOnChangeListener { _, value, _ ->

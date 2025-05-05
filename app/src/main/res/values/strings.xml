@@ -31,7 +31,7 @@
     <string name="filter_trips">Filter Trips</string>
     <string name="toggle_filters">Toggle filters</string>
     <string name="maximum_budget">Maximum Budget</string>
-    <string name="_10000" translatable="false">€10000</string>
+    <string name="_5000" translatable="false">€5000</string>
     <string name="apply_filters">Apply Filters</string>
     <string name="matteo_sissa" translatable="false">Matteo Sissa</string>
     <string name="_16_05_2025" translatable="false">16/05/2025</string>
