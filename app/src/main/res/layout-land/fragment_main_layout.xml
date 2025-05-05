@@ -27,7 +27,9 @@
                 android:layout_height="match_parent"
                 android:background="?attr/colorPrimary"
                 app:layout_scrollFlags="scroll|enterAlways|snap"
-                app:titleTextColor="?attr/colorOnPrimary" />
+                app:titleTextColor="?attr/colorOnPrimary"
+                app:navigationIconTint="@color/white"
+                app:iconTint="@color/white"/>
         </com.google.android.material.appbar.AppBarLayout>
 
         <com.google.android.material.navigationrail.NavigationRailView

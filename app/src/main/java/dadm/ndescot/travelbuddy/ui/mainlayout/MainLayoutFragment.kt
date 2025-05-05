@@ -67,8 +67,10 @@ class MainLayoutFragment @Inject constructor() : Fragment(R.layout.fragment_main
             appBarConfiguration
         )
 
-        NavigationUI.setupWithNavController(toolbar, navController, appBarConfiguration)
-
+        navController.addOnDestinationChangedListener { _, _, _ ->
+            toolbar.setNavigationIconTint(resources.getColor(R.color.white, null))
+            toolbar.overflowIcon?.setTint(resources.getColor(R.color.white, null))
+        }
 
         when (val navView = binding.bottomNavigationView) {
             is BottomNavigationView -> navView.setupWithNavController(navController)

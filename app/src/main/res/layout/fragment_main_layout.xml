@@ -27,6 +27,8 @@
                 android:layout_height="match_parent"
                 app:layout_scrollFlags="scroll|enterAlways|snap"
                 app:titleTextColor="?attr/colorOnPrimary"
+                app:navigationIconTint="@color/white"
+                app:iconTint="@color/white"
                 android:background="?attr/colorPrimary"/>
         </com.google.android.material.appbar.AppBarLayout>
 
