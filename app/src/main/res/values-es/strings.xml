@@ -2,8 +2,6 @@
 <resources>
     <string name="about">Acerca de</string>
     <string name="About_information">TravelBuddy por\n\nMatteo Sissa\nNicolas Descoteaux\n\nDesarollada por DADM 2025</string>
-    <string name="Description_of_portrait">Retrato del creador</string>
-    <string name="button_to_add_quote_to_favorites">Botón para añadir cita a favoritos</string>
     <string name="activities">Actividades</string>
     <string name="budget">Presupuesto</string>
     <string name="date">Fecha de salida</string>
