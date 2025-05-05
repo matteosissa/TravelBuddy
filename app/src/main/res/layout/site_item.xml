@@ -5,6 +5,7 @@ A card representing a site/location that the user adds in the guides section
 -->
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
@@ -25,8 +26,8 @@ A card representing a site/location that the user adds in the guides section
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
 
-            android:text=""
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+            tools:text="Paris"/>
 
 
         <TextView
@@ -38,7 +39,8 @@ A card representing a site/location that the user adds in the guides section
             app:layout_constraintTop_toBottomOf="@+id/tvSiteName"
             app:layout_constraintStart_toStartOf="parent"
 
-            android:text="" />
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            tools:text="France"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
