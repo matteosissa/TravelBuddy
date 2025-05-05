@@ -61,7 +61,7 @@ class RequestGuideViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 _requests.value = _trips.value.filter { trip -> trip.budget <= maxBudget }
-                _uiState.value = UiState.Success(R.string.trips_filtered_by_budget_toast)
+                // _uiState.value = UiState.Success(R.string.trips_filtered_by_budget_toast)
             } catch (e: Exception) {
                 Log.e("RequestGuideViewModel", "Error filtering trips by budget", e)
                 _uiState.value = UiState.Error(R.string.error_filtering_trips_by_budget_toast)
