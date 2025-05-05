@@ -82,7 +82,12 @@ class TripViewModel @Inject constructor(
             }
         }
     }
-    
+
+    /**
+     * Deletes a trip.
+     *
+     * @param trip The ID of the trip.
+     */
     fun deleteTrip(trip: Trip) {
         viewModelScope.launch {
             try {

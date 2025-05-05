@@ -40,7 +40,6 @@
     <string name="please_fill_in_all_fields_error_add_site">Please fill in all fields</string>
     <string name="site_successfully_added_guide">Site successfully added</string>
     <string name="error_adding_the_site_guide">Error adding the site</string>
-    <string name="guide_sites_successfully_retrieved_toast">Guide sites successfully retrieved</string>
     <string name="error_while_trying_to_get_guide_sites_toast">Error while trying to get guide sites</string>
     <string name="error_getting_trips_by_location_toast">Error getting trips by location</string>
     <string name="trips_filtered_by_budget_toast">Trips filtered by budget</string>
@@ -67,7 +66,6 @@
     <string name="error_deleting_the_trip_toast">Error deleting the trip</string>
     <string name="your_site_has_been_deleted_successfully_toast">Your site has been deleted successfully</string>
     <string name="there_was_a_problem_deleting_the_site_toast">There was a problem deleting the site</string>
-    <string name="are_you_sure_you_want_to_logout_dialog_title">Are you sure you want to logout?</string>
     <string name="your_trips">Your trips</string>
     <string name="create_new_trip">Create a new trip</string>
     <string name="trip_requests">Trip requests</string>

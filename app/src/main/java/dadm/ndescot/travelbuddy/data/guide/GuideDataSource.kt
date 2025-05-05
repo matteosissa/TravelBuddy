@@ -47,6 +47,13 @@ interface GuideDataSource {
      */
     suspend fun addAnswerToTrip(userId: Int, tripId: Int, message: String, instant: Instant) : Boolean
 
+    /**
+     * Deletes a site for a given user ID.
+     *
+     * @param userId The ID of the user.
+     * @param siteName The ID of the trip.
+     * @param siteCountry The country of the site.
+     */
     suspend fun deleteSite(userId: Int, siteName: String, siteCountry: String) : Boolean
 
 }

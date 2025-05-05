@@ -108,6 +108,13 @@ class GuideDataSourceImpl @Inject constructor() : GuideDataSource {
         }
     }
 
+    /**
+     * Deletes a site for a given user ID.
+     *
+     * @param userId The ID of the user.
+     * @param siteName The ID of the trip.
+     * @param siteCountry The country of the site.
+     */
     override suspend fun deleteSite(userId: Int, siteName: String, siteCountry: String): Boolean {
         return try {
             connector.deleteSite.execute {
@@ -121,5 +128,4 @@ class GuideDataSourceImpl @Inject constructor() : GuideDataSource {
             false
         }
     }
-
 }

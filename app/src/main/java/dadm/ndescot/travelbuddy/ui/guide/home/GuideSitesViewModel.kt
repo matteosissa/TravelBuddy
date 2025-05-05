@@ -47,7 +47,12 @@ class GuideSitesViewModel @Inject constructor(
             }
         }
     }
-    
+
+    /**
+     * Function to delete a site from the repository
+     *
+     * @param site Site to be deleted
+     */
     fun deleteSite(site: Site) {
         viewModelScope.launch {
             try {
