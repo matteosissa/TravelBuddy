@@ -3,6 +3,7 @@ package dadm.ndescot.travelbuddy.ui.guide.home
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dadm.ndescot.travelbuddy.R
 import dadm.ndescot.travelbuddy.data.guide.GuideRepository
 import dadm.ndescot.travelbuddy.data.userdata.local.LocalUserDataRepository
 import dadm.ndescot.travelbuddy.domain.model.Site
@@ -40,10 +41,10 @@ class GuideSitesViewModel @Inject constructor(
             try {
                 val userId = localUserDataRepository.getUserId().first()
                 _guideSites.value = guideRepository.getGuideSitesByUserId(userId!!)
-                _uiState.value = UiState.Success("Guide sites successfully retrieved")
+                _uiState.value = UiState.Success(R.string.guide_sites_successfully_retrieved_toast)
             } catch (e: Exception) {
                 Log.e("SiteGuideViewModel", "Error getting guide sites", e)
-                _uiState.value = UiState.Error("Error while trying to get guide sites")
+                _uiState.value = UiState.Error(R.string.error_while_trying_to_get_guide_sites_toast)
             }
         }
     }

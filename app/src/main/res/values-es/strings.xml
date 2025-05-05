@@ -35,4 +35,31 @@
     <string name="apply_filters">Aplicar filtros</string>
     <string name="_2_weeks">2 semanas</string>
     <string name="log_out_menu">Finalizar la sesión</string>
+    <string name="please_fill_in_all_fields_error_add_site">Por favor, rellena todos los campos</string>
+    <string name="site_successfully_added_guide">Sitio añadido correctamente</string>
+    <string name="error_adding_the_site_guide">Error al añadir el sitio</string>
+    <string name="guide_sites_successfully_retrieved_toast">Sitios recuperados correctamente</string>
+    <string name="error_while_trying_to_get_guide_sites_toast">Error al intentar obtener los sitios</string>
+    <string name="error_getting_trips_by_location_toast">Error al obtener los viajes por ubicación</string>
+    <string name="trips_filtered_by_budget_toast">Viajes filtrados por presupuesto</string>
+    <string name="error_filtering_trips_by_budget_toast">Error al filtrar los viajes por presupuesto</string>
+    <string name="answer_to_trip_added_successfully_toast">Respuesta añadida correctamente al viaje</string>
+    <string name="error_adding_answer_to_trip_toast">Error al añadir la respuesta al viaje</string>
+    <string name="add_answer_for_the_traveller_title_dialog">Añadir respuesta para el viajero</string>
+    <string name="send_dialog_button">Enviar</string>
+    <string name="message_cannot_be_empty_error_dialog">El mensaje no puede estar vacío</string>
+    <string name="cancel_button">Cancelar</string>
+    <string name="logout_successful_toast">Cierre de sesión exitoso</string>
+    <string name="logout_failed_toast">Error al cerrar sesión</string>
+    <string name="error_loading_trip_answers_toast">Error al cargar las respuestas del viaje</string>
+    <string name="trip_created_successfully_toast">Viaje creado correctamente</string>
+    <string name="error_creating_trip_toast">Error al crear el viaje</string>
+    <string name="error_fetching_trips_toast">Error al obtener los viajes</string>
+    <string name="new_user_registered_successfully_toast">Nuevo usuario registrado correctamente</string>
+    <string name="user_logged_in_successfully_toast">Usuario ha iniciado sesión correctamente</string>
+    <string name="error_logging_in_user_toast">Error al iniciar sesión del usuario</string>
+    <string name="please_enter_a_valid_username_and_phone_number_error_welcome">Por favor, introduce un nombre de usuario y número de teléfono válidos</string>
+    <string name="no_internet_connection_dialog">Sin conexión a Internet</string>
+    <string name="please_check_your_internet_connection_and_try_again_dialog">Por favor, comprueba tu conexión a Internet e inténtalo de nuevo.</string>
+
 </resources>

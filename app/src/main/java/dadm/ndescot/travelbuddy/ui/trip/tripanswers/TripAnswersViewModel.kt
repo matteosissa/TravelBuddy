@@ -3,6 +3,7 @@ package dadm.ndescot.travelbuddy.ui.trip.tripanswers
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dadm.ndescot.travelbuddy.R
 import dadm.ndescot.travelbuddy.data.trip.TripRepository
 import dadm.ndescot.travelbuddy.domain.model.GuideAnswer
 import dadm.ndescot.travelbuddy.utils.UiState
@@ -39,7 +40,7 @@ class TripAnswersViewModel @Inject constructor(
                 _tripAnswers.value = tripRepository.getTripAnswers(tripId)
             } catch (e: Exception) {
                 Log.e("TripAnswersViewModel", "Error loading trip answers", e)
-                _uiState.value = UiState.Error("Error loading trip answers")
+                _uiState.value = UiState.Error(R.string.error_loading_trip_answers_toast)
             }
         }
     }

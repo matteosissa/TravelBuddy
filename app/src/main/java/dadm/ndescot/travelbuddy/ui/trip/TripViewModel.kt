@@ -3,6 +3,7 @@ package dadm.ndescot.travelbuddy.ui.trip
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dadm.ndescot.travelbuddy.R
 import dadm.ndescot.travelbuddy.data.trip.TripRepository
 import dadm.ndescot.travelbuddy.data.userdata.local.LocalUserDataRepository
 import dadm.ndescot.travelbuddy.domain.model.Activity
@@ -71,13 +72,13 @@ class TripViewModel @Inject constructor(
                 val userId = localUserDataRepository.getUserId()
                 val success = tripRepository.createTrip(trip, userId.first()!!)
                 if (success) {
-                    _uiState.value = UiState.Success("Trip created successfully")
+                    _uiState.value = UiState.Success(R.string.trip_created_successfully_toast)
                 } else {
-                    _uiState.value = UiState.Error("Error creating trip")
+                    _uiState.value = UiState.Error(R.string.error_creating_trip_toast)
                 }
             } catch (e: Exception) {
                 Log.e("TripViewModel", "Error creating trip", e)
-                _uiState.value = UiState.Error("Error creating trip")
+                _uiState.value = UiState.Error(R.string.error_creating_trip_toast)
             }
         }
     }
@@ -93,7 +94,7 @@ class TripViewModel @Inject constructor(
                 // Do not add success here
             } catch (e: Exception) {
                 Log.e("TripViewModel", "Error fetching trips", e)
-                _uiState.value = UiState.Error("Error fetching trips")
+                _uiState.value = UiState.Error(R.string.error_fetching_trips_toast)
             }
         }
     }

@@ -71,13 +71,13 @@ class RequestGuideFragment : Fragment(R.layout.fragment_explore_requests_guide) 
                     viewModel.uiState.collect { state ->
                         when (state) {
                             is UiState.Success -> {
-                                Toast.makeText(requireContext(), state.data, Toast.LENGTH_SHORT)
+                                Toast.makeText(requireContext(), getString(state.data), Toast.LENGTH_SHORT)
                                     .show()
                                 viewModel.resetState()
                             }
 
                             is UiState.Error -> {
-                                Toast.makeText(requireContext(), state.message, Toast.LENGTH_SHORT)
+                                Toast.makeText(requireContext(), getString(state.message), Toast.LENGTH_SHORT)
                                     .show()
                                 viewModel.resetState()
                             }
@@ -122,17 +122,17 @@ class RequestGuideFragment : Fragment(R.layout.fragment_explore_requests_guide) 
         val editText = dialogView.findViewById<EditText>(R.id.ietGuideMessage)
 
         AlertDialog.Builder(requireContext())
-            .setTitle("Add answer for the traveller")
+            .setTitle(getString(R.string.add_answer_for_the_traveller_title_dialog))
             .setView(dialogView)
-            .setPositiveButton("Send") { dialog, _ -> // use view model
+            .setPositiveButton(getString(R.string.send_dialog_button)) { dialog, _ -> // use view model
                 val message = editText.text.toString()
                 if (message.isNotEmpty()) {
                     viewModel.addAnswerToTrip(message, tripId)
                 } else {
-                    editText.error = "Message cannot be empty"
+                    editText.error = getString(R.string.message_cannot_be_empty_error_dialog)
                 }
             }
-            .setNegativeButton("Cancel", null)
+            .setNegativeButton(getString(R.string.cancel_button), null)
             .show()
     }
 

@@ -3,6 +3,7 @@ package dadm.ndescot.travelbuddy.ui.welcome
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dadm.ndescot.travelbuddy.R
 import dadm.ndescot.travelbuddy.data.userdata.local.LocalUserDataRepository
 import dadm.ndescot.travelbuddy.data.userdata.remote.RemoteUserDataRepository
 import dadm.ndescot.travelbuddy.utils.UiState
@@ -51,14 +52,14 @@ class WelcomeViewModel @Inject constructor(
                 localUserDataRepository.setPhoneNumber(phoneNumber)
 
                 if (newUser) {
-                    _uiState.value = UiState.Success("New user registered successfully")
+                    _uiState.value = UiState.Success(R.string.new_user_registered_successfully_toast)
 
                 } else {
-                    _uiState.value = UiState.Success("User logged in successfully")
+                    _uiState.value = UiState.Success(R.string.user_logged_in_successfully_toast)
                 }
             } catch (e: Exception) {
                 Log.e("WelcomeViewModel", "Error logging in user", e)
-                _uiState.value = UiState.Error("Error logging in user")
+                _uiState.value = UiState.Error(R.string.error_logging_in_user_toast)
             }
         }
     }

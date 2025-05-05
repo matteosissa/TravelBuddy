@@ -80,8 +80,8 @@ class MainActivity : AppCompatActivity() {
      */
     private fun showNoConnectionDialog() {
         if (noConnectionDialog == null || !noConnectionDialog!!.isShowing) {
-            val builder = AlertDialog.Builder(this).setTitle("No Internet Connection")
-                .setMessage("Please check your internet connection and try again.")
+            val builder = AlertDialog.Builder(this).setTitle(getString(R.string.no_internet_connection_dialog))
+                .setMessage(getString(R.string.please_check_your_internet_connection_and_try_again_dialog))
                 .setCancelable(false) // Make it non-dismissable
 
             noConnectionDialog = builder.create()

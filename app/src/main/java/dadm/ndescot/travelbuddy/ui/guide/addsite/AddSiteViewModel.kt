@@ -3,6 +3,7 @@ package dadm.ndescot.travelbuddy.ui.guide.addsite
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dadm.ndescot.travelbuddy.R
 import dadm.ndescot.travelbuddy.data.guide.GuideRepository
 import dadm.ndescot.travelbuddy.data.userdata.local.LocalUserDataRepository
 import dadm.ndescot.travelbuddy.utils.UiState
@@ -40,13 +41,13 @@ class AddSiteViewModel @Inject constructor(
                 val userId = localUserDataRepository.getUserId().first()
                 val success = guideRepository.addGuideSite(siteName, countryName, userId!!)
                 if (success) {
-                    _uiState.value = UiState.Success("Site successfully added")
+                    _uiState.value = UiState.Success(R.string.site_successfully_added_guide)
                 } else {
-                    _uiState.value = UiState.Error("Network error while trying to add the site")
+                    _uiState.value = UiState.Error(R.string.error_adding_the_site_guide)
                 }
             } catch (e: Exception) {
                 Log.e("AddSiteViewModel", "Error adding site: ${e.message}", e)
-                _uiState.value = UiState.Error("Error while trying to add the site")
+                _uiState.value = UiState.Error(R.string.error_adding_the_site_guide)
             }
         }
     }

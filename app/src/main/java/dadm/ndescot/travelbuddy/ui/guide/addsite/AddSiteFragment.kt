@@ -39,7 +39,8 @@ class AddSiteFragment : Fragment(R.layout.fragment_new_site) {
                 viewModel.addSite(location, country)
 
             } else {
-                Toast.makeText(requireContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(),
+                    getString(R.string.please_fill_in_all_fields_error_add_site), Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -47,7 +48,7 @@ class AddSiteFragment : Fragment(R.layout.fragment_new_site) {
             viewModel.uiState.collect { state ->
                 when (state) {
                     is UiState.Success -> {
-                        Toast.makeText(requireContext(), state.data, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), getString(state.data), Toast.LENGTH_SHORT).show()
                         // Send a signal to the previous fragment to refresh data
                         val refresh = Bundle().apply { putBoolean("refresh", true) }
                         parentFragmentManager.setFragmentResult("refresh", refresh)
@@ -57,7 +58,7 @@ class AddSiteFragment : Fragment(R.layout.fragment_new_site) {
                     }
 
                     is UiState.Error -> {
-                        Toast.makeText(requireContext(), state.message, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), getString(state.message), Toast.LENGTH_SHORT).show()
                         viewModel.resetState()
                     }
 

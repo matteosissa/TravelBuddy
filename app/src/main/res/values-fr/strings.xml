@@ -35,4 +35,31 @@
     <string name="apply_filters">Appliquez filtres</string>
     <string name="_2_weeks">2 semaines</string>
     <string name="log_out_menu">Déconnexion</string>
+    <string name="please_fill_in_all_fields_error_add_site">Veuillez remplir tous les champs</string>
+    <string name="site_successfully_added_guide">Site ajouté avec succès</string>
+    <string name="error_adding_the_site_guide">Erreur lors de l’ajout du site</string>
+    <string name="guide_sites_successfully_retrieved_toast">Sites récupérés avec succès</string>
+    <string name="error_while_trying_to_get_guide_sites_toast">Erreur lors de la récupération des sites</string>
+    <string name="error_getting_trips_by_location_toast">Erreur lors de l’obtention des voyages par emplacement</string>
+    <string name="trips_filtered_by_budget_toast">Voyages filtrés par budget</string>
+    <string name="error_filtering_trips_by_budget_toast">Erreur lors du filtrage des voyages par budget</string>
+    <string name="answer_to_trip_added_successfully_toast">Réponse ajoutée avec succès au voyage</string>
+    <string name="error_adding_answer_to_trip_toast">Erreur lors de l’ajout de la réponse au voyage</string>
+    <string name="add_answer_for_the_traveller_title_dialog">Ajouter une réponse pour le voyageur</string>
+    <string name="send_dialog_button">Envoyer</string>
+    <string name="message_cannot_be_empty_error_dialog">Le message ne peut pas être vide</string>
+    <string name="cancel_button">Annuler</string>
+    <string name="logout_successful_toast">Déconnexion réussie</string>
+    <string name="logout_failed_toast">Échec de la déconnexion</string>
+    <string name="error_loading_trip_answers_toast">Erreur lors du chargement des réponses du voyage</string>
+    <string name="trip_created_successfully_toast">Voyage créé avec succès</string>
+    <string name="error_creating_trip_toast">Erreur lors de la création du voyage</string>
+    <string name="error_fetching_trips_toast">Erreur lors de la récupération des voyages</string>
+    <string name="new_user_registered_successfully_toast">Nouvel utilisateur enregistré avec succès</string>
+    <string name="user_logged_in_successfully_toast">Utilisateur connecté avec succès</string>
+    <string name="error_logging_in_user_toast">Erreur lors de la connexion de l’utilisateur</string>
+    <string name="please_enter_a_valid_username_and_phone_number_error_welcome">Veuillez entrer un nom d’utilisateur et un numéro de téléphone valides</string>
+    <string name="no_internet_connection_dialog">Pas de connexion Internet</string>
+    <string name="please_check_your_internet_connection_and_try_again_dialog">Veuillez vérifier votre connexion Internet et réessayer.</string>
+
 </resources>

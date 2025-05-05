@@ -38,4 +38,30 @@
     <string name="_16_05_2025" translatable="false">16/05/2025</string>
     <string name="_2_weeks">2 weeks</string>
     <string name="log_out_menu">Log out</string>
+    <string name="please_fill_in_all_fields_error_add_site">Please fill in all fields</string>
+    <string name="site_successfully_added_guide">Site successfully added</string>
+    <string name="error_adding_the_site_guide">Error adding the site</string>
+    <string name="guide_sites_successfully_retrieved_toast">Guide sites successfully retrieved</string>
+    <string name="error_while_trying_to_get_guide_sites_toast">Error while trying to get guide sites</string>
+    <string name="error_getting_trips_by_location_toast">Error getting trips by location</string>
+    <string name="trips_filtered_by_budget_toast">Trips filtered by budget</string>
+    <string name="error_filtering_trips_by_budget_toast">Error filtering trips by budget</string>
+    <string name="answer_to_trip_added_successfully_toast">Answer to trip added successfully</string>
+    <string name="error_adding_answer_to_trip_toast">Error adding answer to trip</string>
+    <string name="add_answer_for_the_traveller_title_dialog">Add answer for the traveller</string>
+    <string name="send_dialog_button">Send</string>
+    <string name="message_cannot_be_empty_error_dialog">Message cannot be empty</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="logout_successful_toast">Logout successful</string>
+    <string name="logout_failed_toast">Logout failed</string>
+    <string name="error_loading_trip_answers_toast">Error loading trip answers</string>
+    <string name="trip_created_successfully_toast">Trip created successfully</string>
+    <string name="error_creating_trip_toast">Error creating trip</string>
+    <string name="error_fetching_trips_toast">Error fetching trips</string>
+    <string name="new_user_registered_successfully_toast">New user registered successfully</string>
+    <string name="user_logged_in_successfully_toast">User logged in successfully</string>
+    <string name="error_logging_in_user_toast">Error logging in user</string>
+    <string name="please_enter_a_valid_username_and_phone_number_error_welcome">Please enter a valid username and phone number</string>
+    <string name="no_internet_connection_dialog">No Internet Connection</string>
+    <string name="please_check_your_internet_connection_and_try_again_dialog">Please check your internet connection and try again.</string>
 </resources>

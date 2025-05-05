@@ -3,6 +3,7 @@ package dadm.ndescot.travelbuddy.ui.guide.requests
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dadm.ndescot.travelbuddy.R
 import dadm.ndescot.travelbuddy.data.guide.GuideRepository
 import dadm.ndescot.travelbuddy.data.userdata.local.LocalUserDataRepository
 import dadm.ndescot.travelbuddy.domain.model.Trip
@@ -48,7 +49,7 @@ class RequestGuideViewModel @Inject constructor(
                 _trips.value = _requests.value.toList() // Create new instance
             } catch (e: Exception) {
                 Log.e("RequestGuideViewModel", "Error getting trips by location", e)
-                _uiState.value = UiState.Error("Error getting trips by location")
+                _uiState.value = UiState.Error(R.string.error_getting_trips_by_location_toast)
             }
         }
     }
@@ -60,10 +61,10 @@ class RequestGuideViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 _requests.value = _trips.value.filter { trip -> trip.budget <= maxBudget }
-                _uiState.value = UiState.Success("Trips filtered by budget")
+                _uiState.value = UiState.Success(R.string.trips_filtered_by_budget_toast)
             } catch (e: Exception) {
                 Log.e("RequestGuideViewModel", "Error filtering trips by budget", e)
-                _uiState.value = UiState.Error("Error filtering trips by budget")
+                _uiState.value = UiState.Error(R.string.error_filtering_trips_by_budget_toast)
             }
         }
     }
@@ -78,13 +79,13 @@ class RequestGuideViewModel @Inject constructor(
                 val successful =
                     guideRepository.addAnswerToTrip(userId, tripId, message, Instant.now())
                 if (successful) {
-                    _uiState.value = UiState.Success("Answer to trip added successfully")
+                    _uiState.value = UiState.Success(R.string.answer_to_trip_added_successfully_toast)
                 } else {
-                    _uiState.value = UiState.Error("Error adding answer to trip")
+                    _uiState.value = UiState.Error(R.string.error_adding_answer_to_trip_toast)
                 }
             } catch (e: Exception) {
                 Log.e("RequestGuideViewModel", "Error adding answer to trip", e)
-                _uiState.value = UiState.Error("Error adding answer to trip")
+                _uiState.value = UiState.Error(R.string.error_adding_answer_to_trip_toast)
             }
 
         }

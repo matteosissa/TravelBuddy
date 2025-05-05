@@ -45,7 +45,8 @@ class WelcomeFragment : Fragment(R.layout.fragment_welcome) {
 
             } else {
                 Toast.makeText(
-                    requireContext(), "Please enter a valid username", Toast.LENGTH_SHORT
+                    requireContext(),
+                    getString(R.string.please_enter_a_valid_username_and_phone_number_error_welcome), Toast.LENGTH_SHORT
                 ).show()
                 return@setOnClickListener
             }
@@ -56,14 +57,14 @@ class WelcomeFragment : Fragment(R.layout.fragment_welcome) {
                 viewModel.uiState.collect { state ->
                     when (state) {
                         is UiState.Success -> {
-                            Toast.makeText(requireContext(), state.data, Toast.LENGTH_SHORT).show()
+                            Toast.makeText(requireContext(), getString(state.data), Toast.LENGTH_SHORT).show()
                             val navController = findNavController()
                             navController.navigate(R.id.action_welcomeFragment_to_mainLayoutFragment)
                             viewModel.resetState()
                         }
 
                         is UiState.Error -> {
-                            Toast.makeText(requireContext(), state.message, Toast.LENGTH_SHORT)
+                            Toast.makeText(requireContext(), getString(state.message), Toast.LENGTH_SHORT)
                                 .show()
                             viewModel.resetState()
                         }

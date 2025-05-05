@@ -51,13 +51,13 @@ class TripFragment : Fragment(R.layout.fragment_trips) {
                     viewModel.uiState.collect { state ->
                         when (state) {
                             is UiState.Success -> {
-                                Toast.makeText(requireContext(), state.data, Toast.LENGTH_SHORT)
+                                Toast.makeText(requireContext(), getString(state.data), Toast.LENGTH_SHORT)
                                     .show()
                                 viewModel.resetState()
                             }
 
                             is UiState.Error -> {
-                                Toast.makeText(requireContext(), state.message, Toast.LENGTH_SHORT)
+                                Toast.makeText(requireContext(), getString(state.message), Toast.LENGTH_SHORT)
                                     .show()
                                 viewModel.resetState()
                             }
@@ -82,7 +82,6 @@ class TripFragment : Fragment(R.layout.fragment_trips) {
         ) { key, bundle ->
             val refresh = bundle.getBoolean("refresh")
             if (refresh) {
-                println("Refreshing data")
                 viewModel.getTripsByUserId()
             }
         }

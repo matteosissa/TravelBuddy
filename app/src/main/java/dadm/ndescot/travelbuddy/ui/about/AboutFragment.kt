@@ -9,6 +9,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * A simple [Fragment] subclass.
+ * Used to display information about the application.
  */
 @AndroidEntryPoint
 class AboutFragment : Fragment(R.layout.fragment_about) {

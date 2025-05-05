@@ -58,7 +58,7 @@ class GuideSitesFragment : Fragment(R.layout.fragment_sites_guide) {
                             viewModel.resetState()
                         }
                         is UiState.Error -> {
-                            Toast.makeText(requireContext(), state.message, Toast.LENGTH_SHORT).show()
+                            Toast.makeText(requireContext(), getString(state.message), Toast.LENGTH_SHORT).show()
                             viewModel.resetState()
                         }
                         is UiState.Idle -> {

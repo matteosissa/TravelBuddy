@@ -3,6 +3,7 @@ package dadm.ndescot.travelbuddy.ui.mainlayout
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dadm.ndescot.travelbuddy.R
 import dadm.ndescot.travelbuddy.data.userdata.local.LocalUserDataRepository
 import dadm.ndescot.travelbuddy.utils.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -31,10 +32,10 @@ class MainLayoutViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 localUserDataRepository.deleteUserId()
-                _uiState.value = UiState.Success("Logout successful")
+                _uiState.value = UiState.Success(R.string.logout_successful_toast)
             } catch (e: Exception) {
                 Log.e("MainLayoutViewModel", "Error logging out", e)
-                _uiState.value = UiState.Error("Logout failed")
+                _uiState.value = UiState.Error(R.string.logout_failed_toast)
 
             }
         }

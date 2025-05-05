@@ -81,7 +81,7 @@ class MainLayoutFragment @Inject constructor() : Fragment(R.layout.fragment_main
                 when (successfulLogout) {
                     is UiState.Success -> {
 
-                        Toast.makeText(requireContext(), successfulLogout.data, Toast.LENGTH_SHORT)
+                        Toast.makeText(requireContext(), getString(successfulLogout.data), Toast.LENGTH_SHORT)
                             .show()
 
                         val activityNavController = requireActivity()
@@ -98,7 +98,7 @@ class MainLayoutFragment @Inject constructor() : Fragment(R.layout.fragment_main
                     is UiState.Error -> {
                         Toast.makeText(
                             requireContext(),
-                            successfulLogout.message,
+                            getString(successfulLogout.message),
                             Toast.LENGTH_SHORT
                         ).show()
                         viewModel.resetState()

@@ -49,7 +49,7 @@ class CreateTripFragment : Fragment(R.layout.fragment_create_trip) {
                 viewModel.uiState.collect { state ->
                     when (state) {
                         is UiState.Success -> {
-                            Toast.makeText(requireContext(), state.data, Toast.LENGTH_SHORT).show()
+                            Toast.makeText(requireContext(), getString(state.data), Toast.LENGTH_SHORT).show()
                             // Previous fragment has to refresh the data
                             val refresh = Bundle().apply { putBoolean("refresh", true) }
                             parentFragmentManager.setFragmentResult("refresh", refresh)
@@ -59,7 +59,7 @@ class CreateTripFragment : Fragment(R.layout.fragment_create_trip) {
                         }
 
                         is UiState.Error -> {
-                            Toast.makeText(requireContext(), state.message, Toast.LENGTH_SHORT)
+                            Toast.makeText(requireContext(), getString(state.message), Toast.LENGTH_SHORT)
                                 .show()
                             viewModel.resetState()
                         }
