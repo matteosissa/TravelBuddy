@@ -25,6 +25,7 @@ import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.navigationrail.NavigationRailView
 import dadm.ndescot.travelbuddy.R
 import dadm.ndescot.travelbuddy.databinding.FragmentMainLayoutBinding
@@ -87,7 +88,7 @@ class MainLayoutFragment @Inject constructor() : Fragment(R.layout.fragment_main
                         val activityNavController = requireActivity()
                             .findNavController(R.id.mainHostContainer)
                         val navOptions = NavOptions.Builder()
-                            .setPopUpTo(R.id.entry_nav_graph, true) // clear the entire entry graph
+                            .setPopUpTo(R.id.entry_nav_graph, true)
                             .build()
 
                         activityNavController.navigate(R.id.welcomeFragment, null, navOptions)
@@ -167,11 +168,22 @@ class MainLayoutFragment @Inject constructor() : Fragment(R.layout.fragment_main
             }
 
             R.id.menu_logout -> {
-                viewModel.logout()
+                showLogoutConfirmationDialog()
                 true
             }
 
             else -> false
         }
+    }
+
+    private fun showLogoutConfirmationDialog() {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle(R.string.logout_confirmation_title)
+            .setMessage(R.string.logout_confirmation_message)
+            .setPositiveButton(R.string.logout) { _, _ ->
+                viewModel.logout()
+            }
+            .setNegativeButton(R.string.cancel, null)
+            .show()
     }
 }

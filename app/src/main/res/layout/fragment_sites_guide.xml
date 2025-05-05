@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:layout_gravity="end|bottom"
-        android:src="@drawable/add_favorite"
+        android:src="@drawable/add_new"
         android:contentDescription="@string/description_fab_add_site_guide" />
 
     <androidx.recyclerview.widget.RecyclerView

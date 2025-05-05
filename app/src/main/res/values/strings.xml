@@ -1,8 +1,7 @@
 <resources>
-    <string name="app_name" translatable="false">QuotationShake</string>
+    <string name="app_name" translatable="false">TravelBuddy</string>
     <string name="about">About</string>
     <string name="About_information">"TravelBuddy by\n\nMatteo Sissa\nNicolas Descoteaux\n\nDeveloped for DADM 2025"</string>
-    <string name="button_to_add_quote_to_favorites">Button to add quote to favorites</string>
     <string name="activities">Activities</string>
     <string name="budget">Budget</string>
     <string name="date">Departure date</string>
@@ -32,7 +31,7 @@
     <string name="filter_trips">Filter Trips</string>
     <string name="toggle_filters">Toggle filters</string>
     <string name="maximum_budget">Maximum Budget</string>
-    <string name="_10000" translatable="false">€10000</string>
+    <string name="_5000" translatable="false">€5000</string>
     <string name="apply_filters">Apply Filters</string>
     <string name="matteo_sissa" translatable="false">Matteo Sissa</string>
     <string name="_16_05_2025" translatable="false">16/05/2025</string>
@@ -64,4 +63,19 @@
     <string name="please_enter_a_valid_username_and_phone_number_error_welcome">Please enter a valid username and phone number</string>
     <string name="no_internet_connection_dialog">No Internet Connection</string>
     <string name="please_check_your_internet_connection_and_try_again_dialog">Please check your internet connection and try again.</string>
+    <string name="your_trips">Your trips</string>
+    <string name="create_new_trip">Create a new trip</string>
+    <string name="trip_requests">Trip requests</string>
+    <string name="add_guide_location">Add guide location</string>
+    <string name="answers_received">Answers received</string>
+    <string name="locations">Locations</string>
+    <string name="logout_confirmation_title">Confirm Logout</string>
+    <string name="logout_confirmation_message">Are you sure you want to log out?</string>
+    <string name="logout">Log Out</string>
+    <string name="cancel">Cancel</string>
+    <plurals name="trip_duration_days">
+        <item quantity="one">%d day</item>
+        <item quantity="other">%d days</item>
+    </plurals>
+    <string name="trip_budget_euro" translatable="false">€%d</string>
 </resources>
