@@ -25,6 +25,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                style="@style/WhiteIconsToolbar"
                 android:background="?attr/colorPrimary"
                 app:layout_scrollFlags="scroll|enterAlways|snap"
                 app:titleTextColor="?attr/colorOnPrimary" />
