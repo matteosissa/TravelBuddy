@@ -106,7 +106,7 @@ class RequestGuideFragment : Fragment(R.layout.fragment_explore_requests_guide) 
             }
         }
 
-        binding.sliderBudget.addOnChangeListener { slider, value, fromUser ->
+        binding.sliderBudget.addOnChangeListener { _, value, _ ->
             val formattedValue = "€${value.toInt()}"
             binding.tvBudgetValue.text = formattedValue
         }
@@ -124,7 +124,7 @@ class RequestGuideFragment : Fragment(R.layout.fragment_explore_requests_guide) 
         AlertDialog.Builder(requireContext())
             .setTitle(getString(R.string.add_answer_for_the_traveller_title_dialog))
             .setView(dialogView)
-            .setPositiveButton(getString(R.string.send_dialog_button)) { dialog, _ -> // use view model
+            .setPositiveButton(getString(R.string.send_dialog_button)) { _, _ -> // use view model
                 val message = editText.text.toString()
                 if (message.isNotEmpty()) {
                     viewModel.addAnswerToTrip(message, tripId)

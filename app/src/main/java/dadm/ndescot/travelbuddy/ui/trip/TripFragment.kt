@@ -100,7 +100,7 @@ class TripFragment : Fragment(R.layout.fragment_trips) {
         // Manage the refresh of data in case of adding a new site
         parentFragmentManager.setFragmentResultListener(
             "refresh", viewLifecycleOwner
-        ) { key, bundle ->
+        ) { _, bundle ->
             val refresh = bundle.getBoolean("refresh")
             if (refresh) {
                 viewModel.getTripsByUserId()
