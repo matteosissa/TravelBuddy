@@ -34,4 +34,5 @@
     <string name="maximum_budget">Budget maximal</string>
     <string name="apply_filters">Appliquez filtres</string>
     <string name="_2_weeks">2 semaines</string>
+    <string name="log_out_menu">Déconnexion</string>
 </resources>

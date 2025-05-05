@@ -9,6 +9,12 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
+/**
+ * LocalUserDataDataSourceImpl is an implementation of the LocalUserDataDataSource interface.
+ * It uses DataStore to persist user data locally.
+ *
+ * @param dataStore The DataStore instance used for local data storage.
+ */
 class LocalUserDataDataSourceImpl @Inject constructor(
     private val dataStore: DataStore<Preferences>
 ) : LocalUserDataDataSource {
@@ -19,6 +25,11 @@ class LocalUserDataDataSourceImpl @Inject constructor(
         val PHONE_NUMBER = stringPreferencesKey("phone_number")
     }
 
+    /**
+     * Retrieves the user name from DataStore.
+     *
+     * @return A Flow emitting the user name, or null if not set.
+     */
     override fun getUserName(): Flow<String?> {
         return dataStore.data
             .map { data -> data[UserDataKeys.USER_NAME] }
@@ -28,6 +39,11 @@ class LocalUserDataDataSourceImpl @Inject constructor(
             }
     }
 
+    /**
+     * Sets the user name in DataStore.
+     *
+     * @param userName The user name to set.
+     */
     override suspend fun setUserName(userName: String) {
         try {
             dataStore.edit { data ->
@@ -38,6 +54,11 @@ class LocalUserDataDataSourceImpl @Inject constructor(
         }
     }
 
+    /**
+     * Retrieves the user ID from DataStore.
+     *
+     * @return A Flow emitting the user ID, or null if not set.
+     */
     override fun getUserId(): Flow<Int?> {
         return dataStore.data
             .map { data -> data[UserDataKeys.USER_ID] }
@@ -47,6 +68,11 @@ class LocalUserDataDataSourceImpl @Inject constructor(
             }
     }
 
+    /**
+     * Sets the user ID in DataStore.
+     *
+     * @param userId The user ID to set.
+     */
     override suspend fun setUserId(userId: Int) {
         try {
             dataStore.edit { data ->
@@ -57,6 +83,9 @@ class LocalUserDataDataSourceImpl @Inject constructor(
         }
     }
 
+    /**
+     * Deletes the user ID from DataStore.
+     */
     override suspend fun deleteUserId() {
         try {
             dataStore.edit { data ->
@@ -67,6 +96,11 @@ class LocalUserDataDataSourceImpl @Inject constructor(
         }
     }
 
+    /**
+     * Retrieves the phone number from DataStore.
+     *
+     * @return A Flow emitting the phone number, or null if not set.
+     */
     override fun getPhoneNumber(): Flow<String?> {
         return dataStore.data
             .map { data -> data[UserDataKeys.PHONE_NUMBER] }
@@ -76,6 +110,11 @@ class LocalUserDataDataSourceImpl @Inject constructor(
             }
     }
 
+    /**
+     * Sets the phone number in DataStore.
+     *
+     * @param phoneNumber The phone number to set.
+     */
     override suspend fun setPhoneNumber(phoneNumber: String) {
         try {
             dataStore.edit { data ->

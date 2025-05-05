@@ -7,9 +7,14 @@ import dadm.ndescot.travelbuddy.R
 import dadm.ndescot.travelbuddy.databinding.FragmentAboutBinding
 import dagger.hilt.android.AndroidEntryPoint
 
+/**
+ * A simple [Fragment] subclass.
+ * Use the [AboutFragment.newInstance] factory method to
+ * create an instance of this fragment.
+ */
 @AndroidEntryPoint
 class AboutFragment : Fragment(R.layout.fragment_about) {
-    private var _binding : FragmentAboutBinding? = null
+    private var _binding: FragmentAboutBinding? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

@@ -7,11 +7,15 @@ import dadm.ndescot.travelbuddy.data.userdata.local.LocalUserDataRepository
 import dadm.ndescot.travelbuddy.utils.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * ViewModel for the MainLayout screen.
+ *
+ * @param localUserDataRepository Repository for user data operations.
+ */
 @HiltViewModel
 class MainLayoutViewModel @Inject constructor(
     private val localUserDataRepository: LocalUserDataRepository
@@ -20,6 +24,9 @@ class MainLayoutViewModel @Inject constructor(
     private val _uiState = MutableStateFlow<UiState>(UiState.Idle)
     val uiState = _uiState.asStateFlow()
 
+    /**
+     * Initializes the ViewModel by checking if the user is logged in.
+     */
     fun logout() {
         viewModelScope.launch {
             try {
@@ -33,8 +40,12 @@ class MainLayoutViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Checks if the user is logged in.
+     *
+     * @return true if the user is logged in, false otherwise.
+     */
     fun resetState() {
         _uiState.value = UiState.Idle
     }
-
 }

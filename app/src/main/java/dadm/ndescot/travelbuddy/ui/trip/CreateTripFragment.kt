@@ -22,6 +22,10 @@ import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 
+/**
+ * Fragment to create a new trip.
+ * It allows the user to select activities, date, and enter trip details.
+ */
 @AndroidEntryPoint
 class CreateTripFragment : Fragment(R.layout.fragment_create_trip) {
     private var _binding: FragmentCreateTripBinding? = null
@@ -43,7 +47,7 @@ class CreateTripFragment : Fragment(R.layout.fragment_create_trip) {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.uiState.collect { state ->
-                    when(state) {
+                    when (state) {
                         is UiState.Success -> {
                             Toast.makeText(requireContext(), state.data, Toast.LENGTH_SHORT).show()
                             // Previous fragment has to refresh the data
@@ -53,10 +57,13 @@ class CreateTripFragment : Fragment(R.layout.fragment_create_trip) {
                             findNavController().popBackStack()
                             viewModel.resetState()
                         }
+
                         is UiState.Error -> {
-                            Toast.makeText(requireContext(), state.message, Toast.LENGTH_SHORT).show()
+                            Toast.makeText(requireContext(), state.message, Toast.LENGTH_SHORT)
+                                .show()
                             viewModel.resetState()
                         }
+
                         is UiState.Idle -> {
                             // Do nothing
                         }
@@ -69,8 +76,8 @@ class CreateTripFragment : Fragment(R.layout.fragment_create_trip) {
     private fun setupActivityChips() {
         Activity.values().forEach { activity ->
             val chip = Chip(requireContext()).apply {
-                text = activity.name.replace("_", " ").lowercase()
-                    .replaceFirstChar { it.uppercase() }
+                text =
+                    activity.name.replace("_", " ").lowercase().replaceFirstChar { it.uppercase() }
                 isCheckable = true
                 setOnCheckedChangeListener { _, isChecked ->
                     if (isChecked) {

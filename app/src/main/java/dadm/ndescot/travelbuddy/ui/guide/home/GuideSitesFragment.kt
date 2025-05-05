@@ -16,6 +16,9 @@ import dadm.ndescot.travelbuddy.utils.UiState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+/**
+ * Fragment to show the list of sites that the user has added to the app
+ */
 @AndroidEntryPoint
 class GuideSitesFragment : Fragment(R.layout.fragment_sites_guide) {
 

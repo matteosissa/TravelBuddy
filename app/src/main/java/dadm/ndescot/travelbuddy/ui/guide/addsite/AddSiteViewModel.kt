@@ -13,6 +13,12 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * ViewModel for adding a new site to the guide.
+ *
+ * @param guideRepository Repository for managing guide data.
+ * @param localUserDataRepository Repository for managing local user data.
+ */
 @HiltViewModel
 class AddSiteViewModel @Inject constructor(
     private val guideRepository: GuideRepository,
@@ -22,6 +28,12 @@ class AddSiteViewModel @Inject constructor(
     private val _uiState = MutableStateFlow<UiState>(UiState.Idle)
     val uiState = _uiState.asStateFlow()
 
+    /**
+     * Adds a new site to the guide.
+     *
+     * @param siteName The name of the site to be added.
+     * @param countryName The name of the country where the site is located.
+     */
     fun addSite(siteName: String, countryName: String) {
         viewModelScope.launch {
             try {
@@ -39,6 +51,9 @@ class AddSiteViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Resets the UI state to idle.
+     */
     fun resetState() {
         _uiState.value = UiState.Idle
     }

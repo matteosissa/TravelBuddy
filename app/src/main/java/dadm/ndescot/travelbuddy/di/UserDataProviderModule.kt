@@ -17,10 +17,19 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import javax.inject.Singleton
 
+/**
+ * Module to provide the DataStore for user data.
+ */
 @Module
 @InstallIn(SingletonComponent::class)
 class UserDataProviderModule {
 
+    /**
+     * Provides a DataStore for user data.
+     *
+     * @param context The application context.
+     * @return A DataStore for user data.
+     */
     @Provides
     @Singleton
     fun provideUserDataDataStore(

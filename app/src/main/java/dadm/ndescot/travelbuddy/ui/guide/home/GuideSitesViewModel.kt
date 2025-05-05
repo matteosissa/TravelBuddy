@@ -14,6 +14,12 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * ViewModel class responsible for the logic of the Guide Sites screen
+ *
+ * @param guideRepository Repository to get the guide sites
+ * @param localUserDataRepository Repository to get the user data
+ */
 @HiltViewModel
 class GuideSitesViewModel @Inject constructor(
     private val guideRepository: GuideRepository,
@@ -26,6 +32,9 @@ class GuideSitesViewModel @Inject constructor(
     private val _uiState = MutableStateFlow<UiState>(UiState.Idle)
     val uiState = _uiState.asStateFlow()
 
+    /**
+     * Function to get the guide sites from the repository
+     */
     fun getGuideSitesByUserId() {
         viewModelScope.launch {
             try {
@@ -39,8 +48,10 @@ class GuideSitesViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Function to get the guide sites from the repository
+     */
     fun resetState() {
         _uiState.value = UiState.Idle
     }
-
 }

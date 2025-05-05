@@ -17,6 +17,12 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 import java.util.Date
 
+/**
+ * ViewModel for managing trips.
+ *
+ * @property tripRepository Repository for trip data.
+ * @property localUserDataRepository Repository for local user data.
+ */
 @HiltViewModel
 class TripViewModel @Inject constructor(
     private val tripRepository: TripRepository,
@@ -29,6 +35,17 @@ class TripViewModel @Inject constructor(
     private val _trips = MutableStateFlow<List<Trip>>(emptyList())
     val trips: StateFlow<List<Trip>> = _trips.asStateFlow()
 
+    /**
+     * Creates a new trip.
+     *
+     * @param city The city of the trip.
+     * @param country The country of the trip.
+     * @param date The date of the trip.
+     * @param activities The list of activities for the trip.
+     * @param durationDays The duration of the trip in days.
+     * @param budget The budget for the trip.
+     * @param description A description of the trip.
+     */
     fun createTrip(
         city: String,
         country: String,
@@ -53,7 +70,7 @@ class TripViewModel @Inject constructor(
             try {
                 val userId = localUserDataRepository.getUserId()
                 val success = tripRepository.createTrip(trip, userId.first()!!)
-                if(success) {
+                if (success) {
                     _uiState.value = UiState.Success("Trip created successfully")
                 } else {
                     _uiState.value = UiState.Error("Error creating trip")
@@ -65,6 +82,11 @@ class TripViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Updates an existing trip.
+     *
+     * @param trip The trip to update.
+     */
     fun getTripsByUserId() {
         viewModelScope.launch {
             try {
@@ -78,6 +100,11 @@ class TripViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Deletes a trip.
+     *
+     * @param trip The trip to delete.
+     */
     fun resetState() {
         _uiState.value = UiState.Idle
     }

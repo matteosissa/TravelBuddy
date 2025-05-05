@@ -3,7 +3,6 @@ package dadm.ndescot.travelbuddy.data.guide
 import dadm.ndescot.travelbuddy.domain.model.Trip
 import dadm.ndescot.travelbuddy.domain.model.Site
 import java.time.Instant
-import java.time.LocalDateTime
 
 /**
  * Interface for the repository of the guide feature.

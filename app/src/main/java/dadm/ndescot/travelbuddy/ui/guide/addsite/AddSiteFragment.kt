@@ -13,6 +13,12 @@ import dadm.ndescot.travelbuddy.utils.UiState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+/**
+ * Fragment to add a new site to the guide.
+ * It contains two EditText fields for the location and country, and a button to create the site.
+ * When the button is clicked, it checks if the fields are filled and calls the ViewModel to add the site.
+ * If successful, it shows a success message and navigates back to the previous fragment.
+ */
 @AndroidEntryPoint
 class AddSiteFragment : Fragment(R.layout.fragment_new_site) {
 
