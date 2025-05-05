@@ -63,4 +63,10 @@
     <string name="please_enter_a_valid_username_and_phone_number_error_welcome">Please enter a valid username and phone number</string>
     <string name="no_internet_connection_dialog">No Internet Connection</string>
     <string name="please_check_your_internet_connection_and_try_again_dialog">Please check your internet connection and try again.</string>
+    <string name="your_trips">Your trips</string>
+    <string name="create_new_trip">Create a new trip</string>
+    <string name="trip_requests">Trip requests</string>
+    <string name="add_guide_location">Add guide location</string>
+    <string name="answers_received">Answers received</string>
+    <string name="locations">Locations</string>
 </resources>
