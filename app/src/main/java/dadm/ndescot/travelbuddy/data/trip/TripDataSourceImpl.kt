@@ -70,6 +70,11 @@ class TripDataSourceImpl @Inject constructor() : TripDataSource {
         return data
     }
 
+    /**
+     * Deletes a trip with the specified trip ID.
+     *
+     * @param tripId The ID of the trip to be deleted.
+     */
     override suspend fun deleteTrip(tripId: Int): Boolean {
         return try {
             connector.deleteTrip.execute { this.tripId = tripId }.data

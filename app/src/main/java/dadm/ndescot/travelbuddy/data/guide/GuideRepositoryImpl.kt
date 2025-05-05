@@ -60,6 +60,14 @@ class GuideRepositoryImpl @Inject constructor(private val dataSource: GuideDataS
         return dataSource.addAnswerToTrip(userId, tripId, message, instant)
     }
 
+    /**
+     * Deletes a site from the guide for a given user ID.
+     *
+     * @param userId The ID of the user.
+     * @param siteName The name of the site to be deleted.
+     * @param siteCountry The country of the site to be deleted.
+     * @return A boolean indicating whether the site was successfully deleted.
+     */
     override suspend fun deleteSite(userId: Int, siteName: String, siteCountry: String): Boolean {
         return dataSource.deleteSite(userId, siteName, siteCountry)
     }

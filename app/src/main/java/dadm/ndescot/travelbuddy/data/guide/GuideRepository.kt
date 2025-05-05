@@ -32,7 +32,7 @@ interface GuideRepository {
     suspend fun addGuideSite(siteName: String, countryName: String, userId: Int) : Boolean
 
     /**
-     * Adds a new trip to the guide for a given user ID.
+     * Adds a new answer to the trip of the guide for a given user ID.
      *
      * @param userId The ID of the user.
      * @param tripId The [Trip] object representing the trip to be added.
@@ -40,6 +40,13 @@ interface GuideRepository {
      */
     suspend fun addAnswerToTrip(userId: Int, tripId: Int, message: String, instant: Instant) : Boolean
 
+    /**
+     * Deletes a site from the guide for a given user ID.
+     *
+     * @param userId The ID of the user.
+     * @param siteName The name of the site to be deleted.
+     * @param siteCountry The country of the site to be deleted.
+     * @return A boolean indicating whether the site was successfully deleted.
+     */
     suspend fun deleteSite(userId: Int, siteName: String, siteCountry: String) : Boolean
-
 }

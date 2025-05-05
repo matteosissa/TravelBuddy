@@ -36,7 +36,6 @@
     <string name="please_fill_in_all_fields_error_add_site">Veuillez remplir tous les champs</string>
     <string name="site_successfully_added_guide">Site ajouté avec succès</string>
     <string name="error_adding_the_site_guide">Erreur lors de l’ajout du site</string>
-    <string name="guide_sites_successfully_retrieved_toast">Sites récupérés avec succès</string>
     <string name="error_while_trying_to_get_guide_sites_toast">Erreur lors de la récupération des sites</string>
     <string name="error_getting_trips_by_location_toast">Erreur lors de l’obtention des voyages par emplacement</string>
     <string name="trips_filtered_by_budget_toast">Voyages filtrés par budget</string>
@@ -63,10 +62,6 @@
     <string name="error_deleting_the_trip_toast">Erreur lors de la suppression du voyage</string>
     <string name="your_site_has_been_deleted_successfully_toast">Votre site a été supprimé avec succès</string>
     <string name="there_was_a_problem_deleting_the_site_toast">Un problème est survenu lors de la suppression du site</string>
-    <string name="are_you_sure_you_want_to_logout_dialog_title">Êtes-vous sûr de vouloir vous déconnecter ?</string>
-
-
-
     <string name="your_trips">Vos voyages</string>
     <string name="create_new_trip">Créer un nouveau voyage</string>
     <string name="trip_requests">Demandes de voyage</string>

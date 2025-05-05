@@ -34,5 +34,10 @@ interface TripRepository {
      */
     suspend fun getTripAnswers(tripId: Int): List<GuideAnswer>
 
+    /**
+     * Deletes a trip with the specified trip ID.
+     *
+     * @param tripId The ID of the trip to be deleted.
+     */
     suspend fun deleteTrip(tripId: Int): Boolean
 }

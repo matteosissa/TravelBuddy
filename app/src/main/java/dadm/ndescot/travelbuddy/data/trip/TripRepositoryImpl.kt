@@ -42,6 +42,11 @@ class TripRepositoryImpl @Inject constructor(private val dataSource: TripDataSou
         return dataSource.getTripAnswers(tripId)
     }
 
+    /**
+     * Deletes a trip with the specified trip ID.
+     *
+     * @param tripId The ID of the trip to be deleted.
+     */
     override suspend fun deleteTrip(tripId: Int): Boolean {
         return dataSource.deleteTrip(tripId)
     }
