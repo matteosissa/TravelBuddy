@@ -69,4 +69,8 @@
     <string name="add_guide_location">Add guide location</string>
     <string name="answers_received">Answers received</string>
     <string name="locations">Locations</string>
+    <string name="logout_confirmation_title">Confirm Logout</string>
+    <string name="logout_confirmation_message">Are you sure you want to log out?</string>
+    <string name="logout">Log Out</string>
+    <string name="cancel">Cancel</string>
 </resources>
