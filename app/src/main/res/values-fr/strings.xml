@@ -65,4 +65,12 @@
     <string name="add_guide_location">Ajouter un lieu de guide</string>
     <string name="answers_received">Réponses reçues</string>
     <string name="locations">Lieux</string>
+    <string name="logout_confirmation_title">Confirmer la déconnexion</string>
+    <string name="logout_confirmation_message">Êtes-vous sûr de vouloir vous déconnecter ?</string>
+    <string name="logout">Déconnexion</string>
+    <string name="cancel">Annuler</string>
+    <plurals name="trip_duration_days">
+        <item quantity="one">%d jour</item>
+        <item quantity="many">%d jours</item>
+    </plurals>
 </resources>

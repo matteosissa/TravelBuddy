@@ -73,4 +73,9 @@
     <string name="logout_confirmation_message">Are you sure you want to log out?</string>
     <string name="logout">Log Out</string>
     <string name="cancel">Cancel</string>
+    <plurals name="trip_duration_days">
+        <item quantity="one">%d day</item>
+        <item quantity="other">%d days</item>
+    </plurals>
+    <string name="trip_budget_euro" translatable="false">€%d</string>
 </resources>

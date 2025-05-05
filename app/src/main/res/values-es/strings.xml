@@ -65,4 +65,12 @@
     <string name="add_guide_location">Añadir ubicación de guía</string>
     <string name="answers_received">Respuestas recibidas</string>
     <string name="locations">Ubicaciones</string>
+    <string name="logout_confirmation_title">Confirmar cierre de sesión</string>
+    <string name="logout_confirmation_message">¿Estás seguro de que quieres cerrar sesión?</string>
+    <string name="logout">Cerrar sesión</string>
+    <string name="cancel">Cancelar</string>
+    <plurals name="trip_duration_days">
+        <item quantity="one">%d día</item>
+        <item quantity="many">%d días</item>
+    </plurals>
 </resources>

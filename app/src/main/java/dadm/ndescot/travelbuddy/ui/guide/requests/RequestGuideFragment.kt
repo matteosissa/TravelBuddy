@@ -43,7 +43,7 @@ class RequestGuideFragment : Fragment(R.layout.fragment_explore_requests_guide) 
         slider.stepSize = 100f
 
         slider.addOnChangeListener { _, value, _ ->
-            view.findViewById<TextView>(R.id.tvBudgetValue).text = value.toInt().toString()
+            view.findViewById<TextView>(R.id.tvBudgetValue).text = getString(R.string.trip_budget_euro, value.toInt())
         }
 
 
