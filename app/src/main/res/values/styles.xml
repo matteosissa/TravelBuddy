@@ -8,4 +8,10 @@
         <item name="cardBackgroundColor">?attr/colorSurface</item>
     </style>
 
+    <style name="WhiteIconsToolbar" parent="Widget.MaterialComponents.Toolbar.Primary">
+        <item name="colorControlNormal">@color/white</item>
+        <item name="actionMenuTextColor">@color/white</item>
+        <item name="android:textColorSecondary">@color/white</item>
+    </style>
+
 </resources>

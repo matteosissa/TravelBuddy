@@ -1,6 +1,7 @@
 package dadm.ndescot.travelbuddy.ui.mainlayout
 
 import android.content.res.Configuration.ORIENTATION_LANDSCAPE
+import android.graphics.Color
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
@@ -67,9 +68,8 @@ class MainLayoutFragment @Inject constructor() : Fragment(R.layout.fragment_main
             appBarConfiguration
         )
 
-        navController.addOnDestinationChangedListener { _, _, _ ->
-            toolbar.setNavigationIconTint(resources.getColor(R.color.white, null))
-            toolbar.overflowIcon?.setTint(resources.getColor(R.color.white, null))
+        toolbar.setNavigationOnClickListener {
+            navController.navigateUp()
         }
 
         when (val navView = binding.bottomNavigationView) {
