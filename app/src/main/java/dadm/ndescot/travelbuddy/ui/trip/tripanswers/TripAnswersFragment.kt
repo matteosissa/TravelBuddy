@@ -49,33 +49,36 @@ class TripAnswersFragment : Fragment(R.layout.fragment_trip_answers) {
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.uiState.collect { state ->
-                    when (state) {
-                        is UiState.Success -> {
-                            Toast.makeText(requireContext(), state.data, Toast.LENGTH_SHORT).show()
-                            viewModel.resetState()
-                        }
+                launch {
+                    viewModel.uiState.collect { state ->
+                        when (state) {
+                            is UiState.Success -> {
+                                Toast.makeText(requireContext(), state.data, Toast.LENGTH_SHORT)
+                                    .show()
+                                viewModel.resetState()
+                            }
 
-                        is UiState.Error -> {
-                            Toast.makeText(requireContext(), state.message, Toast.LENGTH_SHORT)
-                                .show()
-                            viewModel.resetState()
-                        }
+                            is UiState.Error -> {
+                                Toast.makeText(requireContext(), state.message, Toast.LENGTH_SHORT)
+                                    .show()
+                                viewModel.resetState()
+                            }
 
-                        is UiState.Idle -> {
-                            // Do nothing
+                            is UiState.Idle -> {
+                                // Do nothing
+                            }
                         }
                     }
                 }
-            }
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.tripAnswers.collect { tripAnswers ->
-                    adapter.submitList(tripAnswers)
+
+                launch {
+                    viewModel.tripAnswers.collect { tripAnswers ->
+                        adapter.submitList(tripAnswers)
+                    }
                 }
             }
         }
     }
-
 }
 
 

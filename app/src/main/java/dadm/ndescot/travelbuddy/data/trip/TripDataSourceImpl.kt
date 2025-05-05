@@ -38,8 +38,11 @@ class TripDataSourceImpl @Inject constructor() : TripDataSource {
     }
 
     override suspend fun getTripAnswers(tripId: Int): List<GuideAnswer> {
-        return connector.allAnswersToTrip.execute { this.tripId = tripId }
+        println("tripId: $tripId")
+        val data = connector.allAnswersToTrip.execute { this.tripId = tripId }
                 .data.tripAnswers.map { it.toDomain() }
+        println(data)
+        return data
 
     }
 }
