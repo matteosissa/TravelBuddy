@@ -41,13 +41,34 @@ class GuideSitesViewModel @Inject constructor(
             try {
                 val userId = localUserDataRepository.getUserId().first()
                 _guideSites.value = guideRepository.getGuideSitesByUserId(userId!!)
-                _uiState.value = UiState.Success(R.string.guide_sites_successfully_retrieved_toast)
             } catch (e: Exception) {
                 Log.e("SiteGuideViewModel", "Error getting guide sites", e)
                 _uiState.value = UiState.Error(R.string.error_while_trying_to_get_guide_sites_toast)
             }
         }
     }
+    
+    fun deleteSite(site: Site) {
+        viewModelScope.launch {
+            try {
+                val userId = localUserDataRepository.getUserId().first()
+                val result = guideRepository.deleteSite(userId!!, site.siteName, site.countryName)
+                if (result) {
+                    _uiState.value =
+                        UiState.Success(R.string.your_site_has_been_deleted_successfully_toast)
+                    _guideSites.value = _guideSites.value.filter { it != site }
+                } else {
+                    Log.e("SiteGuideViewModel", "Error deleting guide site")
+                    _uiState.value =
+                        UiState.Error(R.string.there_was_a_problem_deleting_the_site_toast)
+                }
+            } catch (e: Exception) {
+                Log.e("SiteGuideViewModel", "Error deleting guide site", e)
+                _uiState.value = UiState.Error(R.string.there_was_a_problem_deleting_the_site_toast)
+            }
+        }
+    }
+
 
     /**
      * Function to get the guide sites from the repository

@@ -68,6 +68,15 @@ class TripDataSourceImpl @Inject constructor() : TripDataSource {
                 .data.tripAnswers.map { it.toDomain() }
         println(data)
         return data
+    }
 
+    override suspend fun deleteTrip(tripId: Int): Boolean {
+        return try {
+            connector.deleteTrip.execute { this.tripId = tripId }.data
+            true
+        } catch (e: Exception) {
+            Log.e("TripDataSource", "Error deleting trip with id $tripId", e)
+            false
+        }
     }
 }

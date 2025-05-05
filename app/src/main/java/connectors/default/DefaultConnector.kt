@@ -34,6 +34,10 @@ public interface DefaultConnector : com.google.firebase.dataconnect.generated.Ge
   
     public val allTripsByUser: AllTripsByUserQuery
   
+    public val deleteSite: DeleteSiteMutation
+  
+    public val deleteTrip: DeleteTripMutation
+  
     public val getUserId: GetUserIdQuery
   
 
@@ -107,6 +111,14 @@ private class DefaultConnectorImpl(
       AllTripsByUserQueryImpl(this)
     }
   
+    override val deleteSite by lazy(LazyThreadSafetyMode.PUBLICATION) {
+      DeleteSiteMutationImpl(this)
+    }
+  
+    override val deleteTrip by lazy(LazyThreadSafetyMode.PUBLICATION) {
+      DeleteTripMutationImpl(this)
+    }
+  
     override val getUserId by lazy(LazyThreadSafetyMode.PUBLICATION) {
       GetUserIdQueryImpl(this)
     }
@@ -123,6 +135,8 @@ private class DefaultConnectorImpl(
         addNewGuideSite,
         addNewTrip,
         addNewUser,
+        deleteSite,
+        deleteTrip,
         
     )
 
@@ -386,6 +400,36 @@ private class AllTripsByUserQueryImpl(
     AllTripsByUserQuery.Companion.operationName,
     AllTripsByUserQuery.Companion.dataDeserializer,
     AllTripsByUserQuery.Companion.variablesSerializer,
+  )
+
+
+private class DeleteSiteMutationImpl(
+  connector: DefaultConnector
+):
+  DeleteSiteMutation,
+  DefaultConnectorGeneratedMutationImpl<
+      DeleteSiteMutation.Data,
+      DeleteSiteMutation.Variables
+  >(
+    connector,
+    DeleteSiteMutation.Companion.operationName,
+    DeleteSiteMutation.Companion.dataDeserializer,
+    DeleteSiteMutation.Companion.variablesSerializer,
+  )
+
+
+private class DeleteTripMutationImpl(
+  connector: DefaultConnector
+):
+  DeleteTripMutation,
+  DefaultConnectorGeneratedMutationImpl<
+      DeleteTripMutation.Data,
+      DeleteTripMutation.Variables
+  >(
+    connector,
+    DeleteTripMutation.Companion.operationName,
+    DeleteTripMutation.Companion.dataDeserializer,
+    DeleteTripMutation.Companion.variablesSerializer,
   )
 
 

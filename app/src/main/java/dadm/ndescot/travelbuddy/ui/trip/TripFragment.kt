@@ -9,6 +9,8 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import dadm.ndescot.travelbuddy.R
 import dadm.ndescot.travelbuddy.databinding.FragmentTripsBinding
 import dadm.ndescot.travelbuddy.utils.UiState
@@ -35,6 +37,25 @@ class TripFragment : Fragment(R.layout.fragment_trips) {
             findNavController().navigate(action)
         }
         binding.recyclerView.adapter = adapter
+
+        val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return false // Do not support drag
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val position = viewHolder.layoutPosition
+                val trip = adapter.currentList[position]
+                viewModel.deleteTrip(trip)
+            }
+        }
+
+        // Attach handler to the recycler view
+        ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(binding.recyclerView)
 
         // Fetch trips
         viewModel.getTripsByUserId()
@@ -86,6 +107,8 @@ class TripFragment : Fragment(R.layout.fragment_trips) {
             }
         }
     }
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()

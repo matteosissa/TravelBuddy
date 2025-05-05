@@ -107,4 +107,19 @@ class GuideDataSourceImpl @Inject constructor() : GuideDataSource {
             false
         }
     }
+
+    override suspend fun deleteSite(userId: Int, siteName: String, siteCountry: String): Boolean {
+        return try {
+            connector.deleteSite.execute {
+                this.userId = userId
+                this.siteName = siteName
+                this.siteCountry = siteCountry
+            }
+            true
+        } catch (e: Exception) {
+            Log.e("GuideDataSource", "Error deleting site", e)
+            false
+        }
+    }
+
 }

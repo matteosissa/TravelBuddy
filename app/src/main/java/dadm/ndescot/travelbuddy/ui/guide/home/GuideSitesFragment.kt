@@ -9,7 +9,9 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import dadm.ndescot.travelbuddy.R
 import dadm.ndescot.travelbuddy.databinding.FragmentSitesGuideBinding
 import dadm.ndescot.travelbuddy.utils.UiState
@@ -37,6 +39,24 @@ class GuideSitesFragment : Fragment(R.layout.fragment_sites_guide) {
         binding.rvSitesGuide.adapter = customAdapter
         binding.rvSitesGuide.layoutManager = LinearLayoutManager(requireContext())
 
+        val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return false // Do not support drag
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val position = viewHolder.layoutPosition
+                val site = customAdapter.currentList[position]
+                viewModel.deleteSite(site)
+            }
+        }
+
+        ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(binding.rvSitesGuide)
+
         // Fetch the sites from the source
         viewModel.getGuideSitesByUserId()
 
@@ -55,6 +75,7 @@ class GuideSitesFragment : Fragment(R.layout.fragment_sites_guide) {
                 viewModel.uiState.collect { state ->
                     when(state) {
                         is UiState.Success -> {
+                            Toast.makeText(requireContext(), getString(state.data), Toast.LENGTH_SHORT).show()
                             viewModel.resetState()
                         }
                         is UiState.Error -> {

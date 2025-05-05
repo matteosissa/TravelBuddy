@@ -59,4 +59,8 @@ class GuideRepositoryImpl @Inject constructor(private val dataSource: GuideDataS
     override suspend fun addAnswerToTrip(userId: Int, tripId: Int, message: String, instant: Instant) : Boolean {
         return dataSource.addAnswerToTrip(userId, tripId, message, instant)
     }
+
+    override suspend fun deleteSite(userId: Int, siteName: String, siteCountry: String): Boolean {
+        return dataSource.deleteSite(userId, siteName, siteCountry)
+    }
 }

@@ -33,4 +33,6 @@ interface TripDataSource {
      * @return A list of guide answers associated with the specified trip ID.
      */
     suspend fun getTripAnswers(tripId: Int): List<GuideAnswer>
+
+    suspend fun deleteTrip(tripId: Int): Boolean
 }

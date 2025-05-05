@@ -46,4 +46,7 @@ interface GuideDataSource {
      * @param instant The instant when the message was created.
      */
     suspend fun addAnswerToTrip(userId: Int, tripId: Int, message: String, instant: Instant) : Boolean
+
+    suspend fun deleteSite(userId: Int, siteName: String, siteCountry: String) : Boolean
+
 }

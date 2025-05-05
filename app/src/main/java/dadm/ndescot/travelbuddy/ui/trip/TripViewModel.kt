@@ -82,6 +82,23 @@ class TripViewModel @Inject constructor(
             }
         }
     }
+    
+    fun deleteTrip(trip: Trip) {
+        viewModelScope.launch {
+            try {
+                val success = tripRepository.deleteTrip(trip.id)
+                if (success) {
+                    _uiState.value = UiState.Success(R.string.trip_successfully_deleted_Toas)
+                    _trips.value = _trips.value.filter { it.id != trip.id }
+                } else {
+                    _uiState.value = UiState.Error(R.string.error_deleting_the_trip_toast)
+                }
+            } catch (e: Exception) {
+                Log.e("TripViewModel", "Error deleting trip", e)
+                _uiState.value = UiState.Error(R.string.error_deleting_the_trip_toast)
+            }
+        }
+    }
 
     /**
      * Get trips by user ID.

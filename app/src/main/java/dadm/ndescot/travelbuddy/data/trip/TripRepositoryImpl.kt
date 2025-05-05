@@ -41,4 +41,8 @@ class TripRepositoryImpl @Inject constructor(private val dataSource: TripDataSou
     override suspend fun getTripAnswers(tripId: Int): List<GuideAnswer> {
         return dataSource.getTripAnswers(tripId)
     }
+
+    override suspend fun deleteTrip(tripId: Int): Boolean {
+        return dataSource.deleteTrip(tripId)
+    }
 }

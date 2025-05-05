@@ -39,4 +39,7 @@ interface GuideRepository {
      * @return A boolean indicating whether the trip was successfully added.
      */
     suspend fun addAnswerToTrip(userId: Int, tripId: Int, message: String, instant: Instant) : Boolean
+
+    suspend fun deleteSite(userId: Int, siteName: String, siteCountry: String) : Boolean
+
 }
