@@ -13,8 +13,4 @@ import javax.inject.Inject
 class TravelBuddyApplication: Application() {
     @Inject
     lateinit var localUserDataRepository: LocalUserDataRepository
-
-    override fun onCreate() {
-        super.onCreate()
-    }
 }

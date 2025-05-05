@@ -83,9 +83,7 @@ class TripViewModel @Inject constructor(
     }
 
     /**
-     * Updates an existing trip.
-     *
-     * @param trip The trip to update.
+     * Get trips by user ID.
      */
     fun getTripsByUserId() {
         viewModelScope.launch {
@@ -101,9 +99,7 @@ class TripViewModel @Inject constructor(
     }
 
     /**
-     * Deletes a trip.
-     *
-     * @param trip The trip to delete.
+     * Reset the UI state to idle.
      */
     fun resetState() {
         _uiState.value = UiState.Idle

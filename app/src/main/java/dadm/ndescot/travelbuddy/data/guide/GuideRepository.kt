@@ -32,11 +32,11 @@ interface GuideRepository {
     suspend fun addGuideSite(siteName: String, countryName: String, userId: Int) : Boolean
 
     /**
-     * Adds a new guide site for a given user ID.
+     * Adds a new trip to the guide for a given user ID.
      *
-     * @param siteName The name of the site.
-     * @param countryName The name of the country.
      * @param userId The ID of the user.
+     * @param tripId The [Trip] object representing the trip to be added.
+     * @return A boolean indicating whether the trip was successfully added.
      */
     suspend fun addAnswerToTrip(userId: Int, tripId: Int, message: String, instant: Instant) : Boolean
 }

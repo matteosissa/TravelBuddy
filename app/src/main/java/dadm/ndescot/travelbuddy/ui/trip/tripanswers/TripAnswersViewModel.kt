@@ -43,13 +43,7 @@ class TripAnswersViewModel @Inject constructor(
             }
         }
     }
-
-    /**
-     * Submit a new answer for a given trip ID.
-     *
-     * @param tripId The ID of the trip to submit an answer for.
-     * @param answer The answer to submit.
-     */
+    /** reset the UI state to idle */
     fun resetState() {
         _uiState.value = UiState.Idle
     }
