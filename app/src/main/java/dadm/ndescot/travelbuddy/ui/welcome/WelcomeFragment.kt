@@ -15,13 +15,23 @@ import dadm.ndescot.travelbuddy.utils.UiState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+/**
+ * WelcomeFragment is the first screen that the user sees when they open the app.
+ * It allows the user to enter their username and phone number.
+ * If the user is new, it creates a new user in the database.
+ * If the user already exists, it logs them in.
+ */
 @AndroidEntryPoint
 class WelcomeFragment : Fragment(R.layout.fragment_welcome) {
 
-    private var _binding : FragmentWelcomeBinding? = null
+    private var _binding: FragmentWelcomeBinding? = null
     private val binding get() = _binding!!
     private val viewModel: WelcomeViewModel by viewModels()
 
+    /**
+     * onViewCreated is called when the view is created.
+     * It sets up the click listener for the button and observes the ViewModel's UI state.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentWelcomeBinding.bind(view)
@@ -35,9 +45,7 @@ class WelcomeFragment : Fragment(R.layout.fragment_welcome) {
 
             } else {
                 Toast.makeText(
-                    requireContext(),
-                    "Please enter a valid username",
-                    Toast.LENGTH_SHORT
+                    requireContext(), "Please enter a valid username", Toast.LENGTH_SHORT
                 ).show()
                 return@setOnClickListener
             }

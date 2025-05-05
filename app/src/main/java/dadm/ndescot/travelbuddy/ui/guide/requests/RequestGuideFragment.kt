@@ -20,6 +20,10 @@ import dadm.ndescot.travelbuddy.utils.UiState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+/**
+ * A fragment that displays a list of requests from travellers.
+ * The user can filter the requests by budget and add answers to the requests.
+ */
 @AndroidEntryPoint
 class RequestGuideFragment : Fragment(R.layout.fragment_explore_requests_guide) {
 

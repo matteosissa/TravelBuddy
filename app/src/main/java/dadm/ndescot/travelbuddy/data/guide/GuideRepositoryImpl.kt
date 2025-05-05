@@ -3,7 +3,6 @@ package dadm.ndescot.travelbuddy.data.guide
 import dadm.ndescot.travelbuddy.domain.model.Trip
 import dadm.ndescot.travelbuddy.domain.model.Site
 import java.time.Instant
-import java.time.LocalDateTime
 import javax.inject.Inject
 
 /**
@@ -41,12 +40,23 @@ class GuideRepositoryImpl @Inject constructor(private val dataSource: GuideDataS
         return dataSource.getTripsByLocation(siteName, countryName, userId)
     }
 
+    /**
+     * Fetches the trips for a given user ID.
+     *
+     * @param userId The ID of the user.
+     * @return A list of [Trip] objects representing the trips.
+     */
     override suspend fun addGuideSite(siteName: String, countryName: String, userId: Int) : Boolean {
         return dataSource.addGuideSite(siteName, countryName, userId)
     }
 
+    /**
+     * Fetches the trips for a given user ID.
+     *
+     * @param userId The ID of the user.
+     * @return A list of [Trip] objects representing the trips.
+     */
     override suspend fun addAnswerToTrip(userId: Int, tripId: Int, message: String, instant: Instant) : Boolean {
         return dataSource.addAnswerToTrip(userId, tripId, message, instant)
     }
-
 }

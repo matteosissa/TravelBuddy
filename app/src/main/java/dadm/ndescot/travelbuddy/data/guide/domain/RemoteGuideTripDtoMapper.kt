@@ -4,7 +4,9 @@ import connectors.default.AllTripsByLocationQuery
 import dadm.ndescot.travelbuddy.domain.model.Activity
 import dadm.ndescot.travelbuddy.domain.model.Trip
 
-// Function to map the GraphQL response to the Trip domain model
+/*
+ * Mapper to convert the GraphQL response to a domain model.
+ */
 fun AllTripsByLocationQuery.Data.TripsItem.toDomain(): Trip {
 
     return Trip(

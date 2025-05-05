@@ -11,9 +11,17 @@ import dadm.ndescot.travelbuddy.domain.model.Trip
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-class TripListAdapter(private val onItemClick: (Int) -> Unit) : ListAdapter<Trip,
-        TripListAdapter.ViewHolder>(TripDiff) {
+/**
+ * Adapter for displaying a list of trips in a RecyclerView.
+ *
+ * @param onItemClick Lambda function to handle item click events.
+ */
+class TripListAdapter(private val onItemClick: (Int) -> Unit) :
+    ListAdapter<Trip, TripListAdapter.ViewHolder>(TripDiff) {
 
+    /**
+     * DiffUtil.ItemCallback for comparing Trip items in the list.
+     */
     object TripDiff : DiffUtil.ItemCallback<Trip>() {
         override fun areItemsTheSame(oldItem: Trip, newItem: Trip): Boolean {
             return oldItem.date == newItem.date && oldItem.locationCity == newItem.locationCity
@@ -24,6 +32,12 @@ class TripListAdapter(private val onItemClick: (Int) -> Unit) : ListAdapter<Trip
         }
     }
 
+    /**
+     * ViewHolder for the TripListAdapter.
+     *
+     * @param binding The binding for the trip item layout.
+     * @param onItemClick Lambda function to handle item click events.
+     */
     class ViewHolder(private val binding: TripItemBinding, private val onItemClick: (Int) -> Unit) :
         RecyclerView.ViewHolder(binding.root) {
 
@@ -51,17 +65,28 @@ class TripListAdapter(private val onItemClick: (Int) -> Unit) : ListAdapter<Trip
         }
     }
 
+    /**
+     * Creates a new ViewHolder for the trip item layout.
+     *
+     * @param parent The parent ViewGroup.
+     * @param viewType The view type of the new View.
+     * @return A new ViewHolder instance.
+     */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
             TripItemBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
+                LayoutInflater.from(parent.context), parent, false
             ), onItemClick
         )
 
     }
 
+    /**
+     * Binds the trip data to the ViewHolder.
+     *
+     * @param holder The ViewHolder to bind data to.
+     * @param position The position of the item in the list.
+     */
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(getItem(position))
     }

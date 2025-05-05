@@ -14,24 +14,58 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 
 /**
- * Single binder module that contains the bindings to manage access to user data (both locally and remotely)
+ * Module to bind the UserDataRepository and UserDataDataSource implementations.
+ * This module is installed in the SingletonComponent, meaning that the bindings will
+ * be available for the entire application lifecycle.
+ *
+ * @see dadm.ndescot.travelbuddy.data.userdata.UserDataRepository
+ * @see dadm.ndescot.travelbuddy.data.userdata.UserDataDataSource
  */
-
 @Module
 @InstallIn(SingletonComponent::class)
 abstract class UserDataBinderModule {
 
+    /**
+     * Binds the LocalUserDataRepositoryImpl to the LocalUserDataRepository interface.
+     * This allows for dependency injection of the LocalUserDataRepository implementation
+     * wherever the interface is required.
+     *
+     * @param localUserDataRepositoryImpl The implementation of the LocalUserDataRepository.
+     * @return The bound LocalUserDataRepository.
+     */
     @Binds
     abstract fun bindLocalUserDataRepository(localUserDataRepositoryImpl: LocalUserDataRepositoryImpl): LocalUserDataRepository
 
+    /**
+     * Binds the LocalUserDataDataSourceImpl to the LocalUserDataDataSource interface.
+     * This allows for dependency injection of the LocalUserDataDataSource implementation
+     * wherever the interface is required.
+     *
+     * @param localUserDataDataSourceImpl The implementation of the LocalUserDataDataSource.
+     * @return The bound LocalUserDataDataSource.
+     */
     @Binds
     abstract fun bindLocalUserDataDataSource(localUserDataDataSourceImpl: LocalUserDataDataSourceImpl): LocalUserDataDataSource
 
+    /**
+     * Binds the RemoteUserDataRepositoryImpl to the RemoteUserDataRepository interface.
+     * This allows for dependency injection of the RemoteUserDataRepository implementation
+     * wherever the interface is required.
+     *
+     * @param remoteUserDataRepositoryImpl The implementation of the RemoteUserDataRepository.
+     * @return The bound RemoteUserDataRepository.
+     */
     @Binds
     abstract fun bindRemoteUserDataRepository(remoteUserDataRepositoryImpl: RemoteUserDataRepositoryImpl): RemoteUserDataRepository
 
+    /**
+     * Binds the RemoteUserDataDataSourceImpl to the RemoteUserDataDataSource interface.
+     * This allows for dependency injection of the RemoteUserDataDataSource implementation
+     * wherever the interface is required.
+     *
+     * @param remoteUserDataDataSourceImpl The implementation of the RemoteUserDataDataSource.
+     * @return The bound RemoteUserDataDataSource.
+     */
     @Binds
     abstract fun bindRemoteUserDataDataSource(remoteUserDataDataSourceImpl: RemoteUserDataDataSourceImpl): RemoteUserDataDataSource
-
-
 }

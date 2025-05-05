@@ -41,5 +41,4 @@ interface LocalUserDataDataSource {
      * Set the phone number.
      */
     suspend fun setPhoneNumber(phoneNumber: String)
-
 }

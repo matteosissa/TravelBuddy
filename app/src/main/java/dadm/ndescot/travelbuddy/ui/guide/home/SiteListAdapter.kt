@@ -8,10 +8,14 @@ import androidx.recyclerview.widget.RecyclerView
 import dadm.ndescot.travelbuddy.domain.model.Site
 import dadm.ndescot.travelbuddy.databinding.SiteItemBinding
 
+/**
+ * Adapter class for the RecyclerView that displays a list of sites.
+ *
+ * @param onItemClick Lambda function to handle item click events.
+ */
 class SiteListAdapter (
     private val onItemClick: (Site) -> Unit
 ): ListAdapter<Site, SiteListAdapter.SiteViewHolder>(SiteDiff) {
-
 
     /**
      * ViewHolder class responsible to inject data into a single item of the view
@@ -29,10 +33,16 @@ class SiteListAdapter (
 
     }
 
+    /**
+     * Function to update the list of items in the adapter
+     */
     override fun getItemCount(): Int {
         return currentList.size
     }
 
+    /**
+     * Function to create a new ViewHolder for the RecyclerView
+     */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SiteViewHolder {
         return SiteViewHolder(
             SiteItemBinding.inflate(LayoutInflater.from(parent.context), parent, false),
@@ -40,6 +50,9 @@ class SiteListAdapter (
         )
     }
 
+    /**
+     * Function to bind the data to the ViewHolder
+     */
     override fun onBindViewHolder(holder: SiteViewHolder, position: Int) {
         holder.bind(getItem(position))
     }

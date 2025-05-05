@@ -18,6 +18,10 @@ import dadm.ndescot.travelbuddy.utils.UiState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+/**
+ * Fragment that shows the answers from the guides to a specific trip.
+ * It uses a RecyclerView to display the answers and allows the user to start a chat with the guide.
+ */
 @AndroidEntryPoint
 class TripAnswersFragment : Fragment(R.layout.fragment_trip_answers) {
     private var _binding: FragmentTripAnswersBinding? = null
@@ -80,5 +84,3 @@ class TripAnswersFragment : Fragment(R.layout.fragment_trip_answers) {
         }
     }
 }
-
-

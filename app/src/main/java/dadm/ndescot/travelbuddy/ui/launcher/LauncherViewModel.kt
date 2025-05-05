@@ -7,11 +7,15 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
+/**
+ * ViewModel for the Launcher screen.
+ *
+ * @param localUserDataRepository Repository for user data.
+ */
 @HiltViewModel
-class LauncherViewModel @Inject constructor(private val localUserDataRepository: LocalUserDataRepository) : ViewModel() {
-
-    val isFirstAccess: Flow<Boolean> = localUserDataRepository.getUserId().map {
-        id -> id == null
+class LauncherViewModel @Inject constructor(private val localUserDataRepository: LocalUserDataRepository) :
+    ViewModel() {
+    val isFirstAccess: Flow<Boolean> = localUserDataRepository.getUserId().map { id ->
+        id == null
     }
-
 }

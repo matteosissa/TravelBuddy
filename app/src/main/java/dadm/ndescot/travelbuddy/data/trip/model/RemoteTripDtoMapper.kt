@@ -4,11 +4,8 @@ import connectors.default.AllTripsByUserQuery
 import dadm.ndescot.travelbuddy.domain.model.Activity
 import dadm.ndescot.travelbuddy.domain.model.Trip
 
-
 /**
  * Converts a [AllTripsByUserQuery.Data.TripsItem] to a [Trip]
- * The conversion is kept separate from the one used for the user's trips to allow flexibility in filtering the
- * data that is needed for the guide view and the traveller view
  */
 fun AllTripsByUserQuery.Data.TripsItem.toDomain(): Trip {
     return Trip(

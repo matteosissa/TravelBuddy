@@ -12,10 +12,15 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * ViewModel for the TripAnswers screen.
+ *
+ * @param tripRepository The repository to fetch trip answers from.
+ */
 @HiltViewModel
 class TripAnswersViewModel @Inject constructor(
     private val tripRepository: TripRepository
-) : ViewModel(){
+) : ViewModel() {
 
     private val _tripAnswers = MutableStateFlow(emptyList<GuideAnswer>())
     val tripAnswers = _tripAnswers.asStateFlow()
@@ -23,6 +28,11 @@ class TripAnswersViewModel @Inject constructor(
     private val _uiState = MutableStateFlow<UiState>(UiState.Idle)
     val uiState = _uiState.asStateFlow()
 
+    /**
+     * Load the trip answers for a given trip ID.
+     *
+     * @param tripId The ID of the trip to load answers for.
+     */
     fun loadTripAnswers(tripId: Int) {
         viewModelScope.launch {
             try {
@@ -34,8 +44,13 @@ class TripAnswersViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Submit a new answer for a given trip ID.
+     *
+     * @param tripId The ID of the trip to submit an answer for.
+     * @param answer The answer to submit.
+     */
     fun resetState() {
         _uiState.value = UiState.Idle
     }
-
 }

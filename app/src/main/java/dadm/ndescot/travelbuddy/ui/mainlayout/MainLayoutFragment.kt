@@ -33,6 +33,10 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * MainLayoutFragment is the main layout of the app, containing the navigation host and bottom navigation.
+ * It handles the navigation between different fragments and provides a toolbar for navigation.
+ */
 @AndroidEntryPoint
 class MainLayoutFragment @Inject constructor() : Fragment(R.layout.fragment_main_layout),
     MenuProvider {
@@ -74,10 +78,11 @@ class MainLayoutFragment @Inject constructor() : Fragment(R.layout.fragment_main
 
         lifecycleScope.launch {
             viewModel.uiState.collect { successfulLogout ->
-                when(successfulLogout) {
+                when (successfulLogout) {
                     is UiState.Success -> {
 
-                        Toast.makeText(requireContext(), successfulLogout.data, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), successfulLogout.data, Toast.LENGTH_SHORT)
+                            .show()
 
                         val activityNavController = requireActivity()
                             .findNavController(R.id.mainHostContainer)
@@ -89,11 +94,17 @@ class MainLayoutFragment @Inject constructor() : Fragment(R.layout.fragment_main
 
                         viewModel.resetState()
                     }
+
                     is UiState.Error -> {
-                        Toast.makeText(requireContext(), successfulLogout.message, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            requireContext(),
+                            successfulLogout.message,
+                            Toast.LENGTH_SHORT
+                        ).show()
                         viewModel.resetState()
                     }
-                    is UiState.Idle -> { }
+
+                    is UiState.Idle -> {}
 
                 }
             }
@@ -163,5 +174,4 @@ class MainLayoutFragment @Inject constructor() : Fragment(R.layout.fragment_main
             else -> false
         }
     }
-
 }

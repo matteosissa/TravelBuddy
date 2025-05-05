@@ -14,9 +14,14 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import java.time.Instant
-import java.time.LocalDateTime
 import javax.inject.Inject
 
+/**
+ * ViewModel for the RequestGuideFragment.
+ *
+ * @param guideRepository Repository for guide-related data.
+ * @param localUserDataRepository Repository for local user data.
+ */
 @HiltViewModel
 class RequestGuideViewModel @Inject constructor(
     private val guideRepository: GuideRepository,
@@ -31,7 +36,9 @@ class RequestGuideViewModel @Inject constructor(
     private var _uiState = MutableStateFlow<UiState>(UiState.Idle)
     val uiState = _uiState.asStateFlow()
 
-
+    /**
+     * Fetches the trips from the repository and updates the UI state.
+     */
     fun getTripsByLocation(site: Site) {
         viewModelScope.launch {
             try {
@@ -46,6 +53,9 @@ class RequestGuideViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Fetches the trips from the repository and updates the UI state.
+     */
     fun filterTripsByBudget(maxBudget: Int) {
         viewModelScope.launch {
             try {
@@ -58,12 +68,16 @@ class RequestGuideViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Fetches the trips from the repository and updates the UI state.
+     */
     fun addAnswerToTrip(message: String, tripId: Int) {
         viewModelScope.launch {
             try {
                 val userId = localUserDataRepository.getUserId().first()!!
-                val successful = guideRepository.addAnswerToTrip(userId, tripId, message, Instant.now())
-                if(successful) {
+                val successful =
+                    guideRepository.addAnswerToTrip(userId, tripId, message, Instant.now())
+                if (successful) {
                     _uiState.value = UiState.Success("Answer to trip added successfully")
                 } else {
                     _uiState.value = UiState.Error("Error adding answer to trip")
@@ -76,8 +90,10 @@ class RequestGuideViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Fetches the trips from the repository and updates the UI state.
+     */
     fun resetState() {
         _uiState.value = UiState.Idle
     }
-
 }

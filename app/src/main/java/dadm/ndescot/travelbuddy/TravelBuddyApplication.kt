@@ -3,11 +3,12 @@ package dadm.ndescot.travelbuddy
 import android.app.Application
 import dadm.ndescot.travelbuddy.data.userdata.local.LocalUserDataRepository
 import dagger.hilt.android.HiltAndroidApp
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * This is the main application class for the TravelBuddy app.
+ * It initializes the Hilt dependency injection framework and provides access to the LocalUserDataRepository.
+ */
 @HiltAndroidApp
 class TravelBuddyApplication: Application() {
     @Inject

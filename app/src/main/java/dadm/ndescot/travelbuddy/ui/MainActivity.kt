@@ -11,15 +11,16 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.lifecycleScope
 import dadm.ndescot.travelbuddy.R
 import dadm.ndescot.travelbuddy.data.ConnectivityChecker
-import dadm.ndescot.travelbuddy.data.userdata.local.LocalUserDataRepository
 import dadm.ndescot.travelbuddy.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * MainActivity is the entry point of the application.
+ * It checks for internet connectivity and shows a dialog if there is no connection.
+ */
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
@@ -41,6 +42,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * onCreate is called when the activity is first created.
+     * It sets up the layout and checks for internet connectivity.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -60,16 +65,22 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * checkInternetConnection checks if there is an internet connection available.
+     * If not, it shows a dialog to the user.
+     */
     private fun checkInternetConnection() {
         if (!connectivityChecker.isConnectionAvailable()) {
             showNoConnectionDialog()
         }
     }
 
+    /**
+     * showNoConnectionDialog shows a dialog to the user indicating that there is no internet connection.
+     */
     private fun showNoConnectionDialog() {
         if (noConnectionDialog == null || !noConnectionDialog!!.isShowing) {
-            val builder = AlertDialog.Builder(this)
-                .setTitle("No Internet Connection")
+            val builder = AlertDialog.Builder(this).setTitle("No Internet Connection")
                 .setMessage("Please check your internet connection and try again.")
                 .setCancelable(false) // Make it non-dismissable
 
@@ -78,22 +89,30 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * registerNetworkCallback registers a network callback to listen for changes in network connectivity.
+     */
     private fun registerNetworkCallback() {
-        val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        val request = NetworkRequest.Builder()
-            .addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
-            .build()
+        val connectivityManager =
+            getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val request =
+            NetworkRequest.Builder().addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
+                .build()
         connectivityManager.registerNetworkCallback(request, networkCallback)
     }
 
+    /**
+     * onDestroy is called when the activity is destroyed.
+     * It unregisters the network callback to avoid memory leaks.
+     */
     override fun onDestroy() {
         super.onDestroy()
         try {
-            val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            val connectivityManager =
+                getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
             connectivityManager.unregisterNetworkCallback(networkCallback)
         } catch (e: Exception) {
             // Ignore
         }
     }
-
 }
