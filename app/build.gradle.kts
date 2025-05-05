@@ -80,4 +80,5 @@ dependencies {
     implementation(libs.kotlinx.serialization.core)
     implementation(libs.firebase.auth) // Optional
     implementation(libs.firebase.appcheck) // Optional
+    implementation(libs.material)
 }

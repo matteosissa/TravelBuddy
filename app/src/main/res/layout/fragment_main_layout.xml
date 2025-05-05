@@ -26,8 +26,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layout_scrollFlags="scroll|enterAlways|snap"
-                app:titleTextColor="@color/black"
-                android:background="#8BC34A"/>
+                app:titleTextColor="?attr/colorOnPrimary"
+                android:background="?attr/colorPrimary"/>
         </com.google.android.material.appbar.AppBarLayout>
 
         <com.google.android.material.bottomnavigation.BottomNavigationView

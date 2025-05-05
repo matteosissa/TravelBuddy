@@ -3,6 +3,7 @@ package dadm.ndescot.travelbuddy.ui.guide.requests
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
@@ -12,6 +13,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.slider.Slider
 import dadm.ndescot.travelbuddy.R
 import dadm.ndescot.travelbuddy.databinding.FragmentExploreRequestsGuideBinding
 import dadm.ndescot.travelbuddy.utils.UiState
@@ -29,6 +31,18 @@ class RequestGuideFragment : Fragment(R.layout.fragment_explore_requests_guide) 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val slider = view.findViewById<Slider>(R.id.sliderBudget)
+        slider.valueFrom = 0f
+        slider.valueTo = 10000f
+        slider.value = 5000f  // Set to a safe initial value
+        slider.stepSize = 100f
+
+        slider.addOnChangeListener { _, value, _ ->
+            view.findViewById<TextView>(R.id.tvBudgetValue).text = value.toInt().toString()
+        }
+
+
         _binding = FragmentExploreRequestsGuideBinding.bind(view)
 
         // Fetch the data

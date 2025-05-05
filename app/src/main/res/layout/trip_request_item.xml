@@ -94,7 +94,7 @@ decide whether to send a message or not
             app:layout_constraintEnd_toEndOf="parent"
 
             android:text="@string/button_contact_traveller"
-            android:textColor="@color/black"/>
+            android:textColor="?attr/colorOnSurface"/>
 
 
 
