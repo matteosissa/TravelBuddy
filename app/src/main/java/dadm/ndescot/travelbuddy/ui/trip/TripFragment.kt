@@ -2,6 +2,7 @@ package dadm.ndescot.travelbuddy.ui.trip
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -10,6 +11,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import dadm.ndescot.travelbuddy.R
 import dadm.ndescot.travelbuddy.databinding.FragmentTripsBinding
+import dadm.ndescot.travelbuddy.utils.UiState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -29,11 +31,35 @@ class TripFragment : Fragment(R.layout.fragment_trips) {
         }
         binding.recyclerView.adapter = adapter
 
+        // Fetch trips
+        viewModel.getTripsByUserId()
+
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.trips.collect { trips ->
-                    adapter.submitList(trips)
+                launch {
+                    viewModel.trips.collect { trips ->
+                        adapter.submitList(trips)
+                    }
                 }
+
+                launch {
+                    viewModel.uiState.collect { state ->
+                        when(state) {
+                            is UiState.Success -> {
+                                Toast.makeText(requireContext(), state.data, Toast.LENGTH_SHORT).show()
+                                viewModel.resetState()
+                            }
+                            is UiState.Error -> {
+                                Toast.makeText(requireContext(), state.message, Toast.LENGTH_SHORT).show()
+                                viewModel.resetState()
+                            }
+                            is UiState.Idle -> {
+                                // Do nothing
+                            }
+                        }
+                    }
+                }
+
             }
         }
 

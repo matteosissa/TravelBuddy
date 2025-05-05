@@ -4,14 +4,14 @@ import kotlinx.coroutines.flow.Flow
 
 interface LocalUserDataRepository {
 
-    fun getUserName(): Flow<String>
+    fun getUserName(): Flow<String?>
     suspend fun setUserName(userName: String)
 
     fun getUserId(): Flow<Int?>
     suspend fun setUserId(userId: Int)
     suspend fun deleteUserId()
 
-    fun getPhoneNumber(): Flow<String>
+    fun getPhoneNumber(): Flow<String?>
     suspend fun setPhoneNumber(phoneNumber: String)
 
 

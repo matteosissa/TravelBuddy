@@ -28,22 +28,7 @@ interface GuideDataSource {
      */
     suspend fun getTripsByLocation(siteName: String, countryName: String, userId: Int): List<Trip>
 
-    /**
-     * Adds a new guide site for a given user ID.
-     *
-     * @param siteName The name of the site.
-     * @param countryName The name of the country.
-     * @param userId The ID of the user.
-     */
-    suspend fun addGuideSite(siteName: String, countryName: String, userId: Int)
+    suspend fun addGuideSite(siteName: String, countryName: String, userId: Int) : Boolean
 
-    /**
-     * Adds an answer to a trip for a given user ID, trip ID, message, and timestamp.
-     *
-     * @param userId The ID of the user.
-     * @param tripId The ID of the trip.
-     * @param message The message to be added.
-     * @param instant The timestamp of the message.
-     */
-    suspend fun addAnswerToTrip(userId: Int, tripId: Int, message: String, instant: Instant)
+    suspend fun addAnswerToTrip(userId: Int, tripId: Int, message: String, instant: Instant) : Boolean
 }

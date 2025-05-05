@@ -6,6 +6,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuProvider
 import androidx.core.view.ViewCompat
@@ -27,6 +28,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigationrail.NavigationRailView
 import dadm.ndescot.travelbuddy.R
 import dadm.ndescot.travelbuddy.databinding.FragmentMainLayoutBinding
+import dadm.ndescot.travelbuddy.utils.UiState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -51,7 +53,7 @@ class MainLayoutFragment @Inject constructor() : Fragment(R.layout.fragment_main
         navController = binding.navHostFragment.getFragment<NavHostFragment>().navController
 
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.tripFragment, R.id.sitesGuideFragment)
+            setOf(R.id.tripFragment, R.id.guideSitesFragment)
         )
 
         setupActionBarWithNavController(
@@ -71,17 +73,28 @@ class MainLayoutFragment @Inject constructor() : Fragment(R.layout.fragment_main
         requireActivity().addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
         lifecycleScope.launch {
-            viewModel.successfulLogout.collect { successfulLogout ->
+            viewModel.uiState.collect { successfulLogout ->
+                when(successfulLogout) {
+                    is UiState.Success -> {
 
-                if (successfulLogout) {
-                    val activityNavController = requireActivity()
-                        .findNavController(R.id.mainHostContainer)
+                        Toast.makeText(requireContext(), successfulLogout.data, Toast.LENGTH_SHORT).show()
 
-                    val navOptions = NavOptions.Builder()
-                        .setPopUpTo(R.id.entry_nav_graph, true) // clear the entire entry graph
-                        .build()
+                        val activityNavController = requireActivity()
+                            .findNavController(R.id.mainHostContainer)
+                        val navOptions = NavOptions.Builder()
+                            .setPopUpTo(R.id.entry_nav_graph, true) // clear the entire entry graph
+                            .build()
 
-                    activityNavController.navigate(R.id.welcomeFragment, null, navOptions)
+                        activityNavController.navigate(R.id.welcomeFragment, null, navOptions)
+
+                        viewModel.resetState()
+                    }
+                    is UiState.Error -> {
+                        Toast.makeText(requireContext(), successfulLogout.message, Toast.LENGTH_SHORT).show()
+                        viewModel.resetState()
+                    }
+                    is UiState.Idle -> { }
+
                 }
             }
         }

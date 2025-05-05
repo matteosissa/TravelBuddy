@@ -7,10 +7,10 @@ import kotlinx.coroutines.flow.Flow
  */
 interface LocalUserDataDataSource {
 
+    fun getUserName(): Flow<String?>
     /**
      * Get the user name as a Flow.
      */
-    fun getUserName(): Flow<String>
 
     /**
      * Set the user name.
@@ -32,13 +32,14 @@ interface LocalUserDataDataSource {
      */
     suspend fun deleteUserId()
 
+    fun getPhoneNumber(): Flow<String?>
     /**
      * Get the phone number as a Flow.
      */
-    fun getPhoneNumber(): Flow<String>
 
     /**
      * Set the phone number.
      */
     suspend fun setPhoneNumber(phoneNumber: String)
+
 }

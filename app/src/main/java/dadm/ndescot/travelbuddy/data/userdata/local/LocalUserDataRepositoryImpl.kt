@@ -6,7 +6,7 @@ import javax.inject.Inject
 class LocalUserDataRepositoryImpl @Inject constructor(private val dataSource: LocalUserDataDataSource) :
     LocalUserDataRepository {
 
-    override fun getUserName(): Flow<String> {
+    override fun getUserName(): Flow<String?> {
         return dataSource.getUserName()
     }
 
@@ -27,7 +27,7 @@ class LocalUserDataRepositoryImpl @Inject constructor(private val dataSource: Lo
     }
 
 
-    override fun getPhoneNumber(): Flow<String> {
+    override fun getPhoneNumber(): Flow<String?> {
         return dataSource.getPhoneNumber()
     }
 

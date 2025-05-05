@@ -9,6 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import dadm.ndescot.travelbuddy.R
 import dadm.ndescot.travelbuddy.databinding.FragmentNewSiteBinding
+import dadm.ndescot.travelbuddy.utils.UiState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -37,12 +38,25 @@ class AddSiteFragment : Fragment(R.layout.fragment_new_site) {
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.successfulRequest.collect {
-                if(it) {
-                    // Send a signal to the previous fragment to refresh data
-                    val refresh = Bundle().apply { putBoolean("refresh", true) }
-                    parentFragmentManager.setFragmentResult("refresh", refresh)
-                    findNavController().popBackStack()
+            viewModel.uiState.collect { state ->
+                when (state) {
+                    is UiState.Success -> {
+                        Toast.makeText(requireContext(), state.data, Toast.LENGTH_SHORT).show()
+                        // Send a signal to the previous fragment to refresh data
+                        val refresh = Bundle().apply { putBoolean("refresh", true) }
+                        parentFragmentManager.setFragmentResult("refresh", refresh)
+                        findNavController().popBackStack()
+
+                        viewModel.resetState()
+                    }
+
+                    is UiState.Error -> {
+                        Toast.makeText(requireContext(), state.message, Toast.LENGTH_SHORT).show()
+                        viewModel.resetState()
+                    }
+
+                    is UiState.Idle -> { // Do nothing }
+                    }
                 }
             }
         }

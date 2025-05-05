@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -15,13 +16,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.slider.Slider
 import dadm.ndescot.travelbuddy.R
 import dadm.ndescot.travelbuddy.databinding.FragmentExploreRequestsGuideBinding
+import dadm.ndescot.travelbuddy.utils.UiState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class RequestGuideFragment : Fragment(R.layout.fragment_explore_requests_guide){
+class RequestGuideFragment : Fragment(R.layout.fragment_explore_requests_guide) {
 
-    private var _binding : FragmentExploreRequestsGuideBinding? = null
+    private var _binding: FragmentExploreRequestsGuideBinding? = null
     private val binding get() = _binding!!
     private val viewModel: RequestGuideViewModel by viewModels()
 
@@ -46,8 +48,8 @@ class RequestGuideFragment : Fragment(R.layout.fragment_explore_requests_guide){
         // Fetch the data
         // Note, calling this method will update the list of requests, so the coroutine will also trigger to update the UI
         viewModel.getTripsByLocation(args.site)
-        val customAdapter = RequestListAdapter {
-                trip -> showAddAnswerDialog(trip.id)
+        val customAdapter = RequestListAdapter { trip ->
+            showAddAnswerDialog(trip.id)
         }
         binding.rvExploreRequestsGuide.adapter = customAdapter
         binding.rvExploreRequestsGuide.layoutManager = LinearLayoutManager(requireContext())
@@ -56,8 +58,31 @@ class RequestGuideFragment : Fragment(R.layout.fragment_explore_requests_guide){
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.requests.collect {
-                        requests -> customAdapter.submitList(requests)
+                launch {
+                    viewModel.requests.collect { requests ->
+                        customAdapter.submitList(requests)
+                    }
+                }
+                launch {
+                    viewModel.uiState.collect { state ->
+                        when (state) {
+                            is UiState.Success -> {
+                                Toast.makeText(requireContext(), state.data, Toast.LENGTH_SHORT)
+                                    .show()
+                                viewModel.resetState()
+                            }
+
+                            is UiState.Error -> {
+                                Toast.makeText(requireContext(), state.message, Toast.LENGTH_SHORT)
+                                    .show()
+                                viewModel.resetState()
+                            }
+
+                            is UiState.Idle -> {
+                                // Do nothing
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -97,9 +122,9 @@ class RequestGuideFragment : Fragment(R.layout.fragment_explore_requests_guide){
             .setView(dialogView)
             .setPositiveButton("Send") { dialog, _ -> // use view model
                 val message = editText.text.toString()
-                if(message.isNotEmpty()) {
+                if (message.isNotEmpty()) {
                     viewModel.addAnswerToTrip(message, tripId)
-                } else  {
+                } else {
                     editText.error = "Message cannot be empty"
                 }
             }

@@ -11,27 +11,16 @@
             android:id="@+id/action_tripFragment_to_createTripFragment"
             app:destination="@id/createTripFragment" />
         <action
-            android:id="@+id/action_tripFragment_to_sitesGuideFragment"
-            app:destination="@id/sitesGuideFragment" />
-        <action
             android:id="@+id/action_tripFragment_to_tripAnswersFragment"
             app:destination="@id/tripAnswersFragment" />
+        <action
+            android:id="@+id/action_tripFragment_to_guideSitesFragment"
+            app:destination="@id/guideSitesFragment" />
     </fragment>
     <fragment
         android:id="@+id/createTripFragment"
         android:name="dadm.ndescot.travelbuddy.ui.trip.CreateTripFragment"
         android:label="Create a new trip" />
-    <fragment
-        android:id="@+id/sitesGuideFragment"
-        android:name="dadm.ndescot.travelbuddy.ui.guide.home.SitesGuideFragment"
-        android:label="Selection location to guide" >
-        <action
-            android:id="@+id/action_sitesGuideFragment_to_requestGuideFragment"
-            app:destination="@id/requestGuideFragment" />
-        <action
-            android:id="@+id/action_sitesGuideFragment_to_addSiteFragment"
-            app:destination="@id/addSiteFragment" />
-    </fragment>
     <fragment
         android:id="@+id/requestGuideFragment"
         android:name="dadm.ndescot.travelbuddy.ui.guide.requests.RequestGuideFragment"
@@ -56,4 +45,15 @@
         android:id="@+id/aboutDialogFragment"
         android:name="dadm.ndescot.travelbuddy.ui.about.AboutDialogFragment"
         android:label="About" />
+    <fragment
+        android:id="@+id/guideSitesFragment"
+        android:name="dadm.ndescot.travelbuddy.ui.guide.home.GuideSitesFragment"
+        android:label="GuideSitesFragment" >
+        <action
+            android:id="@+id/action_guideSitesFragment_to_requestGuideFragment"
+            app:destination="@id/requestGuideFragment" />
+        <action
+            android:id="@+id/action_guideSitesFragment_to_addSiteFragment"
+            app:destination="@id/addSiteFragment" />
+    </fragment>
 </navigation>
