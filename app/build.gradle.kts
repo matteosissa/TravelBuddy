@@ -53,24 +53,16 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.navigation.ui.ktx)
     implementation(libs.androidx.navigation.fragment.ktx)
-    implementation(libs.androidx.swiperefreshlayout)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.hilt.android)
     implementation(libs.androidx.recyclerview)
     implementation(libs.firebase.common.ktx)
     ksp(libs.hilt.compiler)
-    implementation(libs.moshi.kotlin)
-    ksp(libs.moshi.kotlin.codegen)
-    implementation(libs.retrofit)
-    implementation(libs.converter.moshi)
     implementation(libs.androidx.preference.ktx)
     implementation(libs.androidx.datastore.preferences)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation(libs.androidx.room.runtime)
-    implementation(libs.androidx.room.ktx)
-    ksp(libs.androidx.room.compiler)
 
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.analytics)
@@ -78,7 +70,5 @@ dependencies {
     implementation(libs.google.firebase.dataconnect)
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.serialization.core)
-    implementation(libs.firebase.auth) // Optional
-    implementation(libs.firebase.appcheck) // Optional
     implementation(libs.material)
 }
