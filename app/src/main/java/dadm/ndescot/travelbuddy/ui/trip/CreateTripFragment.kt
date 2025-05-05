@@ -74,7 +74,7 @@ class CreateTripFragment : Fragment(R.layout.fragment_create_trip) {
     }
 
     private fun setupActivityChips() {
-        Activity.values().forEach { activity ->
+        Activity.entries.forEach { activity ->
             val chip = Chip(requireContext()).apply {
                 text =
                     activity.name.replace("_", " ").lowercase().replaceFirstChar { it.uppercase() }

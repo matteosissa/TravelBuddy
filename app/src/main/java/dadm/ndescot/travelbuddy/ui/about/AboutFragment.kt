@@ -9,8 +9,6 @@ import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * A simple [Fragment] subclass.
- * Use the [AboutFragment.newInstance] factory method to
- * create an instance of this fragment.
  */
 @AndroidEntryPoint
 class AboutFragment : Fragment(R.layout.fragment_about) {

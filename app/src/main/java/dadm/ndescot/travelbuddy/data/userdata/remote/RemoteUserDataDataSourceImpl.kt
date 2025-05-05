@@ -24,7 +24,7 @@ class RemoteUserDataDataSourceImpl @Inject constructor() : RemoteUserDataDataSou
      * @param phoneNumber The phone number of the user to be added.
      * @return The ID of the newly added user, or null if the operation failed.
      */
-    override suspend fun addNewUser(userName: String, phoneNumber: String): Int? {
+    override suspend fun addNewUser(userName: String, phoneNumber: String): Int {
         val response = connector.addNewUser.execute {
             username = userName
             this.phoneNumber = phoneNumber

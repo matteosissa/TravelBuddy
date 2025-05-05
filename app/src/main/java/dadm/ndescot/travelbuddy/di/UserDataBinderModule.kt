@@ -17,9 +17,6 @@ import dagger.hilt.components.SingletonComponent
  * Module to bind the UserDataRepository and UserDataDataSource implementations.
  * This module is installed in the SingletonComponent, meaning that the bindings will
  * be available for the entire application lifecycle.
- *
- * @see dadm.ndescot.travelbuddy.data.userdata.UserDataRepository
- * @see dadm.ndescot.travelbuddy.data.userdata.UserDataDataSource
  */
 @Module
 @InstallIn(SingletonComponent::class)
