@@ -28,7 +28,7 @@ class GuideSitesFragment : Fragment(R.layout.fragment_sites_guide) {
         _binding = FragmentSitesGuideBinding.bind(view)
 
         val customAdapter = SiteListAdapter { site ->
-            val action = GuideSitesFragmentDirections.actionSitesGuideFragmentToRequestGuideFragment(site)
+            val action = GuideSitesFragmentDirections.actionGuideSitesFragmentToRequestGuideFragment(site)
             findNavController().navigate(action)
         }
         binding.rvSitesGuide.adapter = customAdapter
@@ -67,7 +67,7 @@ class GuideSitesFragment : Fragment(R.layout.fragment_sites_guide) {
         }
 
         binding.fabAddSite.setOnClickListener {
-            findNavController().navigate(R.id.action_sitesGuideFragment_to_addSiteFragment)
+            findNavController().navigate(R.id.action_guideSitesFragment_to_addSiteFragment)
         }
 
         // Manage the refresh of data in case of adding a new site

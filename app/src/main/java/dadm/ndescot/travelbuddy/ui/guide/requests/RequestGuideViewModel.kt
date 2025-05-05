@@ -23,6 +23,8 @@ class RequestGuideViewModel @Inject constructor(
     private val localUserDataRepository: LocalUserDataRepository
 ) : ViewModel() {
 
+    private var _trips = MutableStateFlow<List<Trip>>(emptyList())
+
     private var _requests = MutableStateFlow<List<Trip>>(emptyList())
     val requests = _requests.asStateFlow()
 
@@ -36,6 +38,7 @@ class RequestGuideViewModel @Inject constructor(
                 val userId = localUserDataRepository.getUserId().first()
                 _requests.value =
                     guideRepository.getTripsByLocation(site.siteName, site.countryName, userId!!)
+                _trips.value = _requests.value.toList() // Create new instance
             } catch (e: Exception) {
                 Log.e("RequestGuideViewModel", "Error getting trips by location", e)
                 _uiState.value = UiState.Error("Error getting trips by location")
@@ -45,8 +48,8 @@ class RequestGuideViewModel @Inject constructor(
 
     fun filterTripsByBudget(maxBudget: Int) {
         viewModelScope.launch {
-            try{
-                _requests.value = _requests.value.filter { trip -> trip.budget <= maxBudget }
+            try {
+                _requests.value = _trips.value.filter { trip -> trip.budget <= maxBudget }
                 _uiState.value = UiState.Success("Trips filtered by budget")
             } catch (e: Exception) {
                 Log.e("RequestGuideViewModel", "Error filtering trips by budget", e)

@@ -6,14 +6,38 @@ import java.time.Instant
 import java.time.LocalDateTime
 import javax.inject.Inject
 
+/**
+ * Implementation of the [GuideRepository] interface.
+ *
+ * This class is responsible for fetching and manipulating data related to the guide feature.
+ * It uses the [GuideDataSource] to interact with the data source.
+ */
 class GuideRepositoryImpl @Inject constructor(private val dataSource: GuideDataSource) :
     GuideRepository {
 
+    /**
+     * Fetches the guide sites for a given user ID.
+     *
+     * @param id The ID of the user.
+     * @return A list of [Site] objects representing the guide sites.
+     */
     override suspend fun getGuideSitesByUserId(id: Int): List<Site> {
         return dataSource.getGuideSitesByUserId(id)
     }
 
-    override suspend fun getTripsByLocation(siteName: String, countryName: String, userId: Int): List<Trip> {
+    /**
+     * Fetches the trips for a given location and user ID.
+     *
+     * @param siteName The name of the site.
+     * @param countryName The name of the country.
+     * @param userId The ID of the user.
+     * @return A list of [Trip] objects representing the trips.
+     */
+    override suspend fun getTripsByLocation(
+        siteName: String,
+        countryName: String,
+        userId: Int
+    ): List<Trip> {
         return dataSource.getTripsByLocation(siteName, countryName, userId)
     }
 

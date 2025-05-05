@@ -8,8 +8,16 @@ import dadm.ndescot.travelbuddy.data.guide.domain.toDomain
 import dadm.ndescot.travelbuddy.domain.model.Trip
 import dadm.ndescot.travelbuddy.domain.model.Site
 import java.time.Instant
+import java.time.LocalDateTime
+import java.time.ZoneOffset
 import javax.inject.Inject
 
+/**
+ * Implementation of the [GuideDataSource] interface.
+ *
+ * This class is responsible for fetching and manipulating data related to the guide feature.
+ * It uses the default connector to interact with the data source.
+ */
 class GuideDataSourceImpl @Inject constructor() : GuideDataSource {
 
     private val connector = connectors.default.DefaultConnector.instance
@@ -72,4 +80,6 @@ class GuideDataSourceImpl @Inject constructor() : GuideDataSource {
             false
         }
     }
+
+
 }
