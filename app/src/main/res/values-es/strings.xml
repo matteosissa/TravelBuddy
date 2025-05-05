@@ -2,8 +2,6 @@
 <resources>
     <string name="about">Acerca de</string>
     <string name="About_information">TravelBuddy por\n\nMatteo Sissa\nNicolas Descoteaux\n\nDesarollada por DADM 2025</string>
-    <string name="Description_of_portrait">Retrato del creador</string>
-    <string name="button_to_add_quote_to_favorites">Botón para añadir cita a favoritos</string>
     <string name="activities">Actividades</string>
     <string name="budget">Presupuesto</string>
     <string name="date">Fecha de salida</string>
@@ -61,6 +59,20 @@
     <string name="please_enter_a_valid_username_and_phone_number_error_welcome">Por favor, introduce un nombre de usuario y número de teléfono válidos</string>
     <string name="no_internet_connection_dialog">Sin conexión a Internet</string>
     <string name="please_check_your_internet_connection_and_try_again_dialog">Por favor, comprueba tu conexión a Internet e inténtalo de nuevo.</string>
+    <string name="your_trips">Tus viajes</string>
+    <string name="create_new_trip">Crear un nuevo viaje</string>
+    <string name="trip_requests">Solicitudes de viaje</string>
+    <string name="add_guide_location">Añadir ubicación de guía</string>
+    <string name="answers_received">Respuestas recibidas</string>
+    <string name="locations">Ubicaciones</string>
+    <string name="logout_confirmation_title">Confirmar cierre de sesión</string>
+    <string name="logout_confirmation_message">¿Estás seguro de que quieres cerrar sesión?</string>
+    <string name="logout">Cerrar sesión</string>
+    <string name="cancel">Cancelar</string>
+    <plurals name="trip_duration_days">
+        <item quantity="one">%d día</item>
+        <item quantity="many">%d días</item>
+    </plurals>
     <string name="trip_successfully_deleted_Toas">Viaje eliminado con éxito</string>
     <string name="error_deleting_the_trip_toast">Error al eliminar el viaje</string>
     <string name="your_site_has_been_deleted_successfully_toast">Tu sitio se ha eliminado correctamente</string>

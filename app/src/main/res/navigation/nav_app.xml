@@ -6,7 +6,7 @@
     <fragment
         android:id="@+id/tripFragment"
         android:name="dadm.ndescot.travelbuddy.ui.trip.TripFragment"
-        android:label="Your trips" >
+        android:label="@string/your_trips" >
         <action
             android:id="@+id/action_tripFragment_to_createTripFragment"
             app:destination="@id/createTripFragment" />
@@ -20,11 +20,11 @@
     <fragment
         android:id="@+id/createTripFragment"
         android:name="dadm.ndescot.travelbuddy.ui.trip.CreateTripFragment"
-        android:label="Create a new trip" />
+        android:label="@string/create_new_trip" />
     <fragment
         android:id="@+id/requestGuideFragment"
         android:name="dadm.ndescot.travelbuddy.ui.guide.requests.RequestGuideFragment"
-        android:label="Trip requests" >
+        android:label="@string/trip_requests" >
         <argument
             android:name="site"
             app:argType="dadm.ndescot.travelbuddy.domain.model.Site" />
@@ -32,11 +32,11 @@
     <fragment
         android:id="@+id/addSiteFragment"
         android:name="dadm.ndescot.travelbuddy.ui.guide.addsite.AddSiteFragment"
-        android:label="Add guide location" />
+        android:label="@string/add_guide_location" />
     <fragment
         android:id="@+id/tripAnswersFragment"
         android:name="dadm.ndescot.travelbuddy.ui.trip.tripanswers.TripAnswersFragment"
-        android:label="Answers you have received" >
+        android:label="@string/answers_received" >
         <argument
             android:name="tripId"
             app:argType="integer" />
@@ -44,11 +44,11 @@
     <dialog
         android:id="@+id/aboutDialogFragment"
         android:name="dadm.ndescot.travelbuddy.ui.about.AboutDialogFragment"
-        android:label="About" />
+        android:label="@string/about" />
     <fragment
         android:id="@+id/guideSitesFragment"
         android:name="dadm.ndescot.travelbuddy.ui.guide.home.GuideSitesFragment"
-        android:label="GuideSitesFragment" >
+        android:label="@string/locations" >
         <action
             android:id="@+id/action_guideSitesFragment_to_requestGuideFragment"
             app:destination="@id/requestGuideFragment" />

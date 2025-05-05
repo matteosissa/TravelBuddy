@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import dadm.ndescot.travelbuddy.R
 import dadm.ndescot.travelbuddy.databinding.TripRequestItemBinding
 import dadm.ndescot.travelbuddy.domain.model.Trip
 import java.text.SimpleDateFormat
@@ -25,13 +26,21 @@ class RequestListAdapter(
      * @param requestItemBinding Binding for the trip request item layout.
      * @param onClick Lambda function to handle click events on the item.
      */
-    class RequestViewHolder(private val requestItemBinding: TripRequestItemBinding, private val onClick: (Trip) -> Unit) : RecyclerView.ViewHolder(requestItemBinding.root) {
+    class RequestViewHolder(
+        private val requestItemBinding: TripRequestItemBinding,
+        private val onClick: (Trip) -> Unit
+    ) : RecyclerView.ViewHolder(requestItemBinding.root) {
 
         fun bind(request: Trip) {
             requestItemBinding.tvTravellerName.text = request.username
             val dateFormat = SimpleDateFormat("MMMM d, yyyy", Locale.getDefault())
             requestItemBinding.tvStartDate.text = dateFormat.format(request.date)
-            requestItemBinding.tvDuration.text = "${request.durationDays} days"
+            requestItemBinding.tvDuration.text = requestItemBinding.root.context.resources
+                .getQuantityString(
+                    R.plurals.trip_duration_days,
+                    request.durationDays,
+                    request.durationDays
+                )
             requestItemBinding.tvTravellerDescription.text = request.description
 
             requestItemBinding.btContactThem.setOnClickListener {

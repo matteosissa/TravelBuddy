@@ -10,6 +10,7 @@ import dadm.ndescot.travelbuddy.databinding.TripItemBinding
 import dadm.ndescot.travelbuddy.domain.model.Trip
 import java.text.SimpleDateFormat
 import java.util.Locale
+import dadm.ndescot.travelbuddy.R
 
 /**
  * Adapter for displaying a list of trips in a RecyclerView.
@@ -48,8 +49,13 @@ class TripListAdapter(private val onItemClick: (Int) -> Unit) :
             val dateFormat = SimpleDateFormat("MMMM d, yyyy", Locale.getDefault())
             binding.tvDate.text = dateFormat.format(trip.date)
 
-            binding.tvDuration.text = "${trip.durationDays} days"
-            binding.tvBudget.text = "$${trip.budget}"
+            binding.tvDuration.text = binding.root.context.resources
+                .getQuantityString(
+                    R.plurals.trip_duration_days,
+                    trip.durationDays,
+                    trip.durationDays
+                )
+            binding.tvBudget.text = binding.root.context.getString(R.string.trip_budget_euro, trip.budget)
 
             // Set up activity chips
             binding.chipGroupActivities.removeAllViews()

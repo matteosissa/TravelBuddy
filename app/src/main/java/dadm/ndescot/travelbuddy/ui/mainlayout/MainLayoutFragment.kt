@@ -7,7 +7,6 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuProvider
 import androidx.core.view.ViewCompat
@@ -26,6 +25,7 @@ import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.navigationrail.NavigationRailView
 import dadm.ndescot.travelbuddy.R
 import dadm.ndescot.travelbuddy.databinding.FragmentMainLayoutBinding
@@ -88,7 +88,7 @@ class MainLayoutFragment @Inject constructor() : Fragment(R.layout.fragment_main
                         val activityNavController = requireActivity()
                             .findNavController(R.id.mainHostContainer)
                         val navOptions = NavOptions.Builder()
-                            .setPopUpTo(R.id.entry_nav_graph, true) // clear the entire entry graph
+                            .setPopUpTo(R.id.entry_nav_graph, true)
                             .build()
 
                         activityNavController.navigate(R.id.welcomeFragment, null, navOptions)
@@ -168,7 +168,7 @@ class MainLayoutFragment @Inject constructor() : Fragment(R.layout.fragment_main
             }
 
             R.id.menu_logout -> {
-                launchDialogToConfirmLogout()
+                showLogoutConfirmationDialog()
                 true
             }
 
@@ -176,13 +176,14 @@ class MainLayoutFragment @Inject constructor() : Fragment(R.layout.fragment_main
         }
     }
 
-    private fun launchDialogToConfirmLogout() {
-        AlertDialog.Builder(requireContext())
-            .setTitle(getString(R.string.are_you_sure_you_want_to_logout_dialog_title))
-            .setPositiveButton(getString(R.string.confirm)) { _, _ ->
+    private fun showLogoutConfirmationDialog() {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle(R.string.logout_confirmation_title)
+            .setMessage(R.string.logout_confirmation_message)
+            .setPositiveButton(R.string.logout) { _, _ ->
                 viewModel.logout()
             }
-            .setNegativeButton(getString(R.string.cancel_button), null)
+            .setNegativeButton(R.string.cancel, null)
             .show()
     }
 }
