@@ -10,8 +10,6 @@
   "unused",
 )
 
-
-
 package connectors.default
 
 
@@ -27,12 +25,9 @@ public interface DeleteSiteMutation :
     @kotlinx.serialization.Serializable
   public data class Variables(
   
-    val userId:
-    com.google.firebase.dataconnect.OptionalVariable<Int?>,
-    val siteName:
-    com.google.firebase.dataconnect.OptionalVariable<String?>,
-    val siteCountry:
-    com.google.firebase.dataconnect.OptionalVariable<String?>
+    val userId: com.google.firebase.dataconnect.OptionalVariable<Int?>,
+    val siteName: com.google.firebase.dataconnect.OptionalVariable<String?>,
+    val siteCountry: com.google.firebase.dataconnect.OptionalVariable<String?>
   ) {
     
     
@@ -90,9 +85,8 @@ public interface DeleteSiteMutation :
   
     @kotlinx.serialization.Serializable
   public data class Data(
-  @kotlinx.serialization.SerialName("siteGuideList_delete")
-    val key:
-    SiteGuideListKey?
+  
+    @kotlinx.serialization.SerialName("siteGuideList_delete") val key: SiteGuideListKey?
   ) {
     
     
@@ -114,7 +108,7 @@ public fun DeleteSiteMutation.ref(
   
     
   
-    block_: DeleteSiteMutation.Variables.Builder.() -> Unit
+    block_: DeleteSiteMutation.Variables.Builder.() -> Unit = {}
   
 ): com.google.firebase.dataconnect.MutationRef<
     DeleteSiteMutation.Data,
@@ -134,7 +128,7 @@ public suspend fun DeleteSiteMutation.execute(
   
     
   
-    block_: DeleteSiteMutation.Variables.Builder.() -> Unit
+    block_: DeleteSiteMutation.Variables.Builder.() -> Unit = {}
   
   ): com.google.firebase.dataconnect.MutationResult<
     DeleteSiteMutation.Data,

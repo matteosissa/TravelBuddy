@@ -1,0 +1,11 @@
+I1210 00:55:03.529636    6809 load.go:31] Reloading schema and connectors...
+I1210 00:55:03.626542    6809 control.go:94] [/emulator/travelbuddy-73574-2-service cf3e] UpdateResources(): done
+Main schema: sources: schema/schema.gql [1174B] 
+Connector "default": sources: connector/mutations.gql [1902B] connector/queries.gql [1889B] 
+I1210 00:55:03.727767    6809 codegen.go:80] [connector "default" kotlinSdk] Generating sources into "/home/matteo/Desktop/TravelBuddy/app/src/main/java/connectors/default"
+I1210 00:55:03.750087    6809 collector.go:107] schema extensions wrote into "/home/matteo/Desktop/TravelBuddy/backend/dataconnect/.dataconnect/schema"
+Generated sources: prelude.gql [73219B] main/relation.gql [24585B] main/query.gql [6401B] main/mutation.gql [17253B] main/implicit.gql [1540B] main/input.gql [42028B] 
+I1210 00:55:03.753607    6809 collector.go:107] connector "default" kotlinSdk wrote into "/home/matteo/Desktop/TravelBuddy/app/src/main/java/connectors/default"
+Generated sources: AddNewGuideSiteMutation.kt [4479B] AddNewTripMutation.kt [7461B] AllAnswersToTripQuery.kt [4321B] AllSitesAsGuideQuery.kt [4122B] AllTripsByLocationQuery.kt [5613B] AddNewUserMutation.kt [3867B] DefaultConnectorEnums.kt [797B] DefaultConnector.kt [14772B] AddNewGuideReplyMutation.kt [5147B] DeleteSiteMutation.kt [4416B] README.md [8645B] AllTripsByUserQuery.kt [4399B] DeleteTripMutation.kt [3260B] GetUserIdQuery.kt [4471B] DefaultConnectorKeys.kt [1482B] 
+I1210 00:55:03.753658    6809 load.go:109] Finished reloading
+I1210 00:55:03.755745    6809 dev.go:105] Listening on address (HTTP + gRPC): 127.0.0.1:50001

@@ -10,14 +10,6 @@
   "unused",
 )
 
-
-@file:kotlinx.serialization.UseSerializers(
-  
-    com.google.firebase.dataconnect.serializers.TimestampSerializer::class,
-  
-)
-
-
 package connectors.default
 
 
@@ -36,8 +28,7 @@ public interface AllAnswersToTripQuery :
     @kotlinx.serialization.Serializable
   public data class Variables(
   
-    val tripId:
-    com.google.firebase.dataconnect.OptionalVariable<Int?>
+    val tripId: com.google.firebase.dataconnect.OptionalVariable<Int?>
   ) {
     
     
@@ -82,32 +73,25 @@ public interface AllAnswersToTripQuery :
     @kotlinx.serialization.Serializable
   public data class Data(
   
-    val tripAnswers:
-    List<TripAnswersItem>
+    val tripAnswers: List<TripAnswersItem>
   ) {
     
       
         @kotlinx.serialization.Serializable
   public data class TripAnswersItem(
   
-    val user:
-    User,
-    val text:
-    String,
-    val time:
-    com.google.firebase.Timestamp
+    val user: User,
+    val text: String,
+    val time: @kotlinx.serialization.Serializable(with = com.google.firebase.dataconnect.serializers.TimestampSerializer::class) com.google.firebase.Timestamp
   ) {
     
       
         @kotlinx.serialization.Serializable
   public data class User(
   
-    val id:
-    Int,
-    val name:
-    String?,
-    val phoneNumber:
-    String?
+    val id: Int,
+    val name: String?,
+    val phoneNumber: String?
   ) {
     
     
@@ -137,7 +121,7 @@ public fun AllAnswersToTripQuery.ref(
   
     
   
-    block_: AllAnswersToTripQuery.Variables.Builder.() -> Unit
+    block_: AllAnswersToTripQuery.Variables.Builder.() -> Unit = {}
   
 ): com.google.firebase.dataconnect.QueryRef<
     AllAnswersToTripQuery.Data,
@@ -157,7 +141,7 @@ public suspend fun AllAnswersToTripQuery.execute(
   
     
   
-    block_: AllAnswersToTripQuery.Variables.Builder.() -> Unit
+    block_: AllAnswersToTripQuery.Variables.Builder.() -> Unit = {}
   
   ): com.google.firebase.dataconnect.QueryResult<
     AllAnswersToTripQuery.Data,
@@ -176,7 +160,7 @@ public suspend fun AllAnswersToTripQuery.execute(
     
       
   
-    block_: AllAnswersToTripQuery.Variables.Builder.() -> Unit
+    block_: AllAnswersToTripQuery.Variables.Builder.() -> Unit = {}
     
     ): kotlinx.coroutines.flow.Flow<AllAnswersToTripQuery.Data> =
     ref(

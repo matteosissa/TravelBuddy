@@ -10,8 +10,6 @@
   "unused",
 )
 
-
-
 package connectors.default
 
 
@@ -30,10 +28,8 @@ public interface GetUserIdQuery :
     @kotlinx.serialization.Serializable
   public data class Variables(
   
-    val username:
-    com.google.firebase.dataconnect.OptionalVariable<String?>,
-    val phoneNumber:
-    com.google.firebase.dataconnect.OptionalVariable<String?>
+    val username: com.google.firebase.dataconnect.OptionalVariable<String?>,
+    val phoneNumber: com.google.firebase.dataconnect.OptionalVariable<String?>
   ) {
     
     
@@ -85,16 +81,14 @@ public interface GetUserIdQuery :
     @kotlinx.serialization.Serializable
   public data class Data(
   
-    val users:
-    List<UsersItem>
+    val users: List<UsersItem>
   ) {
     
       
         @kotlinx.serialization.Serializable
   public data class UsersItem(
-  @kotlinx.serialization.SerialName("id")
-    val count:
-    Int
+  
+    @kotlinx.serialization.SerialName("id") val count: Int
   ) {
     
     
@@ -120,7 +114,7 @@ public fun GetUserIdQuery.ref(
   
     
   
-    block_: GetUserIdQuery.Variables.Builder.() -> Unit
+    block_: GetUserIdQuery.Variables.Builder.() -> Unit = {}
   
 ): com.google.firebase.dataconnect.QueryRef<
     GetUserIdQuery.Data,
@@ -140,7 +134,7 @@ public suspend fun GetUserIdQuery.execute(
   
     
   
-    block_: GetUserIdQuery.Variables.Builder.() -> Unit
+    block_: GetUserIdQuery.Variables.Builder.() -> Unit = {}
   
   ): com.google.firebase.dataconnect.QueryResult<
     GetUserIdQuery.Data,
@@ -159,7 +153,7 @@ public suspend fun GetUserIdQuery.execute(
     
       
   
-    block_: GetUserIdQuery.Variables.Builder.() -> Unit
+    block_: GetUserIdQuery.Variables.Builder.() -> Unit = {}
     
     ): kotlinx.coroutines.flow.Flow<GetUserIdQuery.Data> =
     ref(

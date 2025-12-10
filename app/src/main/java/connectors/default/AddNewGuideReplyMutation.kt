@@ -10,14 +10,6 @@
   "unused",
 )
 
-
-@file:kotlinx.serialization.UseSerializers(
-  
-    com.google.firebase.dataconnect.serializers.TimestampSerializer::class,
-  
-)
-
-
 package connectors.default
 
 
@@ -33,14 +25,10 @@ public interface AddNewGuideReplyMutation :
     @kotlinx.serialization.Serializable
   public data class Variables(
   
-    val userId:
-    com.google.firebase.dataconnect.OptionalVariable<Int?>,
-    val tripId:
-    com.google.firebase.dataconnect.OptionalVariable<Int?>,
-    val text:
-    com.google.firebase.dataconnect.OptionalVariable<String?>,
-    val time:
-    com.google.firebase.dataconnect.OptionalVariable<com.google.firebase.Timestamp?>
+    val userId: com.google.firebase.dataconnect.OptionalVariable<Int?>,
+    val tripId: com.google.firebase.dataconnect.OptionalVariable<Int?>,
+    val text: com.google.firebase.dataconnect.OptionalVariable<String?>,
+    val time: com.google.firebase.dataconnect.OptionalVariable<@kotlinx.serialization.Serializable(with = com.google.firebase.dataconnect.serializers.TimestampSerializer::class) com.google.firebase.Timestamp?>
   ) {
     
     
@@ -105,9 +93,8 @@ public interface AddNewGuideReplyMutation :
   
     @kotlinx.serialization.Serializable
   public data class Data(
-  @kotlinx.serialization.SerialName("tripAnswer_upsert")
-    val key:
-    TripAnswerKey
+  
+    @kotlinx.serialization.SerialName("tripAnswer_upsert") val key: TripAnswerKey
   ) {
     
     
@@ -129,7 +116,7 @@ public fun AddNewGuideReplyMutation.ref(
   
     
   
-    block_: AddNewGuideReplyMutation.Variables.Builder.() -> Unit
+    block_: AddNewGuideReplyMutation.Variables.Builder.() -> Unit = {}
   
 ): com.google.firebase.dataconnect.MutationRef<
     AddNewGuideReplyMutation.Data,
@@ -149,7 +136,7 @@ public suspend fun AddNewGuideReplyMutation.execute(
   
     
   
-    block_: AddNewGuideReplyMutation.Variables.Builder.() -> Unit
+    block_: AddNewGuideReplyMutation.Variables.Builder.() -> Unit = {}
   
   ): com.google.firebase.dataconnect.MutationResult<
     AddNewGuideReplyMutation.Data,

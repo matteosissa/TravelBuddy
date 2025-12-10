@@ -10,14 +10,6 @@
   "unused",
 )
 
-
-@file:kotlinx.serialization.UseSerializers(
-  
-    com.google.firebase.dataconnect.serializers.TimestampSerializer::class,
-  
-)
-
-
 package connectors.default
 
 
@@ -36,12 +28,9 @@ public interface AllTripsByLocationQuery :
     @kotlinx.serialization.Serializable
   public data class Variables(
   
-    val siteName:
-    com.google.firebase.dataconnect.OptionalVariable<String?>,
-    val countryName:
-    com.google.firebase.dataconnect.OptionalVariable<String?>,
-    val userId:
-    com.google.firebase.dataconnect.OptionalVariable<Int?>
+    val siteName: com.google.firebase.dataconnect.OptionalVariable<String?>,
+    val countryName: com.google.firebase.dataconnect.OptionalVariable<String?>,
+    val userId: com.google.firebase.dataconnect.OptionalVariable<Int?>
   ) {
     
     
@@ -100,42 +89,30 @@ public interface AllTripsByLocationQuery :
     @kotlinx.serialization.Serializable
   public data class Data(
   
-    val trips:
-    List<TripsItem>
+    val trips: List<TripsItem>
   ) {
     
       
         @kotlinx.serialization.Serializable
   public data class TripsItem(
   
-    val id:
-    Int,
-    val date:
-    com.google.firebase.Timestamp,
-    val locationCity:
-    String?,
-    val locationCountry:
-    String?,
-    val activities:
-    List<String>?,
-    val durationDays:
-    Int?,
-    val budget:
-    Int?,
-    val description:
-    String?,
-    val user:
-    User
+    val id: Int,
+    val date: @kotlinx.serialization.Serializable(with = com.google.firebase.dataconnect.serializers.TimestampSerializer::class) com.google.firebase.Timestamp,
+    val locationCity: String?,
+    val locationCountry: String?,
+    val activities: List<String>?,
+    val durationDays: Int?,
+    val budget: Int?,
+    val description: String?,
+    val user: User
   ) {
     
       
         @kotlinx.serialization.Serializable
   public data class User(
   
-    val id:
-    Int,
-    val name:
-    String?
+    val id: Int,
+    val name: String?
   ) {
     
     
@@ -165,7 +142,7 @@ public fun AllTripsByLocationQuery.ref(
   
     
   
-    block_: AllTripsByLocationQuery.Variables.Builder.() -> Unit
+    block_: AllTripsByLocationQuery.Variables.Builder.() -> Unit = {}
   
 ): com.google.firebase.dataconnect.QueryRef<
     AllTripsByLocationQuery.Data,
@@ -185,7 +162,7 @@ public suspend fun AllTripsByLocationQuery.execute(
   
     
   
-    block_: AllTripsByLocationQuery.Variables.Builder.() -> Unit
+    block_: AllTripsByLocationQuery.Variables.Builder.() -> Unit = {}
   
   ): com.google.firebase.dataconnect.QueryResult<
     AllTripsByLocationQuery.Data,
@@ -204,7 +181,7 @@ public suspend fun AllTripsByLocationQuery.execute(
     
       
   
-    block_: AllTripsByLocationQuery.Variables.Builder.() -> Unit
+    block_: AllTripsByLocationQuery.Variables.Builder.() -> Unit = {}
     
     ): kotlinx.coroutines.flow.Flow<AllTripsByLocationQuery.Data> =
     ref(

@@ -2,6 +2,10 @@
 
 **TravelBuddy** is an innovative mobile travel platform that bridges travelers and local guides. It enables travelers to plan trips and request guidance from local experts, while empowering locals to monetize their knowledge by offering travel guidance services in their regions.
 
+<p align="center">
+  <img src="Video-demo.gif" alt="Demo" width="200" />
+</p>
+
 ## 🎯 Project Goal
 
 TravelBuddy aims to revolutionize travel experiences by creating a direct connection between explorers seeking authentic, localized travel advice and experienced local guides. The app eliminates the need for expensive travel agencies while promoting cultural exchange and supporting local communities through meaningful travel guidance.

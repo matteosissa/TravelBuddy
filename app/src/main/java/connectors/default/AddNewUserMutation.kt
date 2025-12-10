@@ -10,8 +10,6 @@
   "unused",
 )
 
-
-
 package connectors.default
 
 
@@ -27,10 +25,8 @@ public interface AddNewUserMutation :
     @kotlinx.serialization.Serializable
   public data class Variables(
   
-    val username:
-    com.google.firebase.dataconnect.OptionalVariable<String?>,
-    val phoneNumber:
-    com.google.firebase.dataconnect.OptionalVariable<String?>
+    val username: com.google.firebase.dataconnect.OptionalVariable<String?>,
+    val phoneNumber: com.google.firebase.dataconnect.OptionalVariable<String?>
   ) {
     
     
@@ -81,9 +77,8 @@ public interface AddNewUserMutation :
   
     @kotlinx.serialization.Serializable
   public data class Data(
-  @kotlinx.serialization.SerialName("user_insert")
-    val key:
-    UserKey
+  
+    @kotlinx.serialization.SerialName("user_insert") val key: UserKey
   ) {
     
     
@@ -105,7 +100,7 @@ public fun AddNewUserMutation.ref(
   
     
   
-    block_: AddNewUserMutation.Variables.Builder.() -> Unit
+    block_: AddNewUserMutation.Variables.Builder.() -> Unit = {}
   
 ): com.google.firebase.dataconnect.MutationRef<
     AddNewUserMutation.Data,
@@ -125,7 +120,7 @@ public suspend fun AddNewUserMutation.execute(
   
     
   
-    block_: AddNewUserMutation.Variables.Builder.() -> Unit
+    block_: AddNewUserMutation.Variables.Builder.() -> Unit = {}
   
   ): com.google.firebase.dataconnect.MutationResult<
     AddNewUserMutation.Data,

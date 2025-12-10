@@ -10,14 +10,6 @@
   "unused",
 )
 
-
-@file:kotlinx.serialization.UseSerializers(
-  
-    com.google.firebase.dataconnect.serializers.TimestampSerializer::class,
-  
-)
-
-
 package connectors.default
 
 
@@ -36,8 +28,7 @@ public interface AllTripsByUserQuery :
     @kotlinx.serialization.Serializable
   public data class Variables(
   
-    val userId:
-    com.google.firebase.dataconnect.OptionalVariable<Int?>
+    val userId: com.google.firebase.dataconnect.OptionalVariable<Int?>
   ) {
     
     
@@ -82,40 +73,29 @@ public interface AllTripsByUserQuery :
     @kotlinx.serialization.Serializable
   public data class Data(
   
-    val trips:
-    List<TripsItem>
+    val trips: List<TripsItem>
   ) {
     
       
         @kotlinx.serialization.Serializable
   public data class TripsItem(
   
-    val id:
-    Int,
-    val date:
-    com.google.firebase.Timestamp,
-    val locationCity:
-    String?,
-    val locationCountry:
-    String?,
-    val activities:
-    List<String>?,
-    val durationDays:
-    Int?,
-    val budget:
-    Int?,
-    val description:
-    String?,
-    val user:
-    User
+    val id: Int,
+    val date: @kotlinx.serialization.Serializable(with = com.google.firebase.dataconnect.serializers.TimestampSerializer::class) com.google.firebase.Timestamp,
+    val locationCity: String?,
+    val locationCountry: String?,
+    val activities: List<String>?,
+    val durationDays: Int?,
+    val budget: Int?,
+    val description: String?,
+    val user: User
   ) {
     
       
         @kotlinx.serialization.Serializable
   public data class User(
   
-    val name:
-    String?
+    val name: String?
   ) {
     
     
@@ -145,7 +125,7 @@ public fun AllTripsByUserQuery.ref(
   
     
   
-    block_: AllTripsByUserQuery.Variables.Builder.() -> Unit
+    block_: AllTripsByUserQuery.Variables.Builder.() -> Unit = {}
   
 ): com.google.firebase.dataconnect.QueryRef<
     AllTripsByUserQuery.Data,
@@ -165,7 +145,7 @@ public suspend fun AllTripsByUserQuery.execute(
   
     
   
-    block_: AllTripsByUserQuery.Variables.Builder.() -> Unit
+    block_: AllTripsByUserQuery.Variables.Builder.() -> Unit = {}
   
   ): com.google.firebase.dataconnect.QueryResult<
     AllTripsByUserQuery.Data,
@@ -184,7 +164,7 @@ public suspend fun AllTripsByUserQuery.execute(
     
       
   
-    block_: AllTripsByUserQuery.Variables.Builder.() -> Unit
+    block_: AllTripsByUserQuery.Variables.Builder.() -> Unit = {}
     
     ): kotlinx.coroutines.flow.Flow<AllTripsByUserQuery.Data> =
     ref(

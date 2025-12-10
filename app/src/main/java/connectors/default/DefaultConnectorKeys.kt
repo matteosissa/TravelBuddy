@@ -10,24 +10,14 @@
   "unused",
 )
 
-
-@file:kotlinx.serialization.UseSerializers(
-  
-    com.google.firebase.dataconnect.serializers.TimestampSerializer::class,
-  
-)
-
-
 package connectors.default
 
 
   @kotlinx.serialization.Serializable
   public data class SiteGuideKey(
   
-    val siteName:
-    String,
-    val countryName:
-    String
+    val siteName: String,
+    val countryName: String
   ) {
     
     
@@ -36,12 +26,9 @@ package connectors.default
   @kotlinx.serialization.Serializable
   public data class SiteGuideListKey(
   
-    val userId:
-    Int,
-    val siteSiteName:
-    String,
-    val siteCountryName:
-    String
+    val userId: Int,
+    val siteSiteName: String,
+    val siteCountryName: String
   ) {
     
     
@@ -50,10 +37,8 @@ package connectors.default
   @kotlinx.serialization.Serializable
   public data class TripAnswerKey(
   
-    val tripId:
-    Int,
-    val userId:
-    Int
+    val tripId: Int,
+    val userId: Int
   ) {
     
     
@@ -62,8 +47,7 @@ package connectors.default
   @kotlinx.serialization.Serializable
   public data class TripKey(
   
-    val id:
-    Int
+    val id: Int
   ) {
     
     
@@ -72,8 +56,7 @@ package connectors.default
   @kotlinx.serialization.Serializable
   public data class UserKey(
   
-    val id:
-    Int
+    val id: Int
   ) {
     
     

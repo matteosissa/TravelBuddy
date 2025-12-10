@@ -10,8 +10,6 @@
   "unused",
 )
 
-
-
 package connectors.default
 
 
@@ -30,8 +28,7 @@ public interface AllSitesAsGuideQuery :
     @kotlinx.serialization.Serializable
   public data class Variables(
   
-    val userId:
-    com.google.firebase.dataconnect.OptionalVariable<Int?>
+    val userId: com.google.firebase.dataconnect.OptionalVariable<Int?>
   ) {
     
     
@@ -76,26 +73,22 @@ public interface AllSitesAsGuideQuery :
     @kotlinx.serialization.Serializable
   public data class Data(
   
-    val users:
-    List<UsersItem>
+    val users: List<UsersItem>
   ) {
     
       
         @kotlinx.serialization.Serializable
   public data class UsersItem(
   
-    val guideSites:
-    List<GuideSitesItem>
+    val guideSites: List<GuideSitesItem>
   ) {
     
       
         @kotlinx.serialization.Serializable
   public data class GuideSitesItem(
   
-    val siteName:
-    String,
-    val countryName:
-    String
+    val siteName: String,
+    val countryName: String
   ) {
     
     
@@ -125,7 +118,7 @@ public fun AllSitesAsGuideQuery.ref(
   
     
   
-    block_: AllSitesAsGuideQuery.Variables.Builder.() -> Unit
+    block_: AllSitesAsGuideQuery.Variables.Builder.() -> Unit = {}
   
 ): com.google.firebase.dataconnect.QueryRef<
     AllSitesAsGuideQuery.Data,
@@ -145,7 +138,7 @@ public suspend fun AllSitesAsGuideQuery.execute(
   
     
   
-    block_: AllSitesAsGuideQuery.Variables.Builder.() -> Unit
+    block_: AllSitesAsGuideQuery.Variables.Builder.() -> Unit = {}
   
   ): com.google.firebase.dataconnect.QueryResult<
     AllSitesAsGuideQuery.Data,
@@ -164,7 +157,7 @@ public suspend fun AllSitesAsGuideQuery.execute(
     
       
   
-    block_: AllSitesAsGuideQuery.Variables.Builder.() -> Unit
+    block_: AllSitesAsGuideQuery.Variables.Builder.() -> Unit = {}
     
     ): kotlinx.coroutines.flow.Flow<AllSitesAsGuideQuery.Data> =
     ref(

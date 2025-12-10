@@ -10,8 +10,6 @@
   "unused",
 )
 
-
-
 package connectors.default
 
 
@@ -27,12 +25,9 @@ public interface AddNewGuideSiteMutation :
     @kotlinx.serialization.Serializable
   public data class Variables(
   
-    val siteName:
-    com.google.firebase.dataconnect.OptionalVariable<String?>,
-    val countryName:
-    com.google.firebase.dataconnect.OptionalVariable<String?>,
-    val userId:
-    com.google.firebase.dataconnect.OptionalVariable<Int?>
+    val siteName: com.google.firebase.dataconnect.OptionalVariable<String?>,
+    val countryName: com.google.firebase.dataconnect.OptionalVariable<String?>,
+    val userId: com.google.firebase.dataconnect.OptionalVariable<Int?>
   ) {
     
     
@@ -91,10 +86,8 @@ public interface AddNewGuideSiteMutation :
     @kotlinx.serialization.Serializable
   public data class Data(
   
-    val siteGuide_upsert:
-    SiteGuideKey,
-    val siteGuideList_upsert:
-    SiteGuideListKey
+    val siteGuide_upsert: SiteGuideKey,
+    val siteGuideList_upsert: SiteGuideListKey
   ) {
     
     
@@ -116,7 +109,7 @@ public fun AddNewGuideSiteMutation.ref(
   
     
   
-    block_: AddNewGuideSiteMutation.Variables.Builder.() -> Unit
+    block_: AddNewGuideSiteMutation.Variables.Builder.() -> Unit = {}
   
 ): com.google.firebase.dataconnect.MutationRef<
     AddNewGuideSiteMutation.Data,
@@ -136,7 +129,7 @@ public suspend fun AddNewGuideSiteMutation.execute(
   
     
   
-    block_: AddNewGuideSiteMutation.Variables.Builder.() -> Unit
+    block_: AddNewGuideSiteMutation.Variables.Builder.() -> Unit = {}
   
   ): com.google.firebase.dataconnect.MutationResult<
     AddNewGuideSiteMutation.Data,

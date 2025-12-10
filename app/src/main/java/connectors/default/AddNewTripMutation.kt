@@ -10,14 +10,6 @@
   "unused",
 )
 
-
-@file:kotlinx.serialization.UseSerializers(
-  
-    com.google.firebase.dataconnect.serializers.TimestampSerializer::class,
-  
-)
-
-
 package connectors.default
 
 
@@ -33,22 +25,14 @@ public interface AddNewTripMutation :
     @kotlinx.serialization.Serializable
   public data class Variables(
   
-    val userId:
-    com.google.firebase.dataconnect.OptionalVariable<Int?>,
-    val activities:
-    com.google.firebase.dataconnect.OptionalVariable<List<String>?>,
-    val budget:
-    com.google.firebase.dataconnect.OptionalVariable<Int?>,
-    val date:
-    com.google.firebase.dataconnect.OptionalVariable<com.google.firebase.Timestamp?>,
-    val description:
-    com.google.firebase.dataconnect.OptionalVariable<String?>,
-    val durationDays:
-    com.google.firebase.dataconnect.OptionalVariable<Int?>,
-    val locationCity:
-    com.google.firebase.dataconnect.OptionalVariable<String?>,
-    val locationCountry:
-    com.google.firebase.dataconnect.OptionalVariable<String?>
+    val userId: com.google.firebase.dataconnect.OptionalVariable<Int?>,
+    val activities: com.google.firebase.dataconnect.OptionalVariable<List<String>?>,
+    val budget: com.google.firebase.dataconnect.OptionalVariable<Int?>,
+    val date: com.google.firebase.dataconnect.OptionalVariable<@kotlinx.serialization.Serializable(with = com.google.firebase.dataconnect.serializers.TimestampSerializer::class) com.google.firebase.Timestamp?>,
+    val description: com.google.firebase.dataconnect.OptionalVariable<String?>,
+    val durationDays: com.google.firebase.dataconnect.OptionalVariable<Int?>,
+    val locationCity: com.google.firebase.dataconnect.OptionalVariable<String?>,
+    val locationCountry: com.google.firebase.dataconnect.OptionalVariable<String?>
   ) {
     
     
@@ -141,9 +125,8 @@ public interface AddNewTripMutation :
   
     @kotlinx.serialization.Serializable
   public data class Data(
-  @kotlinx.serialization.SerialName("trip_insert")
-    val key:
-    TripKey
+  
+    @kotlinx.serialization.SerialName("trip_insert") val key: TripKey
   ) {
     
     
@@ -165,7 +148,7 @@ public fun AddNewTripMutation.ref(
   
     
   
-    block_: AddNewTripMutation.Variables.Builder.() -> Unit
+    block_: AddNewTripMutation.Variables.Builder.() -> Unit = {}
   
 ): com.google.firebase.dataconnect.MutationRef<
     AddNewTripMutation.Data,
@@ -185,7 +168,7 @@ public suspend fun AddNewTripMutation.execute(
   
     
   
-    block_: AddNewTripMutation.Variables.Builder.() -> Unit
+    block_: AddNewTripMutation.Variables.Builder.() -> Unit = {}
   
   ): com.google.firebase.dataconnect.MutationResult<
     AddNewTripMutation.Data,

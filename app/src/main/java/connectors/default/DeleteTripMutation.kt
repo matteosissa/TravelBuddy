@@ -10,8 +10,6 @@
   "unused",
 )
 
-
-
 package connectors.default
 
 
@@ -27,8 +25,7 @@ public interface DeleteTripMutation :
     @kotlinx.serialization.Serializable
   public data class Variables(
   
-    val tripId:
-    com.google.firebase.dataconnect.OptionalVariable<Int?>
+    val tripId: com.google.firebase.dataconnect.OptionalVariable<Int?>
   ) {
     
     
@@ -73,10 +70,8 @@ public interface DeleteTripMutation :
     @kotlinx.serialization.Serializable
   public data class Data(
   
-    val trip_delete:
-    TripKey?,
-    val tripAnswer_deleteMany:
-    Int
+    val trip_delete: TripKey?,
+    val tripAnswer_deleteMany: Int
   ) {
     
     
@@ -98,7 +93,7 @@ public fun DeleteTripMutation.ref(
   
     
   
-    block_: DeleteTripMutation.Variables.Builder.() -> Unit
+    block_: DeleteTripMutation.Variables.Builder.() -> Unit = {}
   
 ): com.google.firebase.dataconnect.MutationRef<
     DeleteTripMutation.Data,
@@ -118,7 +113,7 @@ public suspend fun DeleteTripMutation.execute(
   
     
   
-    block_: DeleteTripMutation.Variables.Builder.() -> Unit
+    block_: DeleteTripMutation.Variables.Builder.() -> Unit = {}
   
   ): com.google.firebase.dataconnect.MutationResult<
     DeleteTripMutation.Data,
